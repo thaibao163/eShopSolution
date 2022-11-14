@@ -22,7 +22,7 @@ namespace WebApi.Controllers.v1
         [HttpPost("send")]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.CategoryPermission, ConstantsAtr.Access)]
-        public async Task<IActionResult> SendMail([FromForm] WelcomeRequest request)
+        public async Task<IActionResult> SendMail([FromForm] WelcomeVM request)
         {
             try
             {

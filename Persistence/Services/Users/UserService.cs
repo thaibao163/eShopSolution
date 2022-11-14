@@ -99,7 +99,7 @@ namespace Persistence.Services.Users
             return loginRequest;
         }
 
-        public async Task<string> Register(RegisterRequest request)
+        public async Task<string> RegisterCustomer(RegisterRequest request)
         {
             var user = new User
             {
@@ -253,6 +253,34 @@ namespace Persistence.Services.Users
                         || p.CanDelete && action == ConstantsAtr.Delete)
                         select p;
             return query.Any();
+        }
+
+        public async Task<string> RegisterAdmin(RegisterRequest request)
+        {
+            var user = new User
+            {
+                UserName = request.UserName,
+                Email = request.Email,
+                FullName = request.FullName,
+                Address = request.Address,
+                CreatedOn = DateTime.Now.Date,
+                EmailConfirmed = true,
+                PhoneNumber = request.PhoneNumber
+            };
+            var userWithSameEmail = await _userManager.FindByEmailAsync(request.Email);
+            if (userWithSameEmail == null)
+            {
+                var result = await _userManager.CreateAsync(user, request.Password);
+                if (result.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(user, RoleConstants.AdministratorRole.ToString());
+                }
+                return $"User Registered successfully with username {user.UserName}";
+            }
+            else
+            {
+                return $"Email {user.Email} is already registered.";
+            }
         }
     }
 }

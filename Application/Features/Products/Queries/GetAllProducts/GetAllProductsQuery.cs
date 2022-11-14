@@ -4,10 +4,9 @@ using MediatR;
 
 namespace Application.Features.Products.Queries.GetAllProducts
 {
-    public class GetAllProductsQuery : IRequest<IEnumerable<ProductInformation>>
+    public class GetAllProductsQuery : IRequest<IEnumerable<ProductVM>>
     {
-        public int Id { get; set; }
-        public class GetAllProductQueryHandler : IRequestHandler<GetAllProductsQuery, IEnumerable<ProductInformation>>
+        public class GetAllProductQueryHandler : IRequestHandler<GetAllProductsQuery, IEnumerable<ProductVM>>
         {
             private readonly IProductRepository _productRepository;
 
@@ -16,9 +15,9 @@ namespace Application.Features.Products.Queries.GetAllProducts
                 _productRepository = productRepository;
             }
 
-            public async Task<IEnumerable<ProductInformation>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
+            public async Task<IEnumerable<ProductVM>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
             {
-                var productList = await _productRepository.GetAllProducts(request.Id);
+                var productList = await _productRepository.GetAllProducts();
                 return productList; 
             }
         }

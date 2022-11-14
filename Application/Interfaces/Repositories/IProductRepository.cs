@@ -5,7 +5,8 @@ namespace Application.Interfaces.Repositories
 {
     public interface IProductRepository : IGenericRepository<Product>
     {
-        Task<IEnumerable<ProductInformation>> GetAllProducts(int Id);
+        Task<IEnumerable<ProductVM>> GetAllProducts();
+        Task<IEnumerable<ProductVM>> GetProductById(int Id);
 
     }
 }

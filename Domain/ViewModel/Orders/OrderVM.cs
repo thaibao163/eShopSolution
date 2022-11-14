@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Domain.ViewModel.Orders
 {
-    public class OrderRequest
+    public class OrderVM : Base
     {
-        public int Id { get; set; }
+        public string NameUser { get; set; }
         public decimal TotalPrice { get; set; }
     }
 }

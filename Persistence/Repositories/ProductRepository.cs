@@ -15,13 +15,31 @@ namespace Persistence.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<ProductInformation>> GetAllProducts(int Id)
+        public async Task<IEnumerable<ProductVM>> GetAllProducts()
         {
-            var product =await (from p in _context.Products
+            var product = await (from p in _context.Products
+                                 join c in _context.Categories on p.CategoryId equals c.Id
+                                 where p.IsDeleted == false
+                                 //orderby p.Id descending
+                                 select new ProductVM()
+                                 {
+                                     Id = p.Id,
+                                     ProductName = p.Name,
+                                     CategoryName = c.Name,
+                                     Description = p.Description,
+                                     Price = p.Price,
+                                     Quantity = p.Quantity,
+                                 }).ToListAsync();
+            return product;
+        }
+
+        public async Task<IEnumerable<ProductVM>> GetProductById(int Id)
+        {
+            var product = await(from p in _context.Products
                                 join c in _context.Categories on p.CategoryId equals c.Id
-                                //where p.Id == Id || p.IsDeleted 
-                                orderby p.Id descending
-                                select new ProductInformation()
+                                where Id == p.Id && p.IsDeleted == false
+                                //orderby p.Id descending
+                                select new ProductVM()
                                 {
                                     Id = p.Id,
                                     ProductName = p.Name,
@@ -29,7 +47,6 @@ namespace Persistence.Repositories
                                     Description = p.Description,
                                     Price = p.Price,
                                     Quantity = p.Quantity,
-                                    CreatedDate = p.CreatedOn.Date,
                                 }).ToListAsync();
             return product;
         }

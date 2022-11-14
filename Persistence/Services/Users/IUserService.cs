@@ -10,7 +10,9 @@ namespace Persistence.Services.Users
 
         Task<string> AddRoleAsync(AddRoleRequest model);
 
-        Task<string> Register(RegisterRequest request);
+        Task<string> RegisterCustomer(RegisterRequest request);
+
+        Task<string> RegisterAdmin(RegisterRequest request);
 
         Task<string> Update(string id, UserUpdateRequest request);
 

@@ -14,14 +14,26 @@ namespace WebApi.Controllers.v1
 
 
         /// <summary>
-        /// Register
+        /// RegisterCustomer
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        [HttpPost("Register")]
-        public async Task<IActionResult> Register([FromForm] RegisterRequest command)
+        [HttpPost("RegisterCustomer")]
+        public async Task<IActionResult> RegisterCustomer([FromForm] RegisterRequest command)
         {
-            var result = await UserRepository.Register(command);
+            var result = await UserRepository.RegisterCustomer(command);
+            return Ok(result);
+        } 
+
+        /// <summary>
+        /// RegisterAdmin
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPost("RegisterAdmin")]
+        public async Task<IActionResult> RegisterAdmin([FromForm] RegisterRequest command)
+        {
+            var result = await UserRepository.RegisterAdmin(command);
             return Ok(result);
         }
 

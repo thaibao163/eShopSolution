@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace Domain.ViewModel.Orders
 {
-    public class OrderDetailRequest
+    public class OrderDetailVM : Base
     {
-        public int ProductId { get; set; }
+        public string UserName { get; set; }
+        public string Product { get; set; }
         public int Quantity { get; set; }
+        public decimal Price { get; set; }
+        public decimal TotalPrice { get; set; }
     }
 }

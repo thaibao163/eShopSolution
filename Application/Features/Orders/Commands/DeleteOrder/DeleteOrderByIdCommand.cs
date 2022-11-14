@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Application.Features.Orders.Commands.DeleteOrder
 {
@@ -32,9 +33,11 @@ namespace Application.Features.Orders.Commands.DeleteOrder
 
             public async Task<string> Handle(DeleteOrderByIdCommand request, CancellationToken cancellationToken)
             {
+                var order1 = await _orderRepository.GetByIdAsync(request.Id);
+                if (order1 == null || order1.IsDeleted) return "Order not found";
 
-                var order = await _orderRepository.Delete(request.Id);
-                if (order == 1) return "Delete successed";
+                var orderDelete = await _orderRepository.Delete(request.Id);
+                if (orderDelete == 1) return "Delete successed";
                 else return "Delete failed";
             }
         }

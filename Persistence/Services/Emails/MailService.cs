@@ -39,7 +39,7 @@ namespace Persistence.Services.Emails
             return true;
         }
 
-        public async Task SendWelcomeEmailAsync(WelcomeRequest request)
+        public async Task SendWelcomeEmailAsync(WelcomeVM request)
         {
             //string FilePath = Directory.GetCurrentDirectory() + "\\Templates\\ForgetPasswordSendMailTemplate.html";
             string FilePath = "D:\\ThucTap\\OnionArchitecture\\Persistence\\Templates\\ForgetPasswordSendMailTemplate.html";

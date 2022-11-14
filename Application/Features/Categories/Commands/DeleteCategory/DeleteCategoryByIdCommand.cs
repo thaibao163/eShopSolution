@@ -20,6 +20,8 @@ namespace Demo1.Application.Features.Categories.Commands.DeleteCategory
 
             public async Task<string> Handle(DeleteCategoryByIdCommand command, CancellationToken cancellationToken)
             {
+                //var check
+
                 var category = await _categoryRepository.GetByIdAsync(command.Id);
                 if(category == null||category.IsDeleted) return "Category not found";
                 //await _categoryRepository.DeleteAsync(category);

@@ -44,7 +44,7 @@ namespace WebApi.Controllers.v1
         // POST api/<controller>
         [HttpPost]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.CategoryPermission, ConstantsAtr.Access)]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.ProductPermission, ConstantsAtr.Add)]
         public async Task<IActionResult> Create([FromForm] CreateProductCommand command)
         {
             return Ok(await Mediator.Send(command));
@@ -58,7 +58,7 @@ namespace WebApi.Controllers.v1
         //// DELETE api/<controller>/5
         [HttpDelete("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.CategoryPermission, ConstantsAtr.Access)]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.ProductPermission, ConstantsAtr.Delete)]
         public async Task<IActionResult> Delete(int id)
         {
             return Ok(await Mediator.Send(new DeleteProductByIdCommand { Id = id }));
@@ -73,7 +73,7 @@ namespace WebApi.Controllers.v1
         //// PUT api/<controller>/5
         [HttpPut("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.CategoryPermission, ConstantsAtr.Access)]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.ProductPermission, ConstantsAtr.Update)]
         public async Task<IActionResult> Update(int id, UpdateProductCommand command)
         {
             if (id != command.Id)

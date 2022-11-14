@@ -8,8 +8,8 @@ namespace Application.Mappings.Order
     {
         public AutoMapperProfile()
         {
-            CreateMap<OrderRequest, Domain.Entities.Order>();
-            CreateMap<OrderDetailRequest, Domain.Entities.OrderDetail>();
+            CreateMap<OrderVM, Domain.Entities.Order>();
+            CreateMap<OrderDetailVM, Domain.Entities.OrderDetail>();
             CreateMap<DeleteOrderByIdCommand, Domain.Entities.OrderDetail>();
         }
     }

@@ -55,5 +55,33 @@ namespace Persistence.Repositories
             await _context.SaveChangesAsync();
             return 1;
         }
+
+        public async Task<IEnumerable<OrderVM>> GetAllOrders()
+        {
+            var orders = await (from o in _context.Orders
+                                join u in _context.Users on o.UserId equals u.Id
+                                where o.IsDeleted == false
+                                select new OrderVM()
+                                {
+                                    Id = o.Id,
+                                    NameUser = u.UserName,
+                                    TotalPrice = o.TotalPrice,
+                                }).ToListAsync();
+            return orders;
+        }
+
+        public async Task<IEnumerable<OrderVM>> GetOrderById(int Id)
+        {
+            var orders = await (from o in _context.Orders
+                                join u in _context.Users on o.UserId equals u.Id
+                                where Id == o.Id && o.IsDeleted == false
+                                select new OrderVM()
+                                {
+                                    Id = o.Id,
+                                    NameUser = u.UserName,
+                                    TotalPrice = o.TotalPrice,
+                                }).ToListAsync();
+            return orders;
+        }
     }
 }

@@ -44,7 +44,7 @@ namespace WebApi.Controllers.v1
         [CustomAuthorizeAtrtibute(ConstantsAtr.CategoryPermission, ConstantsAtr.Add)]
         public async Task<IActionResult> Create(CreateCategoryCommand command)
         {
-            return Ok(await Mediator.Send(/*new CreateCategoryCommand()*/command));
+            return Ok(await Mediator.Send(command));
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace WebApi.Controllers.v1
         /// <returns></returns>
         [HttpDelete("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.CategoryPermission, ConstantsAtr.Access)]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.CategoryPermission, ConstantsAtr.Delete)]
         public async Task<IActionResult> Delete(int id)
         {
             return Ok(await Mediator.Send(new DeleteCategoryByIdCommand { Id = id }));
@@ -65,7 +65,7 @@ namespace WebApi.Controllers.v1
         /// </summary>
         [HttpPut("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.CategoryPermission, ConstantsAtr.Access)]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.CategoryPermission, ConstantsAtr.Update)]
         public async Task<IActionResult> Update(int id, UpdateCategoryCommand command)
         {
             if (id != command.Id)
