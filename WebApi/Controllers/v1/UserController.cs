@@ -31,6 +31,8 @@ namespace WebApi.Controllers.v1
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost("RegisterAdmin")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.UserPermission, ConstantsAtr.Add)]
         public async Task<IActionResult> RegisterAdmin([FromForm] RegisterRequest command)
         {
             var result = await UserRepository.RegisterAdmin(command);
@@ -56,6 +58,8 @@ namespace WebApi.Controllers.v1
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("Update")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.UserPermission, ConstantsAtr.Update)]
         public async Task<IActionResult> Update(string id, [FromForm] UserUpdateRequest command)
         {
             var result = await UserRepository.Update(id, command);
@@ -69,6 +73,7 @@ namespace WebApi.Controllers.v1
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("ChangePassword")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> Change(string id, [FromForm] ChangePasswordRequest command)
         {
             var result = await UserRepository.ChangePassword(id, command);
@@ -94,7 +99,7 @@ namespace WebApi.Controllers.v1
         /// <returns></returns>
         [HttpGet("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.CategoryPermission, ConstantsAtr.Access)]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.UserPermission, ConstantsAtr.Access)]
         public async Task<IActionResult> GetById(string id)
         {
             var user = await UserRepository.GetById(id);
@@ -108,7 +113,7 @@ namespace WebApi.Controllers.v1
         /// <returns></returns>
         [HttpDelete("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.CategoryPermission, ConstantsAtr.Access)]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.UserPermission, ConstantsAtr.Delete)]
         public async Task<IActionResult> DeleteByid(string id)
         {
             var user = await UserRepository.Delete(id);

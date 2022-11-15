@@ -30,7 +30,7 @@ namespace Application.Features.Categories.Commands.CreateCategory
                 IsDeleted = false,
             };
             await _categoryRepository.AddAsync(category);
-            return $"Add success category {category.Name}";
+            return $"Add successful category {category.Name}";
         }
     }
 }

@@ -19,11 +19,9 @@ namespace Persistence.Contexts
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Permission> Permissons { get; set; }
         public DbSet<Product> Products { get; set; }
-
-        //public async Task<int> SaveChangesAsync()
-        //{
-        //    return await base.SaveChangesAsync();
-        //}
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<CartDetail> CartDetails { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

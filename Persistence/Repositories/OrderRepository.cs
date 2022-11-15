@@ -30,7 +30,7 @@ namespace Persistence.Repositories
             _productRepository = productRepository;
         }
 
-        public async Task<int> Delete(int id)
+        public async Task<int> DeleteOrder(int id)
         {
             var order = await _context.Orders.FirstOrDefaultAsync(o => o.Id == id);
             if (order == null) throw new ApiException("Order not found.");

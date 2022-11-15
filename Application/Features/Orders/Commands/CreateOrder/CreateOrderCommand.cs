@@ -8,7 +8,7 @@ using MediatR;
 
 namespace Application.Features.Orders.Commands.CreateOrder
 {
-    public class CreateOrderCommand :  IRequest<string>
+    public class CreateOrderCommand : IRequest<string>
     {
         public int ProductId { get; set; }
 
@@ -31,14 +31,14 @@ namespace Application.Features.Orders.Commands.CreateOrder
             public async Task<string> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
             {
                 var product = await _productRepository.GetByIdAsync(request.ProductId);
-                if (product == null) return "Product not found";
+                if (product == null || product.IsDeleted) return "Product not found.";
                 if (product.Quantity > request.Quantity)
                 {
                     var order = new Order()
                     {
                         UserId = _currentUserRepository.Id,
                         CreatedOn = DateTime.Now,
-                        CreatedBy=_currentUserRepository.Id,
+                        CreatedBy = _currentUserRepository.Id,
                         IsDeleted = false
                     };
                     await _orderRepository.AddAsync(order);
@@ -57,10 +57,9 @@ namespace Application.Features.Orders.Commands.CreateOrder
                     updateOrder.TotalPrice = updateOrder.TotalPrice + request.Quantity * product.Price;
                     product.Quantity = product.Quantity - request.Quantity;
                     await _orderRepository.SaveAsync();
-                    return "Order successed";
+                    return "Order successed.";
                 }
-                else
-                    return "Order failed";
+                    return "Quantity of products is not enough.";
             }
         }
     }

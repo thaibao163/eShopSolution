@@ -2,7 +2,7 @@
 
 namespace Domain.ViewModel.Users
 {
-    public class AuthRequest
+    public class AuthenticationVM
     {
         public string Message { get; set; }
         public bool IsAuthenticated { get; set; }

@@ -23,7 +23,6 @@ namespace Application.Features.Products.Commands.DeleteProduct
             {
                 var product = await _productRepository.GetByIdAsync(command.Id);
                 if (product == null || product.IsDeleted) return "Product not found";
-                //await _context.DeleteAsync(product);
                 product.IsDeleted = true;
                 product.LastModifiedOn = DateTime.Now;
                 product.LastModifiedBy = _currentUserRepository.Id;

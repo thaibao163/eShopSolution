@@ -6,7 +6,7 @@ namespace Persistence.Services.Users
 {
     public interface IUserService
     {
-        Task<AuthRequest> LoginUser(LoginRequest request);
+        Task<AuthenticationVM> LoginUser(LoginRequest request);
 
         Task<string> AddRoleAsync(AddRoleRequest model);
 
@@ -16,9 +16,9 @@ namespace Persistence.Services.Users
 
         Task<string> Update(string id, UserUpdateRequest request);
 
-        Task<AuthRequest> ChangePassword(string id, ChangePasswordRequest request);
+        Task<AuthenticationVM> ChangePassword(string id, ChangePasswordRequest request);
 
-        Task<AuthRequest> ForgetPassword(ForgerPasswordRequest request);
+        Task<AuthenticationVM> ForgetPassword(ForgerPasswordRequest request);
 
         Task<ApiResult<UserInfomation>> GetById(string id);
 
@@ -27,7 +27,7 @@ namespace Persistence.Services.Users
         Task<bool> CheckPermisson(string funcUrl, string action, string role);
 
 
-        //Task<AuthRequest> ForgetPassword(ForgerPasswordRequest request);
+        //Task<AuthenticationVM> ForgetPassword(ForgerPasswordRequest request);
 
         //Task<ApiResult<PagedResult<UserVm>>> GetUsersPaging(GetUserPagingRequest request);
 

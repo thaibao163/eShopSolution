@@ -20,6 +20,8 @@ namespace WebApi.Controllers.v1
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.CategoryPermission, ConstantsAtr.Access)]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await Mediator.Send(new GetAllCategoriesQuery()));
@@ -30,6 +32,8 @@ namespace WebApi.Controllers.v1
         /// </summary>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.CategoryPermission, ConstantsAtr.Access)]
         public async Task<IActionResult> GetById(int id)
         {
             return Ok(await Mediator.Send(new GetCategoryByIdQuery { Id = id }));

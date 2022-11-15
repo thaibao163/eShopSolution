@@ -26,6 +26,9 @@ namespace Persistence
             services.AddTransient<IRoleRepository, RoleRepository>();
             services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddTransient<IOrderDetailsRepository, OrderDetailsRepository>();
+            services.AddTransient<ICartRepository, CartRepository>();
+            services.AddTransient<ICartDetailRepository, CartDetailRepository>();
+            services.AddTransient<IReviewRepository, ReviewRepository>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IMapper, Mapper>();
         }

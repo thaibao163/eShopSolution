@@ -1,14 +1,13 @@
-  select *from Orders
-  select *from OrderDetails
+ 
   select *from Products
+ select *from Orders
+  select *from OrderDetails
   select *from Categories
-  select *from [OnionArchitecture].[Identity].[Users]
   select *from Menus
   select *from Permissons
-
-  select *from [OnionArchitecture].[dbo].[AspNetRoles]
   select *from [OnionArchitecture].[Identity].[Roles]
-  select *from [OnionArchitecture].[Identity].[UserRoles]
+  select *from [OnionArchitecture].[dbo].[AspNetRoles]
+  select *from [OnionArchitecture].[Identity].[UserRoles]	
     select *from [OnionArchitecture].[Identity].[Users]
 
   update OrderDetails
@@ -18,4 +17,8 @@
   delete from [Orders]
   delete from [OrderDetails]
 
-  TRUNCATE TABLE Products
+  TRUNCATE TABLE [OnionArchitecture].[dbo].[AspNetRoles]
+  TRUNCATE TABLE [OnionArchitecture].[Identity].[Roles]
+  TRUNCATE TABLE [OnionArchitecture].[Identity].[UserRoles]
+  TRUNCATE TABLE [OnionArchitecture].[Identity].[Users]
+  TRUNCATE TABLE Permissons

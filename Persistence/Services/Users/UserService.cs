@@ -69,9 +69,9 @@ namespace Persistence.Services.Users
             return jwtSecurityToken;
         }
 
-        public async Task<AuthRequest> LoginUser(LoginRequest request)
+        public async Task<AuthenticationVM> LoginUser(LoginRequest request)
         {
-            var loginRequest = new AuthRequest();
+            var loginRequest = new AuthenticationVM();
             var user = await _userManager.FindByNameAsync(request.UserName);
             if (user == null)
             {
@@ -127,10 +127,10 @@ namespace Persistence.Services.Users
             }
         }
 
-        public async Task<AuthRequest> ChangePassword(string id, ChangePasswordRequest request)
+        public async Task<AuthenticationVM> ChangePassword(string id, ChangePasswordRequest request)
         {
             var idUser = await _userManager.FindByIdAsync(id.ToString());
-            var authenRequest = new AuthRequest();
+            var authenRequest = new AuthenticationVM();
             if (idUser == null)
             {
                 authenRequest.Message = $"UserName does not exists";
@@ -207,10 +207,10 @@ namespace Persistence.Services.Users
             return $"Role {request.Role} not found";
         }
 
-        public async Task<AuthRequest> ForgetPassword(ForgerPasswordRequest request)
+        public async Task<AuthenticationVM> ForgetPassword(ForgerPasswordRequest request)
         {
             var user = await _userManager.FindByEmailAsync(request.Email);
-            var authenticationModel = new AuthRequest();
+            var authenticationModel = new AuthenticationVM();
             if (user == null)
             {
                 authenticationModel.IsAuthenticated = false;

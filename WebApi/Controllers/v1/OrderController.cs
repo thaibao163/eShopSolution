@@ -24,6 +24,7 @@ namespace WebApi.Controllers.v1
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await Mediator.Send(new GetAllOrdesQuery()));
@@ -34,6 +35,7 @@ namespace WebApi.Controllers.v1
         /// </summary>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<IActionResult> GetById(int id)
         {
             return Ok(await Mediator.Send(new GetOrderDetailByIdQuery { Id = id }));
@@ -47,7 +49,7 @@ namespace WebApi.Controllers.v1
         [HttpPost]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.OrderPermission, ConstantsAtr.Add)]
-        public async Task<IActionResult> Create([FromForm]CreateOrderCommand command)
+        public async Task<IActionResult> Create([FromForm] CreateOrderCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
@@ -60,7 +62,7 @@ namespace WebApi.Controllers.v1
         [HttpDelete("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.OrderPermission, ConstantsAtr.Delete)]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> DeleteOrder(int id)
         {
             return Ok(await Mediator.Send(new DeleteOrderByIdCommand { Id = id }));
         }

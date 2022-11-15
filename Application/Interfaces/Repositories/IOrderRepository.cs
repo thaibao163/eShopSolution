@@ -11,7 +11,7 @@ namespace Application.Interfaces.Repositories
 {
     public interface IOrderRepository : IGenericRepository<Order>
     {
-        Task<int> Delete(int id);
+        Task<int> DeleteOrder(int id);
         Task<IEnumerable<OrderVM>> GetAllOrders();
         Task<IEnumerable<OrderVM>> GetOrderById(int Id);
 
