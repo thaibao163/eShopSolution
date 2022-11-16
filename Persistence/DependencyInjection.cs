@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.Contexts;
+using Persistence.Interfaces;
 using Persistence.Repositories;
 using Persistence.Services.Users;
 
@@ -31,6 +32,7 @@ namespace Persistence
             services.AddTransient<IReviewRepository, ReviewRepository>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IMapper, Mapper>();
+            services.AddTransient<ICurrentUserRepository, CurrentUserRepository>();
         }
     }
 }

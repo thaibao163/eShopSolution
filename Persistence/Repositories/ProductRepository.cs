@@ -37,7 +37,6 @@ namespace Persistence.Repositories
             var product = await(from p in _context.Products
                                 join c in _context.Categories on p.CategoryId equals c.Id
                                 where Id == p.Id && p.IsDeleted == false
-                                //orderby p.Id descending
                                 select new ProductVM()
                                 {
                                     Id = p.Id,

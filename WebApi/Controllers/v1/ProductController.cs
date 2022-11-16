@@ -3,6 +3,7 @@ using Application.Features.Products.Commands.DeleteProduct;
 using Application.Features.Products.Commands.UpdateProduct;
 using Application.Features.Products.Queries.GetAllProducts;
 using Application.Features.Products.Queries.GetProductById;
+using Application.Features.Products.Queries.QuantityProductSell;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Persistence.Constants;
@@ -18,10 +19,22 @@ namespace WebApi.Controllers.v1
         /// GetAll
         /// </summary>
         /// <returns></returns>
-        [HttpGet("/product")]
+        [HttpGet("product")]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await Mediator.Send(new GetAllProductsQuery()));
+        }
+
+        /// <summary>
+        /// GetAll
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("quantityProduct")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.ProductPermission, ConstantsAtr.Access)]
+        public async Task<IActionResult> GetSumQuantity()
+        {
+            return Ok(await Mediator.Send(new GetSumQuantityProductQuery()));
         }
 
         /// <summary>
@@ -29,7 +42,6 @@ namespace WebApi.Controllers.v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        //// GET api/<controller>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -41,7 +53,6 @@ namespace WebApi.Controllers.v1
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
-        // POST api/<controller>
         [HttpPost]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.ProductPermission, ConstantsAtr.Add)]
@@ -55,7 +66,6 @@ namespace WebApi.Controllers.v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        //// DELETE api/<controller>/5
         [HttpDelete("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.ProductPermission, ConstantsAtr.Delete)]
@@ -70,7 +80,6 @@ namespace WebApi.Controllers.v1
         /// <param name="id"></param>
         /// <param name="command"></param>
         /// <returns></returns>
-        //// PUT api/<controller>/5
         [HttpPut("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.ProductPermission, ConstantsAtr.Update)]

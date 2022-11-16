@@ -23,7 +23,7 @@ namespace WebApi.Controllers.v1
         {
             var result = await UserRepository.RegisterCustomer(command);
             return Ok(result);
-        } 
+        }
 
         /// <summary>
         /// RegisterAdmin
@@ -59,7 +59,6 @@ namespace WebApi.Controllers.v1
         /// <returns></returns>
         [HttpPut("Update")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.UserPermission, ConstantsAtr.Update)]
         public async Task<IActionResult> Update(string id, [FromForm] UserUpdateRequest command)
         {
             var result = await UserRepository.Update(id, command);
@@ -93,20 +92,6 @@ namespace WebApi.Controllers.v1
         }
 
         /// <summary>
-        /// GetById
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        [HttpGet("{id}")]
-        [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.UserPermission, ConstantsAtr.Access)]
-        public async Task<IActionResult> GetById(string id)
-        {
-            var user = await UserRepository.GetById(id);
-            return Ok(user);
-        }
-
-        /// <summary>
         /// DeleteById
         /// </summary>
         /// <param name="id"></param>
@@ -117,6 +102,20 @@ namespace WebApi.Controllers.v1
         public async Task<IActionResult> DeleteByid(string id)
         {
             var user = await UserRepository.Delete(id);
+            return Ok(user);
+        }
+
+        /// <summary>
+        /// GetById
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("{id}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.UserPermission, ConstantsAtr.Access)]
+        public async Task<IActionResult> GetById(string id)
+        {
+            var user = await UserRepository.GetById(id);
             return Ok(user);
         }
     }

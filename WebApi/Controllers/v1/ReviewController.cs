@@ -18,8 +18,6 @@ namespace WebApi.Controllers.v1
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        //[Authorize(AuthenticationSchemes = "Bearer")]
-        //[CustomAuthorizeAtrtibute(ConstantsAtr.CategoryPermission, ConstantsAtr.Access)]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await Mediator.Send(new GetAllReviewsQuery()));

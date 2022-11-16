@@ -4,7 +4,6 @@ namespace Domain.ViewModel.Users
 {
     public class RegisterRequest
     {
-
         public string FullName { get; set; }
 
         [EmailAddress]

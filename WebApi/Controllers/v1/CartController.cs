@@ -1,8 +1,7 @@
 ﻿using Application.Features.Carts.Commands.CreateCart;
 using Application.Features.Carts.Commands.DeleteCart;
-using Application.Features.Categories.Commands.CreateCategory;
-using Application.Features.Orders.Commands.DeleteOrder;
-using Demo1.Application.Features.Categories.Commands.DeleteCategory;
+using Application.Features.Carts.Queries.GetAllCart;
+using Application.Features.Carts.Queries.GetCartByIdUser;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Persistence.Constants;
@@ -36,6 +35,31 @@ namespace WebApi.Controllers.v1
         public async Task<IActionResult> DeleteCart(int id)
         {
             return Ok(await Mediator.Send(new DeleteCartByIdCommand { Id = id }));
+        }
+
+        /// <summary>
+        /// GetByIdUser
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.UserPermission, ConstantsAtr.Access)]
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(string id)
+        {
+            return Ok(await Mediator.Send(new GetCartByUserIdQuery { Id = id }));
+        }
+
+        /// <summary>
+        /// GetAll
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.UserPermission, ConstantsAtr.Access)]
+        public async Task<IActionResult> GetAll()
+        {
+            return Ok(await Mediator.Send(new GetAllCartsQuery()));
         }
     }
 }

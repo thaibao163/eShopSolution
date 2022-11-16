@@ -25,6 +25,7 @@ namespace WebApi.Controllers.v1
         /// <returns></returns>
         [HttpGet]
         [Authorize(AuthenticationSchemes = "Bearer")]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.OrderPermission, ConstantsAtr.Access)]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await Mediator.Send(new GetAllOrdesQuery()));
@@ -36,6 +37,7 @@ namespace WebApi.Controllers.v1
         /// <returns></returns>
         [HttpGet("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.OrderPermission, ConstantsAtr.Access)]
         public async Task<IActionResult> GetById(int id)
         {
             return Ok(await Mediator.Send(new GetOrderDetailByIdQuery { Id = id }));

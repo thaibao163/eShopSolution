@@ -1,6 +1,7 @@
 ﻿using Application.Interfaces.Repositories;
 using Domain.Entities;
 using Domain.Exceptions;
+using Domain.ViewModel.Cart;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
 using System;
@@ -45,6 +46,41 @@ namespace Persistence.Repositories
             cart.LastModifiedBy = _currentUserRepository.Id;
             await _applicationDbContext.SaveChangesAsync();
             return 1;
+        }
+
+        public async Task<IEnumerable<CartVM>> GetAllCarts()
+        {
+            var cart = await (from c in _applicationDbContext.Carts
+                              join cd in _applicationDbContext.CartDetails on c.Id equals cd.CartId
+                              join p in _applicationDbContext.Products on cd.ProductId equals p.Id
+                              where c.IsDeleted == false
+                              select new CartVM()
+                              {
+                                  CartDetailId = cd.Id,
+                                  ProductName = p.Name,
+                                  Price = p.Price,
+                                  Quantity = p.Quantity,
+                                  ToTal = p.Price * cd.Quantity,
+                              }).ToListAsync();
+            return cart;
+        }
+
+        public async Task<IEnumerable<CartVM>> GetCartById(string id)
+        {
+            var cart = await (from c in _applicationDbContext.Carts
+                              join cd in _applicationDbContext.CartDetails on c.Id equals cd.CartId
+                              join p in _applicationDbContext.Products on cd.ProductId equals p.Id
+                              join u in _applicationDbContext.Users on c.UserId equals u.Id
+                              where c.IsDeleted == false && id == u.Id
+                              select new CartVM()
+                              {
+                                  CartDetailId = cd.Id,
+                                  ProductName = p.Name,
+                                  Price = p.Price,
+                                  Quantity = p.Quantity,
+                                  ToTal = p.Price * cd.Quantity,
+                              }).ToListAsync();
+            return cart;
         }
     }
 }

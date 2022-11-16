@@ -22,10 +22,6 @@ namespace Application.Features.Categories.Queries.GetCategoryById
 
             public async Task<IEnumerable<CategoryVM>> Handle(GetCategoryByIdQuery command, CancellationToken cancellationToken)
             {
-                //var category = await _categoryRepository.GetByIdAsync(command.Id);
-                //if (category == null || category.IsDeleted == true) throw new ApiException("Category not found");
-                //return categoryList;
-
                 var categoryList = await _categoryRepository.GetCategoryById(command.Id);
                 return categoryList;
             }

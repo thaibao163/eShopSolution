@@ -21,7 +21,6 @@ namespace WebApi.Controllers.v1
 
         [HttpPost("send")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.CategoryPermission, ConstantsAtr.Access)]
         public async Task<IActionResult> SendMail([FromForm] WelcomeVM request)
         {
             try
@@ -34,19 +33,5 @@ namespace WebApi.Controllers.v1
                 throw; 
             }
         }
-
-        //[HttpPost("welcome")]
-        //public async Task<IActionResult> SendWelcomeMail([FromForm] WelcomeRequest request)
-        //{
-        //    try
-        //    {
-        //        await _mailService.SendWelcomeEmailAsync(request);
-        //        return Ok();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw;
-        //    }
-        //}
     }
 }

@@ -1,10 +1,13 @@
  
-  select *from Products
- select *from Orders
-  select *from OrderDetails
   select *from Categories
   select *from Menus
   select *from Permissons
+  select *from Products
+ select *from Orders
+  select *from OrderDetails
+  select *from Carts
+  select *from CartDetails
+   select *from Reviews
   select *from [OnionArchitecture].[Identity].[Roles]
   select *from [OnionArchitecture].[dbo].[AspNetRoles]
   select *from [OnionArchitecture].[Identity].[UserRoles]	
@@ -21,4 +24,4 @@
   TRUNCATE TABLE [OnionArchitecture].[Identity].[Roles]
   TRUNCATE TABLE [OnionArchitecture].[Identity].[UserRoles]
   TRUNCATE TABLE [OnionArchitecture].[Identity].[Users]
-  TRUNCATE TABLE Permissons
+  TRUNCATE TABLE Categories

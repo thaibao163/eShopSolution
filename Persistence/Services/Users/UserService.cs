@@ -164,24 +164,6 @@ namespace Persistence.Services.Users
             return "Delete failed";
         }
 
-        public async Task<ApiResult<UserInfomation>> GetById(string id)
-        {
-            var user = await _userManager.FindByIdAsync(id.ToString());
-            if (user == null)
-            {
-                return new ApiErrorResult<UserInfomation>("Account does not exists");
-            }
-            var userInfo = new UserInfomation()
-            {
-                Id = user.Id,
-                FullName = user.FullName,
-                UserName = user.UserName,
-                Email = user.Email,
-                PhoneNumber = user.PhoneNumber
-            };
-            return new ApiSuccessResult<UserInfomation>(userInfo);
-        }
-
         public async Task<string> Update(string id, UserUpdateRequest request)
         {
             var user = await _userManager.FindByIdAsync(id.ToString());
@@ -281,6 +263,29 @@ namespace Persistence.Services.Users
             {
                 return $"Email {user.Email} is already registered.";
             }
+        }
+
+        public Task<ApiResult<UserInfomation>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<ApiResult<UserInfomation>> GetById(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id.ToString());
+            if (user == null)
+            {
+                return new ApiErrorResult<UserInfomation>("Account does not exists");
+            }
+            var userInfo = new UserInfomation()
+            {
+                Id = user.Id,
+                FullName = user.FullName,
+                UserName = user.UserName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+            };
+            return new ApiSuccessResult<UserInfomation>(userInfo);
         }
     }
 }

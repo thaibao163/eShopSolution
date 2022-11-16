@@ -41,13 +41,11 @@ namespace Persistence.Repositories
                 item.LastModifiedOn = DateTime.Now;
                 item.LastModifiedBy = _currentUserRepository.Id;
                 await _orderDetailsRepository.SaveAsync();
-                //await _orderDetailsRepository.UpdateAsync(item);
 
                 var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == item.ProductId);
                 if (product == null) throw new ApiException("Product not found.");
                 product.Quantity += item.Quantity;
                 await _productRepository.SaveAsync();
-                //await _productRepository.UpdateAsync(product);
             }
             order.IsDeleted = true;
             order.LastModifiedOn = DateTime.Now;

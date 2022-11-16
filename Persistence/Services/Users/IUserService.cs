@@ -22,19 +22,10 @@ namespace Persistence.Services.Users
 
         Task<ApiResult<UserInfomation>> GetById(string id);
 
+        Task<ApiResult<UserInfomation>> GetAll();
+
         Task<string> Delete(string id);
 
         Task<bool> CheckPermisson(string funcUrl, string action, string role);
-
-
-        //Task<AuthenticationVM> ForgetPassword(ForgerPasswordRequest request);
-
-        //Task<ApiResult<PagedResult<UserVm>>> GetUsersPaging(GetUserPagingRequest request);
-
-        //Task<ApiResult<UserVm>> GetById(Guid id);
-
-        //Task<ApiResult<bool>> Delete(Guid id);
-
-        //Task<ApiResult<bool>> RoleAssign(Guid id, RoleAssignRequest request);
     }
 }

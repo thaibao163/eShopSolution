@@ -26,7 +26,6 @@ namespace Persistence.Services.Emails
             var email = new MimeMessage();
             email.Sender = MailboxAddress.Parse(_mailSettings.Email);
             email.To.Add(MailboxAddress.Parse(toEmail));
-            //email.Subject = $"Welcome {request.UserName}";
             email.Subject = "Welcome " + username;
             var builder = new BodyBuilder();
             builder.HtmlBody = MailText;
@@ -41,7 +40,6 @@ namespace Persistence.Services.Emails
 
         public async Task SendWelcomeEmailAsync(WelcomeVM request)
         {
-            //string FilePath = Directory.GetCurrentDirectory() + "\\Templates\\ForgetPasswordSendMailTemplate.html";
             string FilePath = "D:\\ThucTap\\OnionArchitecture\\Persistence\\Templates\\ForgetPasswordSendMailTemplate.html";
             StreamReader str = new StreamReader(FilePath);
             string MailText = str.ReadToEnd();

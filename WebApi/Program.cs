@@ -1,13 +1,9 @@
 ﻿using Application;
-using Application.Interfaces;
 using Application.Interfaces.Repositories;
-using AutoMapper;
 using Domain.Entities;
-using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -15,17 +11,11 @@ using Persistence;
 using Persistence.Contexts;
 using Persistence.DatabaseSeeder;
 using Persistence.Interfaces;
-//using Persistence.DatabaseSeeder;
-//using Persistence.Interfaces;
 using Persistence.Repositories;
 using Persistence.Services.Emails;
 using Persistence.Settings;
-//using Persistence.Settings;
-using System.Configuration;
 using System.Text;
 using WebApi.Extensions;
-//using WebApi.Extensions;
-//using WebApi.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -71,7 +61,6 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.Configure<JWT>(builder.Configuration.GetSection("JWT"));
 
-
 builder.Services.AddAuthentication(auth =>
 {
     auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -105,19 +94,14 @@ builder.Services.AddIdentity<User, Role>(options =>
 }).AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
 
-
-
 //builder.Services.AddSwagger
 builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 //Mail
 builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 builder.Services.AddTransient<IMailService, MailService>();
- 
-builder.Services.AddTransient<ICurrentUserRepository, CurrentUserRepository>();
+
+//builder.Services.AddTransient<ICurrentUserRepository, CurrentUserRepository>();
 builder.Services.AddTransient<IDatabaseSeeder, DatabaseSeeder>();
-//builder.Services.AddTransient<IMapper, Mapper>();
-
-
 
 builder.Services.AddHttpContextAccessor();
 
@@ -147,7 +131,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//app.UseHttpsRedirection();
 app.UseRouting();
 
 app.UseAuthentication();
@@ -155,7 +138,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-//app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.InitializeDb();
 
