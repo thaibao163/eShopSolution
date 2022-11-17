@@ -6,6 +6,6 @@ namespace Persistence.Services.Emails
     {
         Task<bool> ForgetPasswordSendMail(string toEmail, string username, string resetToken);
 
-        Task SendWelcomeEmailAsync(WelcomeVM request);
+        Task SendEmailAsync(MailRequest request);
     }
 }

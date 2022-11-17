@@ -21,17 +21,10 @@ namespace WebApi.Controllers.v1
 
         [HttpPost("send")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        public async Task<IActionResult> SendMail([FromForm] WelcomeVM request)
+        public async Task<IActionResult> SendMail([FromForm] MailRequest request)
         {
-            try
-            {
-                await _mailService.SendWelcomeEmailAsync(request);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                throw; 
-            }
+            await _mailService.SendEmailAsync(request);
+            return Ok();
         }
     }
 }

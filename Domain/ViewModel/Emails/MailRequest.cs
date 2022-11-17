@@ -2,7 +2,7 @@
 
 namespace Domain.ViewModel.Emails
 {
-    public class MailVM
+    public class MailRequest
     {
         public string ToEmail { get; set; }
         public string Subject { get; set; }
