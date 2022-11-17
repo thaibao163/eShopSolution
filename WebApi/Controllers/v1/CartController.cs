@@ -42,9 +42,9 @@ namespace WebApi.Controllers.v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        [HttpGet("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.UserPermission, ConstantsAtr.Access)]
-        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(string id)
         {
             return Ok(await Mediator.Send(new GetCartByUserIdQuery { Id = id }));
