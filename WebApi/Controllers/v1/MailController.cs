@@ -1,10 +1,7 @@
-﻿using Application.Interfaces.Repositories;
-using Domain.ViewModel.Emails;
+﻿using Domain.ViewModel.Emails;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Persistence.Constants;
 using Persistence.Services.Emails;
-using WebApi.Attributes;
 
 namespace WebApi.Controllers.v1
 {

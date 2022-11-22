@@ -1,9 +1,6 @@
 ﻿using Application.Interfaces.Repositories;
-using Application.Wrappers;
-using AutoMapper;
 using Domain.Entities;
 using Domain.Exceptions;
-using Domain.ViewModel.Orders;
 using MediatR;
 
 namespace Application.Features.Orders.Commands.CreateOrder
@@ -28,6 +25,7 @@ namespace Application.Features.Orders.Commands.CreateOrder
                 _productRepository = productRepository;
                 _orderDetailsRepository = orderDetailsRepository;
             }
+
             public async Task<string> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
             {
                 var product = await _productRepository.GetByIdAsync(request.ProductId);
@@ -59,7 +57,7 @@ namespace Application.Features.Orders.Commands.CreateOrder
                     await _orderRepository.SaveAsync();
                     return "Order successed.";
                 }
-                    return "Quantity of products is not enough.";
+                return "Quantity of products is not enough.";
             }
         }
     }

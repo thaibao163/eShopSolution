@@ -1,12 +1,5 @@
-﻿using Application.Features.Orders.Commands.DeleteOrder;
-using Application.Interfaces.Repositories;
-using AutoMapper;
+﻿using Application.Interfaces.Repositories;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Carts.Commands.DeleteCart
 {
@@ -22,8 +15,6 @@ namespace Application.Features.Carts.Commands.DeleteCart
             {
                 _cartRepository = cartRepository;
             }
-
-           
 
             public async Task<string> Handle(DeleteCartByIdCommand request, CancellationToken cancellationToken)
             {

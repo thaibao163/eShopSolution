@@ -1,11 +1,6 @@
 ﻿using Application.Interfaces.Repositories;
 using Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Carts.Commands.CreateCart
 {
@@ -28,7 +23,6 @@ namespace Application.Features.Carts.Commands.CreateCart
                 _productRepository = productRepository;
                 _currentUserRepository = currentUserRepository;
             }
-
 
             public async Task<string> Handle(CreateCartCommand request, CancellationToken cancellationToken)
             {

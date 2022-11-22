@@ -1,16 +1,10 @@
 ﻿using Application.Interfaces.Repositories;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Application.Features.Products.Queries.QuantityProductSell
+namespace Application.Features.Products.Queries.QuantityProductSold
 {
     public class GetSumQuantityProductQuery : IRequest<string>
     {
-
         public class GetQuantityProductSellQueryHandler : IRequestHandler<GetSumQuantityProductQuery, string>
         {
             private readonly IProductRepository _productRepository;
@@ -23,10 +17,10 @@ namespace Application.Features.Products.Queries.QuantityProductSell
             public async Task<string> Handle(GetSumQuantityProductQuery request, CancellationToken cancellationToken)
             {
                 var product = await _productRepository.GetAllProducts();
-                var sum=0;
+                var sum = 0;
                 foreach (var item in product)
                 {
-                     sum += item.Quantity;
+                    sum += item.Quantity;
                 }
                 return $"Number of products in stock: {sum}";
             }

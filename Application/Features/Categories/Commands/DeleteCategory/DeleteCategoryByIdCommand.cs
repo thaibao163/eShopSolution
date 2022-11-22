@@ -21,7 +21,7 @@ namespace Demo1.Application.Features.Categories.Commands.DeleteCategory
             public async Task<string> Handle(DeleteCategoryByIdCommand command, CancellationToken cancellationToken)
             {
                 var category = await _categoryRepository.GetByIdAsync(command.Id);
-                if(category == null||category.IsDeleted) return "Category not found";
+                if (category == null || category.IsDeleted) return "Category not found";
                 category.IsDeleted = true;
                 category.LastModifiedOn = DateTime.Now;
                 category.LastModifiedBy = _currentUserRepository.Id;

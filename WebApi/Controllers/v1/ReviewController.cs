@@ -1,5 +1,4 @@
-﻿using Application.Features.Categories.Queries.GetAllCategories;
-using Application.Features.Reviews.Commands.CreateReview;
+﻿using Application.Features.Reviews.Commands.CreateReview;
 using Application.Features.Reviews.Commands.DeleteReview;
 using Application.Features.Reviews.Queries.GetAllReviews;
 using Microsoft.AspNetCore.Authorization;
@@ -22,7 +21,6 @@ namespace WebApi.Controllers.v1
         {
             return Ok(await Mediator.Send(new GetAllReviewsQuery()));
         }
-
 
         /// <summary>
         /// Create Review

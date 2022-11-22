@@ -2,16 +2,8 @@
 using Domain.Entities;
 using Domain.Exceptions;
 using Domain.ViewModel.Orders;
-using Domain.ViewModel.Products;
 using Microsoft.EntityFrameworkCore;
-using Org.BouncyCastle.Asn1.Ocsp;
 using Persistence.Contexts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Persistence.Repositories
 {
@@ -62,21 +54,21 @@ namespace Persistence.Repositories
                                 select new OrderVM()
                                 {
                                     Id = o.Id,
-                                    NameUser = u.UserName,
+                                    UserName = u.UserName,
                                     TotalPrice = o.TotalPrice,
                                 }).ToListAsync();
             return orders;
         }
 
-        public async Task<IEnumerable<OrderVM>> GetOrderById(int Id)
+        public async Task<IEnumerable<OrderVM>> GetOrderById(string Id)
         {
             var orders = await (from o in _context.Orders
                                 join u in _context.Users on o.UserId equals u.Id
-                                where Id == o.Id && o.IsDeleted == false
+                                where Id == u.Id && o.IsDeleted == false
                                 select new OrderVM()
                                 {
                                     Id = o.Id,
-                                    NameUser = u.UserName,
+                                    UserName = u.UserName,
                                     TotalPrice = o.TotalPrice,
                                 }).ToListAsync();
             return orders;

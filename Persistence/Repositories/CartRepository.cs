@@ -4,11 +4,6 @@ using Domain.Exceptions;
 using Domain.ViewModel.Cart;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistence.Repositories
 {
@@ -36,7 +31,6 @@ namespace Persistence.Repositories
                 item.LastModifiedOn = DateTime.Now;
                 item.LastModifiedBy = _currentUserRepository.Id;
                 await _cartDetailRepository.SaveAsync();
-                //await _orderDetailsRepository.UpdateAsync(item);
 
                 var product = await _applicationDbContext.Products.FirstOrDefaultAsync(p => p.Id == item.ProductId);
                 if (product == null) throw new ApiException("Product not found.");

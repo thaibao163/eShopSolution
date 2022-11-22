@@ -7,6 +7,7 @@ namespace Persistence.Repositories
     public class CurrentUserRepository : ICurrentUserRepository
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
+
         public CurrentUserRepository(IHttpContextAccessor httpContextAccessor)
         {
             _httpContextAccessor = httpContextAccessor;

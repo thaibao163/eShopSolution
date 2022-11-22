@@ -26,7 +26,7 @@ namespace Application.Features.Categories.Commands.CreateCategory
             {
                 Name = command.Name,
                 CreatedOn = DateTime.Now,
-                CreatedBy = _currentUserRepository.Id, 
+                CreatedBy = _currentUserRepository.Id,
                 IsDeleted = false,
             };
             await _categoryRepository.AddAsync(category);

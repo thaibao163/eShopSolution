@@ -6,6 +6,7 @@ namespace Application.Interfaces.Repositories
     public interface ICategoryRepository : IGenericRepository<Category>
     {
         Task<IEnumerable<CategoryVM>> GetAllCategory();
+
         Task<IEnumerable<CategoryVM>> GetCategoryById(int Id);
     }
 }

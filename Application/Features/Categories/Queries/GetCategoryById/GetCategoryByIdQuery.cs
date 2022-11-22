@@ -1,9 +1,6 @@
 ﻿using Application.Interfaces.Repositories;
-using Domain.Entities;
-using Domain.Exceptions;
 using Domain.ViewModel.Categorys;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Application.Features.Categories.Queries.GetCategoryById
 {

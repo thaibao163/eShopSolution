@@ -1,14 +1,8 @@
 ﻿using Application.Interfaces.Repositories;
 using Domain.Entities;
-using Domain.ViewModel.Products;
 using Domain.ViewModel.Reviews;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Persistence.Repositories
 {
@@ -23,7 +17,7 @@ namespace Persistence.Repositories
 
         public async Task<IEnumerable<ReviewVM>> GetAllReviews()
         {
-            var review = await(from r in _applicationDbContext.Reviews
+            var review = await (from r in _applicationDbContext.Reviews
                                 join u in _applicationDbContext.Users on r.UserId equals u.Id
                                 join p in _applicationDbContext.Products on r.ProductId equals p.Id
                                 where r.IsDeleted == false

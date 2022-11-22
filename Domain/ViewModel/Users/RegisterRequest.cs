@@ -22,6 +22,5 @@ namespace Domain.ViewModel.Users
         [Display(Name = "ConfirmPassword")]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
-
     }
 }

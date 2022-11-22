@@ -1,5 +1,4 @@
 ﻿using Application.Interfaces.Repositories;
-using Domain.Entities;
 using Domain.ViewModel.Categorys;
 using MediatR;
 
@@ -19,7 +18,7 @@ namespace Application.Features.Categories.Queries.GetAllCategories
             public async Task<IEnumerable<CategoryVM>> Handle(GetAllCategoriesQuery request, CancellationToken cancellationToken)
             {
                 var categoryList = await _categoryRepository.GetAllCategory();
-                return categoryList; 
+                return categoryList;
             }
         }
     }

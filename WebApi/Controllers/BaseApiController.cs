@@ -17,5 +17,11 @@ namespace WebApi.Controllers
 
         private IProductRepository _productRepository;
         protected IProductRepository ProductRepository => _productRepository ??= HttpContext.RequestServices.GetService<IProductRepository>();
+
+        private IOrderDetailsRepository _orderDetailsRepository;
+        protected IOrderDetailsRepository OrderDetailsRepository => _orderDetailsRepository ??= HttpContext.RequestServices.GetService<IOrderDetailsRepository>();
+
+        private IOrderRepository _orderRepository;
+        protected IOrderRepository OrderRepository => _orderRepository ??= HttpContext.RequestServices.GetService<IOrderRepository>();
     }
 }

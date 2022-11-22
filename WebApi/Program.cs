@@ -1,5 +1,4 @@
 ﻿using Application;
-using Application.Interfaces.Repositories;
 using Domain.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -11,7 +10,6 @@ using Persistence;
 using Persistence.Contexts;
 using Persistence.DatabaseSeeder;
 using Persistence.Interfaces;
-using Persistence.Repositories;
 using Persistence.Services.Emails;
 using Persistence.Settings;
 using System.Text;

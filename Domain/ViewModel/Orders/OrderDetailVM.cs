@@ -1,11 +1,4 @@
-﻿using Domain.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain.ViewModel.Orders
+﻿namespace Domain.ViewModel.Orders
 {
     public class OrderDetailVM : Base
     {

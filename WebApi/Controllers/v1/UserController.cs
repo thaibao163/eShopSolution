@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Persistence.Constants;
-using Persistence.Services.Users;
 using WebApi.Attributes;
 
 namespace WebApi.Controllers.v1
@@ -11,8 +10,6 @@ namespace WebApi.Controllers.v1
     [ApiController]
     public class UserController : BaseApiController
     {
-
-
         /// <summary>
         /// RegisterCustomer
         /// </summary>

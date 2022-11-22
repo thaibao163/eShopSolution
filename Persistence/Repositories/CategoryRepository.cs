@@ -1,6 +1,5 @@
 ﻿using Application.Interfaces.Repositories;
 using Domain.Entities;
-using Domain.Exceptions;
 using Domain.ViewModel.Categorys;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;

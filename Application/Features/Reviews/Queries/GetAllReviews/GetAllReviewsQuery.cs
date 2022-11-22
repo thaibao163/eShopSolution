@@ -1,13 +1,6 @@
-﻿using Application.Features.Products.Queries.GetAllProducts;
-using Application.Interfaces.Repositories;
-using Domain.ViewModel.Products;
+﻿using Application.Interfaces.Repositories;
 using Domain.ViewModel.Reviews;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Reviews.Queries.GetAllReviews
 {

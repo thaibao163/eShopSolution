@@ -2,7 +2,6 @@
 using Application.Features.Categories.Commands.UpdateCategory;
 using Application.Features.Categories.Queries.GetAllCategories;
 using Application.Features.Categories.Queries.GetCategoryById;
-using Application.Interfaces.Repositories;
 using Demo1.Application.Features.Categories.Commands.DeleteCategory;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -37,7 +36,7 @@ namespace WebApi.Controllers.v1
         public async Task<IActionResult> GetById(int id)
         {
             return Ok(await Mediator.Send(new GetCategoryByIdQuery { Id = id }));
-        } 
+        }
 
         /// <summary>
         /// Create

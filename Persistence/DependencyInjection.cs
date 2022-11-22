@@ -1,12 +1,10 @@
 ﻿using Application.Interfaces;
 using Application.Interfaces.Repositories;
 using AutoMapper;
-using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.Contexts;
-using Persistence.Interfaces;
 using Persistence.Repositories;
 using Persistence.Services.Users;
 

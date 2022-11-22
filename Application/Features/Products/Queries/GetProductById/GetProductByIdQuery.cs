@@ -1,8 +1,6 @@
 ﻿using Application.Interfaces.Repositories;
-using Domain.Entities;
 using Domain.ViewModel.Products;
 using MediatR;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Application.Features.Products.Queries.GetProductById
 {
@@ -21,7 +19,6 @@ namespace Application.Features.Products.Queries.GetProductById
 
             public async Task<IEnumerable<ProductVM>> Handle(GetProductByIdQuery request, CancellationToken cancellationToken)
             {
-
                 var productList = await _productRepository.GetProductById(request.Id);
                 return productList;
             }

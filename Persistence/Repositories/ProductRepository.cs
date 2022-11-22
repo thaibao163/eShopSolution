@@ -3,6 +3,7 @@ using Domain.Entities;
 using Domain.ViewModel.Products;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
+using System.Data;
 
 namespace Persistence.Repositories
 {
@@ -34,18 +35,18 @@ namespace Persistence.Repositories
 
         public async Task<IEnumerable<ProductVM>> GetProductById(int Id)
         {
-            var product = await(from p in _context.Products
-                                join c in _context.Categories on p.CategoryId equals c.Id
-                                where Id == p.Id && p.IsDeleted == false
-                                select new ProductVM()
-                                {
-                                    Id = p.Id,
-                                    ProductName = p.Name,
-                                    CategoryName = c.Name,
-                                    Description = p.Description,
-                                    Price = p.Price,
-                                    Quantity = p.Quantity,
-                                }).ToListAsync();
+            var product = await (from p in _context.Products
+                                 join c in _context.Categories on p.CategoryId equals c.Id
+                                 where Id == p.Id && p.IsDeleted == false
+                                 select new ProductVM()
+                                 {
+                                     Id = p.Id,
+                                     ProductName = p.Name,
+                                     CategoryName = c.Name,
+                                     Description = p.Description,
+                                     Price = p.Price,
+                                     Quantity = p.Quantity,
+                                 }).ToListAsync();
             return product;
         }
     }

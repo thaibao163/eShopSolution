@@ -1,15 +1,10 @@
 ﻿using Application.Interfaces.Repositories;
 using Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Reviews.Commands.CreateReview
 {
-    public class CreateReviewCommand :IRequest<string>
+    public class CreateReviewCommand : IRequest<string>
     {
         public int ProductId { get; set; }
         public string Title { get; set; }

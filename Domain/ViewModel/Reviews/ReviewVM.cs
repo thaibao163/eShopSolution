@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain.ViewModel.Reviews
+﻿namespace Domain.ViewModel.Reviews
 {
-    public class ReviewVM :Base
+    public class ReviewVM : Base
     {
         public string UserName { get; set; }
         public string ProductName { get; set; }

@@ -18,7 +18,7 @@ namespace Application.Features.Products.Queries.GetAllProducts
             public async Task<IEnumerable<ProductVM>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
             {
                 var productList = await _productRepository.GetAllProducts();
-                return productList; 
+                return productList;
             }
         }
     }

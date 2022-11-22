@@ -1,13 +1,7 @@
-﻿using Application.Features.Categories.Queries.GetCategoryById;
-using Application.Features.Orders.Commands.CreateOrder;
+﻿using Application.Features.Orders.Commands.CreateOrder;
 using Application.Features.Orders.Commands.DeleteOrder;
 using Application.Features.Orders.Queries.GetAllOrders;
 using Application.Features.Orders.Queries.GetOrderById;
-using Application.Features.Products.Commands.CreateProduct;
-using Application.Features.Products.Queries.GetAllProducts;
-using Demo1.Application.Features.Categories.Commands.DeleteCategory;
-using Domain.Common;
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Persistence.Constants;
@@ -38,9 +32,9 @@ namespace WebApi.Controllers.v1
         [HttpGet("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.OrderPermission, ConstantsAtr.Access)]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetById(string id)
         {
-            return Ok(await Mediator.Send(new GetOrderDetailByIdQuery { Id = id }));
+            return Ok(await Mediator.Send(new GetOrderByIdQuery { Id = id }));
         }
 
         /// <summary>

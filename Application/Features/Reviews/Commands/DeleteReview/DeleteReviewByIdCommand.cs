@@ -1,11 +1,5 @@
-﻿using Application.Features.Products.Commands.DeleteProduct;
-using Application.Interfaces.Repositories;
+﻿using Application.Interfaces.Repositories;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Reviews.Commands.DeleteReview
 {
@@ -17,7 +11,6 @@ namespace Application.Features.Reviews.Commands.DeleteReview
         {
             private readonly IReviewRepository _reviewRepository;
             private readonly ICurrentUserRepository _currentUserRepository;
-
 
             public DeleteCarByIdCommandHandler(ICurrentUserRepository currentUserRepository, IReviewRepository reviewRepository)
             {

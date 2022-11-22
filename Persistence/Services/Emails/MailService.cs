@@ -1,5 +1,4 @@
-﻿using AutoMapper.Internal;
-using Domain.ViewModel.Emails;
+﻿using Domain.ViewModel.Emails;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.AspNetCore.Hosting;
@@ -12,17 +11,17 @@ namespace Persistence.Services.Emails
     public class MailService : IMailService
     {
         private readonly MailSettings _mailSettings;
-        private readonly IHostingEnvironment Environment;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
         public MailService(IOptions<MailSettings> mailSettings, IHostingEnvironment environment)
         {
             _mailSettings = mailSettings.Value;
-            Environment = environment;
+            _hostingEnvironment = environment;
         }
 
         public async Task<bool> ForgetPasswordSendMail(string toEmail, string username, string resetToken)
         {
-            string wwwPath = this.Environment.WebRootPath;
+            string wwwPath = this._hostingEnvironment.WebRootPath;
             string FilePath = wwwPath + "\\Templates\\ForgetPasswordSendMail.html";
             StreamReader str = new StreamReader(FilePath);
             string MailText = str.ReadToEnd();

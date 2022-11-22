@@ -12,7 +12,6 @@ namespace Application.Features.Products.Commands.DeleteProduct
             private readonly IProductRepository _productRepository;
             private readonly ICurrentUserRepository _currentUserRepository;
 
-
             public DeleteCarByIdCommandHandler(IProductRepository context, ICurrentUserRepository currentUserRepository)
             {
                 _productRepository = context;
@@ -26,7 +25,7 @@ namespace Application.Features.Products.Commands.DeleteProduct
                 product.IsDeleted = true;
                 product.LastModifiedOn = DateTime.Now;
                 product.LastModifiedBy = _currentUserRepository.Id;
-                await _productRepository.SaveAsync(); 
+                await _productRepository.SaveAsync();
                 return $"Delete success {product.Name}";
             }
         }

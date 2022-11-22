@@ -1,6 +1,4 @@
-﻿//using Application.Features.UserFeatures.Queries.GetAllUsersQuery;
-//using Application.Filter;
-using Domain.ViewModel.Roles;
+﻿using Domain.ViewModel.Roles;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Persistence.Constants;

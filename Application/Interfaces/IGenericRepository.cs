@@ -17,6 +17,5 @@ namespace Application.Interfaces
         Task SaveAsync();
 
         Task<T?> FindAsync(Expression<Func<T, bool>> includeProperties);
-
     }
 }

@@ -53,7 +53,6 @@ namespace Persistence.Repositories
         public async Task<T?> FindAsync(Expression<Func<T, bool>> includeProperties)
         {
             return await _context.Set<T>().Where(includeProperties).SingleOrDefaultAsync();
-
         }
     }
 }

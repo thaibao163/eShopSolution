@@ -91,8 +91,6 @@ namespace Persistence.DatabaseSeeder
             }).GetAwaiter().GetResult();
         }
 
-
-
         private void AddMenu()
         {
             if (!_context.Menus.Any())
@@ -119,12 +117,10 @@ namespace Persistence.DatabaseSeeder
         {
             if (!_context.Products.Any())
             {
-                _context.Products.Add(new Product() { CategoryId=1, Name = "Sweater", Description="", Price=150000, Quantity=15, CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
-                _context.Products.Add(new Product() { CategoryId=2, Name = "Cap", Description="", Price=75000, Quantity=10, CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Products.Add(new Product() { CategoryId = 1, Name = "Sweater", Description = "", Price = 150000, Quantity = 15, CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Products.Add(new Product() { CategoryId = 2, Name = "Cap", Description = "", Price = 75000, Quantity = 10, CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
             }
         }
-
-
 
         private void AddPermisson()
         {

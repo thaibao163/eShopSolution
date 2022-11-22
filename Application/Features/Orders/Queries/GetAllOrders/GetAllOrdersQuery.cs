@@ -1,13 +1,6 @@
-﻿using Application.Features.Products.Queries.GetAllProducts;
-using Application.Interfaces.Repositories;
+﻿using Application.Interfaces.Repositories;
 using Domain.ViewModel.Orders;
-using Domain.ViewModel.Products;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Features.Orders.Queries.GetAllOrders
 {
