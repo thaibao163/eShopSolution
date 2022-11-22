@@ -3,6 +3,7 @@ using Application.Features.Products.Commands.DeleteProduct;
 using Application.Features.Products.Commands.UpdateProduct;
 using Application.Features.Products.Queries.GetAllProducts;
 using Application.Features.Products.Queries.GetProductById;
+using Application.Features.Products.Queries.QuantityProductSold;
 using Domain.ViewModel.Products;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
