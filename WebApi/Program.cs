@@ -116,6 +116,16 @@ builder.Services.AddApiVersioning(config =>
     config.ReportApiVersions = true;
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.WithOrigins("http://example.com",
+                                "http://www.contoso.com");
+        });
+});
+
 builder.Services.AddControllers();
 
 #endregion API Versioning
@@ -130,6 +140,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
+
+app.UseCors();
 
 app.UseAuthentication();
 
