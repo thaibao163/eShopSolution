@@ -43,6 +43,7 @@
     <Folder Include="wwwroot\ExportOrder\ExportOrderById\" />
     <Folder Include="wwwroot\ExportProduct\ExportAllProduct\" />
     <Folder Include="wwwroot\ExportProduct\ExportProductById\" />
+    <Folder Include="wwwroot\ImageProducts\" />
   </ItemGroup>
 
 </Project>

@@ -12,6 +12,7 @@
   select *from [OnionArchitecture].[dbo].[AspNetRoles]
   select *from [OnionArchitecture].[Identity].[UserRoles]	
     select *from [OnionArchitecture].[Identity].[Users]
+	select *from ProductImages
 
   update OrderDetails
   set OrderId=8

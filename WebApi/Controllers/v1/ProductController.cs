@@ -4,6 +4,7 @@ using Application.Features.Products.Commands.UpdateProduct;
 using Application.Features.Products.Queries.GetAllProducts;
 using Application.Features.Products.Queries.GetProductById;
 using Application.Features.Products.Queries.QuantityProductSold;
+using Domain.ViewModel.Images;
 using Domain.ViewModel.Products;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -29,6 +30,15 @@ namespace WebApi.Controllers.v1
             _hostingEnvironment = hostingEnvironment;
             _context = context;
         }
+
+        [HttpPost("/image")]
+        //[Authorize]
+        public async Task<IActionResult> Create1([FromForm] ProductCreateRequest request)
+        {
+            var result = await ProductRepository.Create(request);
+            return Ok(result);
+        }
+
 
         /// <summary>
         /// GetAll
