@@ -160,7 +160,7 @@ namespace Persistence.DatabaseSeeder
 
                 //seller
                 _context.Permissons.Add(new Permission() { RoleId = "fd4fdc5a-abbf-43f9-883c-b2000cd60bdb", MenuId = 1, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
-                _context.Permissons.Add(new Permission() { RoleId = "fd4fdc5a-abbf-43f9-883c-b2000cd60bdb", MenuId = 2, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "fd4fdc5a-abbf-43f9-883c-b2000cd60bdb", MenuId = 2, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
                 _context.Permissons.Add(new Permission() { RoleId = "fd4fdc5a-abbf-43f9-883c-b2000cd60bdb", MenuId = 3, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
                 _context.Permissons.Add(new Permission() { RoleId = "fd4fdc5a-abbf-43f9-883c-b2000cd60bdb", MenuId = 4, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
                 _context.Permissons.Add(new Permission() { RoleId = "fd4fdc5a-abbf-43f9-883c-b2000cd60bdb", MenuId = 5, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });

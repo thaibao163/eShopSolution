@@ -18,7 +18,7 @@ namespace WebApi.Controllers.v1
 
         [HttpPost("send")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        public async Task<IActionResult> SendMail([FromForm] MailRequest request)
+        public async Task<IActionResult> SendMail(/*[FromForm] */MailRequest request)
         {
             await _mailService.SendEmailAsync(request);
             return Ok();

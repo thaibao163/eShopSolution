@@ -18,9 +18,9 @@ namespace WebApi.Controllers.v1
         [HttpPost("AddRole")]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.UserPermission, ConstantsAtr.Add)]
-        public async Task<IActionResult> AddRoleAsync(AddRoleRequest model)
+        public async Task<IActionResult> AddRoleAsync(AddRoleRequest request)
         {
-            var result = await UserRepository.AddRoleAsync(model);
+            var result = await UserRepository.AddRoleAsync(request);
             return Ok(result);
         }
     }

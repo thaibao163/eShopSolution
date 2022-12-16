@@ -25,4 +25,4 @@
   TRUNCATE TABLE [OnionArchitecture].[Identity].[Roles]
   TRUNCATE TABLE [OnionArchitecture].[Identity].[UserRoles]
   TRUNCATE TABLE [OnionArchitecture].[Identity].[Users]
-  TRUNCATE TABLE Categories
+  TRUNCATE TABLE Permissons

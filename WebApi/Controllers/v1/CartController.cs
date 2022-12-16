@@ -20,7 +20,7 @@ namespace WebApi.Controllers.v1
         /// <returns></returns>
         [HttpPost]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        public async Task<IActionResult> Create([FromForm] CreateCartCommand command)
+        public async Task<IActionResult> Create(/*[FromForm]*/ CreateCartCommand command)
         {
             return Ok(await Mediator.Send(command));
         }

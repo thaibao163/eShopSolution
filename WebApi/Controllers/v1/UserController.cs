@@ -1,5 +1,6 @@
 ﻿using Domain.ViewModel.Users;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Persistence.Constants;
 using WebApi.Attributes;
@@ -10,13 +11,14 @@ namespace WebApi.Controllers.v1
     [ApiController]
     public class UserController : BaseApiController
     {
+
         /// <summary>
         /// RegisterCustomer
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost("RegisterCustomer")]
-        public async Task<IActionResult> RegisterCustomer([FromForm] RegisterRequest command)
+        public async Task<IActionResult> RegisterCustomer(/*[FromForm]*/ RegisterRequest command)
         {
             var result = await UserRepository.RegisterCustomer(command);
             return Ok(result);
@@ -30,7 +32,7 @@ namespace WebApi.Controllers.v1
         [HttpPost("RegisterAdmin")]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.RolePermission, ConstantsAtr.Add)]
-        public async Task<IActionResult> RegisterAdmin([FromForm] RegisterRequest command)
+        public async Task<IActionResult> RegisterAdmin(/*[FromForm]*/ RegisterRequest command)
         {
             var result = await UserRepository.RegisterAdmin(command);
             return Ok(result);
@@ -43,7 +45,7 @@ namespace WebApi.Controllers.v1
         /// <returns></returns>
         [HttpPost("RegisterSeller")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        public async Task<IActionResult> RegisterSeller([FromForm] RegisterRequest command)
+        public async Task<IActionResult> RegisterSeller(/*[FromForm]*/ RegisterRequest command)
         {
             var result = await UserRepository.RegisterSeller(command);
             return Ok(result);
@@ -55,7 +57,7 @@ namespace WebApi.Controllers.v1
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost("Login")]
-        public async Task<IActionResult> Login([FromForm] LoginRequest command)
+        public async Task<IActionResult> Login(/*[FromForm]*/ LoginRequest command)
         {
             var result = await UserRepository.LoginUser(command);
             return Ok(result);
@@ -69,7 +71,7 @@ namespace WebApi.Controllers.v1
         /// <returns></returns>
         [HttpPut("Update")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        public async Task<IActionResult> Update(string id, [FromForm] UserUpdateRequest command)
+        public async Task<IActionResult> Update(string id, /*[FromForm]*/ UserUpdateRequest command)
         {
             var result = await UserRepository.Update(id, command);
             return Ok(result);
@@ -83,7 +85,7 @@ namespace WebApi.Controllers.v1
         /// <returns></returns>
         [HttpPut("ChangePassword")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        public async Task<IActionResult> Change(string id, [FromForm] ChangePasswordRequest command)
+        public async Task<IActionResult> Change(string id, /*[FromForm]*/ ChangePasswordRequest command)
         {
             var result = await UserRepository.ChangePassword(id, command);
             return Ok(result);
@@ -95,7 +97,7 @@ namespace WebApi.Controllers.v1
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("ForgetPassword")]
-        public async Task<IActionResult> ForgetPassword([FromForm] ForgerPasswordRequest command)
+        public async Task<IActionResult> ForgetPassword(/*[FromForm]*/ ForgerPasswordRequest command)
         {
             var result = await UserRepository.ForgetPassword(command);
             return Ok(result);
@@ -106,12 +108,12 @@ namespace WebApi.Controllers.v1
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        //[HttpPost("ResetPassword")]
-        //public async Task<IActionResult> ResetPassword([FromForm] ResetPasswordRequest command)
-        //{
-        //    var result = await UserRepository.ResetPassword(command);
-        //    return Ok(result);
-        //}
+        [HttpPost("ResetPassword")]
+        public async Task<IActionResult> ResetPassword(/*[FromForm]*/ ResetPasswordRequest request)
+        {
+            var result = await UserRepository.ResetPassword(request);
+            return Ok(result);
+        }
 
         /// <summary>
         /// DeleteById

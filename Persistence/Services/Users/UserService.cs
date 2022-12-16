@@ -184,31 +184,6 @@ namespace Persistence.Services.Users
             return loginRequest;
         }
 
-        public async Task<AuthenticationVM> ChangePassword(string id, ChangePasswordRequest request)
-        {
-            var idUser = await _userManager.FindByIdAsync(id.ToString());
-            var authenRequest = new AuthenticationVM();
-            if (idUser == null)
-            {
-                authenRequest.Message = $"UserName does not exists";
-                return authenRequest;
-            }
-
-            var changePassword = await _userManager.ChangePasswordAsync(idUser, request.CurrentPassword, request.NewPassword);
-            if (changePassword.Succeeded)
-            {
-                authenRequest.Message = $"ChangePassword success";
-                authenRequest.IsAuthenticated = true;
-                authenRequest.UserName = idUser.UserName;
-                return authenRequest;
-            }
-            else
-            {
-                authenRequest.Message = $"ChangePassword failed";
-                return authenRequest;
-            }
-        }
-
         public async Task<string> Delete(string id)
         {
             var user = await _userManager.FindByIdAsync(id.ToString());
@@ -302,6 +277,31 @@ namespace Persistence.Services.Users
             {
                 authenticationRequest.Errors = resetPassResult.Errors.Select(e => e.Description);
                 return authenticationRequest;
+            }
+        }
+
+        public async Task<AuthenticationVM> ChangePassword(string id, ChangePasswordRequest request)
+        {
+            var idUser = await _userManager.FindByIdAsync(id.ToString());
+            var authenRequest = new AuthenticationVM();
+            if (idUser == null)
+            {
+                authenRequest.Message = $"UserName does not exists";
+                return authenRequest;
+            }
+
+            var changePassword = await _userManager.ChangePasswordAsync(idUser, request.CurrentPassword, request.NewPassword);
+            if (changePassword.Succeeded)
+            {
+                authenRequest.Message = $"ChangePassword success";
+                authenRequest.IsAuthenticated = true;
+                authenRequest.UserName = idUser.UserName;
+                return authenRequest;
+            }
+            else
+            {
+                authenRequest.Message = $"ChangePassword failed";
+                return authenRequest;
             }
         }
 

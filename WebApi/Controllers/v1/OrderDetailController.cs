@@ -84,9 +84,6 @@ namespace WebApi.Controllers.v1
                 {
                     ExcelWorksheet sheet = package.Workbook.Worksheets["Order"];
                     var order = await OrderRepository.GetByIdAsync(Id);
-                    //sheet.Cells[4, 1].Value = $"Tên khách hàng: {order.UserId}";
-                    //sheet.Cells[5, 1].Value = $"Địa chỉ: {order.TotalPrice}";
-                    //sheet.Cells[6, 1].Value = $"Điện thoại: {order.Id}";
                     int rowIndex = 6;
 
                     // load order details

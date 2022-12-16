@@ -32,7 +32,6 @@ namespace Persistence
             services.AddTransient<IMapper, Mapper>();
             services.AddTransient<ICurrentUserRepository, CurrentUserRepository>();
             services.AddTransient<IStorageRepository, FileStorageRepository>();
-            //services.AddTransient<ICloudinaryService, CloudinaryService>();
         }
     }
 }

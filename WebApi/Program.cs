@@ -98,7 +98,6 @@ builder.Services.TryAddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 builder.Services.AddTransient<IMailService, MailService>();
 
-//builder.Services.AddTransient<ICurrentUserRepository, CurrentUserRepository>();
 builder.Services.AddTransient<IDatabaseSeeder, DatabaseSeeder>();
 
 builder.Services.AddHttpContextAccessor();

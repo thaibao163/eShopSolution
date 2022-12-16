@@ -8,7 +8,7 @@ namespace Persistence.Services.Users
     {
         Task<AuthenticationVM> LoginUser(LoginRequest request);
 
-        Task<string> AddRoleAsync(AddRoleRequest model);
+        Task<string> AddRoleAsync(AddRoleRequest request);
 
         Task<string> RegisterCustomer(RegisterRequest request);
 

@@ -33,7 +33,7 @@ namespace WebApi.Controllers.v1
 
         [HttpPost("/image")]
         //[Authorize]
-        public async Task<IActionResult> Create1([FromForm] ProductCreateRequest request)
+        public async Task<IActionResult> Create1(/*[FromForm] */ProductCreateRequest request)
         {
             var result = await ProductRepository.Create(request);
             return Ok(result);
@@ -81,7 +81,7 @@ namespace WebApi.Controllers.v1
         [HttpPost]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.ProductPermission, ConstantsAtr.Add)]
-        public async Task<IActionResult> Create([FromForm] CreateProductCommand command)
+        public async Task<IActionResult> Create(/*[FromForm] */CreateProductCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
