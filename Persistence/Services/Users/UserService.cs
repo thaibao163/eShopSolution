@@ -69,34 +69,32 @@ namespace Persistence.Services.Users
             return jwtSecurityToken;
         }
 
-        public async Task<AuthenticationVM> LoginUser(LoginRequest request)
+        public async Task<string> RegisterSeller(RegisterRequest request)
         {
-            var loginRequest = new AuthenticationVM();
-            var user = await _userManager.FindByNameAsync(request.UserName);
-            if (user == null)
+            var user = new User
             {
-                loginRequest.Message = "Account does not exists.";
-                loginRequest.IsAuthenticated = false;
-                loginRequest.UserName = $"{user.UserName}";
-                return loginRequest;
-            }
-
-            if (await _userManager.CheckPasswordAsync(user, request.Password))
+                UserName = request.UserName,
+                Email = request.Email,
+                FullName = request.FullName,
+                Address = request.Address,
+                CreatedOn = DateTime.Now.Date,
+                EmailConfirmed = true,
+                PhoneNumber = request.PhoneNumber
+            };
+            var userWithSameEmail = await _userManager.FindByEmailAsync(request.Email);
+            if (userWithSameEmail == null)
             {
-                loginRequest.Message = $"{user.UserName} login success";
-                loginRequest.IsAuthenticated = true;
-                JwtSecurityToken jwtSecurityToken = await CreateJwtToken(user);
-                loginRequest.Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
-                loginRequest.Email = user.Email;
-                loginRequest.UserName = user.UserName;
-                var rolesList = await _userManager.GetRolesAsync(user).ConfigureAwait(false);
-                loginRequest.Roles = rolesList.ToList();
-                return loginRequest;
+                var result = await _userManager.CreateAsync(user, request.Password);
+                if (result.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(user, RoleConstants.SellerRole.ToString());
+                }
+                return $"User Registered successfully with username {user.UserName}";
             }
-            loginRequest.UserName = $"{user.UserName}";
-            loginRequest.IsAuthenticated = false;
-            loginRequest.Message = "Incorrect Credentials";
-            return loginRequest;
+            else
+            {
+                return $"Email {user.Email} is already registered.";
+            }
         }
 
         public async Task<string> RegisterCustomer(RegisterRequest request)
@@ -125,6 +123,65 @@ namespace Persistence.Services.Users
             {
                 return $"Email {user.Email} is already registered.";
             }
+        }
+
+
+        public async Task<string> RegisterAdmin(RegisterRequest request)
+        {
+            var user = new User
+            {
+                UserName = request.UserName,
+                Email = request.Email,
+                FullName = request.FullName,
+                Address = request.Address,
+                CreatedOn = DateTime.Now.Date,
+                EmailConfirmed = true,
+                PhoneNumber = request.PhoneNumber
+            };
+            var userWithSameEmail = await _userManager.FindByEmailAsync(request.Email);
+            if (userWithSameEmail == null)
+            {
+                var result = await _userManager.CreateAsync(user, request.Password);
+                if (result.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(user, RoleConstants.AdministratorRole.ToString());
+                }
+                return $"User Registered successfully with username {user.UserName}";
+            }
+            else
+            {
+                return $"Email {user.Email} is already registered.";
+            }
+        }
+
+        public async Task<AuthenticationVM> LoginUser(LoginRequest request)
+        {
+            var loginRequest = new AuthenticationVM();
+            var user = await _userManager.FindByNameAsync(request.UserName);
+            if (user == null)
+            {
+                loginRequest.Message = "Account does not exists.";
+                loginRequest.IsAuthenticated = false;
+                loginRequest.UserName = $"{user.UserName}";
+                return loginRequest;
+            }
+
+            if (await _userManager.CheckPasswordAsync(user, request.Password))
+            {
+                loginRequest.Message = $"{user.UserName} login success";
+                loginRequest.IsAuthenticated = true;
+                JwtSecurityToken jwtSecurityToken = await CreateJwtToken(user);
+                loginRequest.Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
+                loginRequest.Email = user.Email;
+                loginRequest.UserName = user.UserName;
+                var rolesList = await _userManager.GetRolesAsync(user).ConfigureAwait(false);
+                loginRequest.Roles = rolesList.ToList();
+                return loginRequest;
+            }
+            loginRequest.UserName = $"{user.UserName}";
+            loginRequest.IsAuthenticated = false;
+            loginRequest.Message = "Incorrect Credentials";
+            return loginRequest;
         }
 
         public async Task<AuthenticationVM> ChangePassword(string id, ChangePasswordRequest request)
@@ -220,6 +277,34 @@ namespace Persistence.Services.Users
             return authenticationModel;
         }
 
+        public async Task<AuthenticationVM> ResetPassword(ResetPasswordRequest request)
+        {
+            var user = await _userManager.FindByEmailAsync(request.Email);
+            var authenticationRequest = new AuthenticationVM();
+            if (user == null)
+            {
+                authenticationRequest.IsAuthenticated = false;
+                authenticationRequest.Message = $"No Accounts Registered with {user.Email}.";
+                return authenticationRequest;
+            }
+            var resetPassResult = await _userManager.ResetPasswordAsync(user, request.Token, request.Password);
+            if (resetPassResult.Succeeded)
+            {
+                authenticationRequest.Message = $"{user.UserName} reset password successfully";
+                authenticationRequest.IsAuthenticated = true;
+                authenticationRequest.Email = user.Email;
+                authenticationRequest.UserName = user.UserName;
+                var rolesList = await _userManager.GetRolesAsync(user).ConfigureAwait(false);
+                authenticationRequest.Roles = rolesList.ToList();
+                return authenticationRequest;
+            }
+            else
+            {
+                authenticationRequest.Errors = resetPassResult.Errors.Select(e => e.Description);
+                return authenticationRequest;
+            }
+        }
+
         public async Task<bool> CheckPermisson(string funcUrl, string action, string roleName)
         {
             var role = await _roleManager.FindByNameAsync(roleName);
@@ -235,34 +320,6 @@ namespace Persistence.Services.Users
                         || p.CanDelete && action == ConstantsAtr.Delete)
                         select p;
             return query.Any();
-        }
-
-        public async Task<string> RegisterAdmin(RegisterRequest request)
-        {
-            var user = new User
-            {
-                UserName = request.UserName,
-                Email = request.Email,
-                FullName = request.FullName,
-                Address = request.Address,
-                CreatedOn = DateTime.Now.Date,
-                EmailConfirmed = true,
-                PhoneNumber = request.PhoneNumber
-            };
-            var userWithSameEmail = await _userManager.FindByEmailAsync(request.Email);
-            if (userWithSameEmail == null)
-            {
-                var result = await _userManager.CreateAsync(user, request.Password);
-                if (result.Succeeded)
-                {
-                    await _userManager.AddToRoleAsync(user, RoleConstants.AdministratorRole.ToString());
-                }
-                return $"User Registered successfully with username {user.UserName}";
-            }
-            else
-            {
-                return $"Email {user.Email} is already registered.";
-            }
         }
 
         public Task<ApiResult<UserInfomation>> GetAll()

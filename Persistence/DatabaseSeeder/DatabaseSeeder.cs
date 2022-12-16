@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.RefAndLookup;
 using Persistence.Constants;
 using Persistence.Contexts;
 using Persistence.Interfaces;
@@ -29,7 +30,6 @@ namespace Persistence.DatabaseSeeder
             AddPermisson();
             AddCategory();
             AddProduct();
-
             _context.SaveChanges();
         }
 
@@ -37,6 +37,7 @@ namespace Persistence.DatabaseSeeder
         {
             Task.Run(async () =>
             {
+                //Admin
                 var adminRole = new Role()
                 {
                     Name = RoleConstants.AdministratorRole,
@@ -49,6 +50,7 @@ namespace Persistence.DatabaseSeeder
                     _logger.LogInformation("Seeded Administrator Role.");
                 }
 
+                //Customer
                 var customerRole = new Role()
                 {
                     Name = RoleConstants.CustomerRole,
@@ -61,11 +63,24 @@ namespace Persistence.DatabaseSeeder
                     _logger.LogInformation("Seeded Customer Role.");
                 }
 
+                //Seller
+                var sellerRole = new Role()
+                {
+                    Name = RoleConstants.SellerRole,
+                    Description = "Seller role with custom permission"
+                };
+                var sellerRoleInDb = await _roleManager.FindByNameAsync(RoleConstants.SellerRole);
+                if (sellerRoleInDb == null)
+                {
+                    await _roleManager.CreateAsync(sellerRole);
+                    _logger.LogInformation("Seeded Seller Role.");
+                }
+
                 //Check if User Exists
                 var superUser = new User()
                 {
-                    FullName = "NinePlus Solution ERP",
-                    Email = "admin@example.com",
+                    FullName = "Nguyen Thai Bao",
+                    Email = "admin@gmail.com",
                     UserName = "superadmin",
                     EmailConfirmed = true,
                     PhoneNumberConfirmed = true,
@@ -100,6 +115,7 @@ namespace Persistence.DatabaseSeeder
                 _context.Menus.Add(new Menu() { Name = "User", Url = "/user" });
                 _context.Menus.Add(new Menu() { Name = "Order", Url = "/order" });
                 _context.Menus.Add(new Menu() { Name = "Role", Url = "/role" });
+                _context.Menus.Add(new Menu() { Name = "Seller", Url = "/seller" });
             }
         }
 
@@ -126,17 +142,29 @@ namespace Persistence.DatabaseSeeder
         {
             if (!_context.Permissons.Any())
             {
+                //role
                 _context.Permissons.Add(new Permission() { RoleId = "85a9f3da-fb1f-4bf4-9265-8ca8f04452f2", MenuId = 1, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
                 _context.Permissons.Add(new Permission() { RoleId = "85a9f3da-fb1f-4bf4-9265-8ca8f04452f2", MenuId = 2, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
                 _context.Permissons.Add(new Permission() { RoleId = "85a9f3da-fb1f-4bf4-9265-8ca8f04452f2", MenuId = 3, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
                 _context.Permissons.Add(new Permission() { RoleId = "85a9f3da-fb1f-4bf4-9265-8ca8f04452f2", MenuId = 4, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
                 _context.Permissons.Add(new Permission() { RoleId = "85a9f3da-fb1f-4bf4-9265-8ca8f04452f2", MenuId = 5, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "85a9f3da-fb1f-4bf4-9265-8ca8f04452f2", MenuId = 6, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
 
+                //customer
                 _context.Permissons.Add(new Permission() { RoleId = "c70328ee-a997-4a4a-8973-ed20dca1dd15", MenuId = 1, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
                 _context.Permissons.Add(new Permission() { RoleId = "c70328ee-a997-4a4a-8973-ed20dca1dd15", MenuId = 2, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
                 _context.Permissons.Add(new Permission() { RoleId = "c70328ee-a997-4a4a-8973-ed20dca1dd15", MenuId = 3, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
                 _context.Permissons.Add(new Permission() { RoleId = "c70328ee-a997-4a4a-8973-ed20dca1dd15", MenuId = 4, CanAccess = false, CanAdd = true, CanDelete = true, CanUpdate = true });
                 _context.Permissons.Add(new Permission() { RoleId = "c70328ee-a997-4a4a-8973-ed20dca1dd15", MenuId = 5, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "c70328ee-a997-4a4a-8973-ed20dca1dd15", MenuId = 6, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+
+                //seller
+                _context.Permissons.Add(new Permission() { RoleId = "fd4fdc5a-abbf-43f9-883c-b2000cd60bdb", MenuId = 1, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "fd4fdc5a-abbf-43f9-883c-b2000cd60bdb", MenuId = 2, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "fd4fdc5a-abbf-43f9-883c-b2000cd60bdb", MenuId = 3, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "fd4fdc5a-abbf-43f9-883c-b2000cd60bdb", MenuId = 4, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "fd4fdc5a-abbf-43f9-883c-b2000cd60bdb", MenuId = 5, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "fd4fdc5a-abbf-43f9-883c-b2000cd60bdb", MenuId = 6, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
             }
         }
     }

@@ -5,10 +5,12 @@
         public enum Roles
         {
             Administrator,
-            Customer
+            Customer,
+            Seller
         }
 
         public const string AdministratorRole = "Administrator";
         public const string CustomerRole = "Customer";
+        public const string SellerRole = "Seller";
     }
 }

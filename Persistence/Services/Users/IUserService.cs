@@ -14,11 +14,15 @@ namespace Persistence.Services.Users
 
         Task<string> RegisterAdmin(RegisterRequest request);
 
+        Task<string> RegisterSeller(RegisterRequest request);
+
         Task<string> Update(string id, UserUpdateRequest request);
 
         Task<AuthenticationVM> ChangePassword(string id, ChangePasswordRequest request);
 
         Task<AuthenticationVM> ForgetPassword(ForgerPasswordRequest request);
+
+        Task<AuthenticationVM> ResetPassword(ResetPasswordRequest request);
 
         Task<ApiResult<UserInfomation>> GetById(string id);
 

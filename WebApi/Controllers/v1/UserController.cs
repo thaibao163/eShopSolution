@@ -29,10 +29,23 @@ namespace WebApi.Controllers.v1
         /// <returns></returns>
         [HttpPost("RegisterAdmin")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.UserPermission, ConstantsAtr.Add)]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.RolePermission, ConstantsAtr.Add)]
         public async Task<IActionResult> RegisterAdmin([FromForm] RegisterRequest command)
         {
             var result = await UserRepository.RegisterAdmin(command);
+            return Ok(result);
+        }
+
+        /// <summary>
+        /// RegisterSeller
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPost("RegisterSeller")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<IActionResult> RegisterSeller([FromForm] RegisterRequest command)
+        {
+            var result = await UserRepository.RegisterSeller(command);
             return Ok(result);
         }
 
@@ -87,6 +100,18 @@ namespace WebApi.Controllers.v1
             var result = await UserRepository.ForgetPassword(command);
             return Ok(result);
         }
+
+        /// <summary>
+        /// ResetPassword
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        //[HttpPost("ResetPassword")]
+        //public async Task<IActionResult> ResetPassword([FromForm] ResetPasswordRequest command)
+        //{
+        //    var result = await UserRepository.ResetPassword(command);
+        //    return Ok(result);
+        //}
 
         /// <summary>
         /// DeleteById

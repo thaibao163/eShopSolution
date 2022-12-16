@@ -12,5 +12,6 @@
         public const string OrderPermission = "/order";
         public const string UserPermission = "/user";
         public const string RolePermission = "/role";
+        public const string SellerPermission = "/seller";
     }
 }
