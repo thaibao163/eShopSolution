@@ -13,17 +13,19 @@ namespace WebApi.Controllers.v1
     [ApiController]
     public class OrderController : BaseApiController
     {
-        /// <summary>
-        /// GetAll
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.OrderPermission, ConstantsAtr.Access)]
-        public async Task<IActionResult> GetAll()
-        {
-            return Ok(await Mediator.Send(new GetAllOrdesQuery()));
-        }
+
+
+        ///// <summary>
+        ///// GetAll
+        ///// </summary>
+        ///// <returns></returns>
+        //[HttpGet]
+        //[Authorize(AuthenticationSchemes = "Bearer")]
+        //[CustomAuthorizeAtrtibute(ConstantsAtr.OrderPermission, ConstantsAtr.Access)]
+        //public async Task<IActionResult> GetAll()
+        //{
+        //    return Ok(await Mediator.Send(new GetAllOrdesQuery()));
+        //}
 
         /// <summary>
         /// GetByIdOrder
@@ -45,7 +47,7 @@ namespace WebApi.Controllers.v1
         [HttpPost]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.OrderPermission, ConstantsAtr.Add)]
-        public async Task<IActionResult> Create([FromForm] CreateOrderCommand command)
+        public async Task<IActionResult> Create(/*[FromForm] */CreateOrderCommand command)
         {
             return Ok(await Mediator.Send(command));
         }

@@ -7,6 +7,6 @@ namespace Application.Interfaces.Repositories
     {
         Task<IEnumerable<OrderDetailVM>> GetAllOrdersDetail();
 
-        Task<IEnumerable<OrderDetailVM>> GetOrdersDetailById(int Id);
+        Task<IEnumerable<OrderDetailVM>> GetOrdersDetailById(string Id);
     }
 }

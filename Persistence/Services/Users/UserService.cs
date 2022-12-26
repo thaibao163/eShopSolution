@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Org.BouncyCastle.Asn1.Ocsp;
 using Persistence.Constants;
 using Persistence.Contexts;
 using Persistence.Services.Emails;
@@ -76,6 +77,7 @@ namespace Persistence.Services.Users
                 UserName = request.UserName,
                 Email = request.Email,
                 FullName = request.FullName,
+                Dob = request.Dob,
                 Address = request.Address,
                 CreatedOn = DateTime.Now.Date,
                 EmailConfirmed = true,
@@ -104,6 +106,7 @@ namespace Persistence.Services.Users
                 UserName = request.UserName,
                 Email = request.Email,
                 FullName = request.FullName,
+                Dob = request.Dob,
                 Address = request.Address,
                 CreatedOn = DateTime.Now.Date,
                 EmailConfirmed = true,
@@ -133,6 +136,7 @@ namespace Persistence.Services.Users
                 UserName = request.UserName,
                 Email = request.Email,
                 FullName = request.FullName,
+                Dob = request.Dob,
                 Address = request.Address,
                 CreatedOn = DateTime.Now.Date,
                 EmailConfirmed = true,

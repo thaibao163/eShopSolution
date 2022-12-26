@@ -8,7 +8,7 @@ namespace Domain.Entities
 
         public string? Address { get; set; }
 
-        public DateTime DayOfBirth { get; set; }
+        public DateTime Dob { get; set; }
 
         public DateTime? CreatedOn { get; set; }
 

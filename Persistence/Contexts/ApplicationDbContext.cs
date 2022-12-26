@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Persistence.DatabaseSeeder;
+using System.Reflection.Emit;
 
 namespace Persistence.Contexts
 {
@@ -78,6 +80,8 @@ namespace Persistence.Contexts
             {
                 entity.ToTable("UserTokens", "Identity");
             });
+
+            //builder.DatabaseSeeder();
         }
     }
 }

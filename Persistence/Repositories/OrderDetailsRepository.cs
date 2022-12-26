@@ -34,13 +34,13 @@ namespace Persistence.Repositories
             return ordersDetail;
         }
 
-        public async Task<IEnumerable<OrderDetailVM>> GetOrdersDetailById(int Id)
+        public async Task<IEnumerable<OrderDetailVM>> GetOrdersDetailById(string Id)
         {
             var ordersDetail = await (from o in _context.Orders
                                       join od in _context.OrderDetails on o.Id equals od.OrderId
                                       join p in _context.Products on od.ProductId equals p.Id
                                       join u in _context.Users on o.UserId equals u.Id
-                                      where Id == od.Id && od.IsDeleted == false
+                                      where Id == u.Id && od.IsDeleted == false
                                       select new OrderDetailVM()
                                       {
                                           Id = od.Id,

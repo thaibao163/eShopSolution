@@ -6,7 +6,7 @@ namespace Application.Features.OrdersDetail.Queries.GetOrderDetailById
 {
     public class GetOrderDetailByIdQuery : IRequest<IEnumerable<OrderDetailVM>>
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public class GetOrderDetailByIdQueryHandler : IRequestHandler<GetOrderDetailByIdQuery, IEnumerable<OrderDetailVM>>
         {

@@ -32,7 +32,7 @@ namespace WebApi.Controllers.v1
         [HttpPost("RegisterAdmin")]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.RolePermission, ConstantsAtr.Add)]
-        public async Task<IActionResult> RegisterAdmin(/*[FromForm]*/ RegisterRequest command)
+        public async Task<IActionResult> RegisterAdmin([FromForm] RegisterRequest command)
         {
             var result = await UserRepository.RegisterAdmin(command);
             return Ok(result);
