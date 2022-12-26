@@ -30,6 +30,8 @@ namespace Persistence.DatabaseSeeder
             AddPermisson();
             AddCategory();
             AddProduct();
+            AddColor();
+            AddSizeProduct();
             _context.SaveChanges();
         }
 
@@ -126,6 +128,27 @@ namespace Persistence.DatabaseSeeder
                 _context.Categories.Add(new Category() { Name = "Shirt", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
                 _context.Categories.Add(new Category() { Name = "Hat", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
                 _context.Categories.Add(new Category() { Name = "Sandal", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+            }
+        }
+
+        private void AddColor()
+        {
+            if (!_context.Colors.Any())
+            {
+                _context.Colors.Add(new Color() { Name = "Red", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Blu", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+            }
+        }
+
+        private void AddSizeProduct()
+        {
+            if (!_context.Sizes.Any())
+            {
+                _context.Sizes.Add(new SizeProduct() { Name = "S", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Sizes.Add(new SizeProduct() { Name = "M", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Sizes.Add(new SizeProduct() { Name = "L", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Sizes.Add(new SizeProduct() { Name = "XL", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Sizes.Add(new SizeProduct() { Name = "XXL", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
             }
         }
 

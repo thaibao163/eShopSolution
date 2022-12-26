@@ -26,7 +26,6 @@ namespace Persistence.Repositories
                                     Id = r.Id,
                                     UserName = u.UserName,
                                     ProductName = p.Name,
-                                    Title = r.Title,
                                     Content = r.Content,
                                 }).ToListAsync();
             return review;

@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces.Repositories;
 using Domain.ViewModel.Categorys;
+using Domain.ViewModel.Colors;
 using MediatR;
 
 namespace Application.Features.Categories.Queries.GetCategoryById

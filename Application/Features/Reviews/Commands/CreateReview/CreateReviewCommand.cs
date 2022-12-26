@@ -32,7 +32,6 @@ namespace Application.Features.Reviews.Commands.CreateReview
                 {
                     UserId = userId,
                     ProductId = request.ProductId,
-                    Title = request.Title,
                     Content = request.Content,
                     CreatedOn = DateTime.Now,
                     CreatedBy = userId

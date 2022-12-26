@@ -13,16 +13,30 @@ namespace Persistence.Contexts
         }
 
         public DbSet<AppRoleClaim> AppRoleClaims { get; set; }
+
         public DbSet<Category> Categories { get; set; }
+
         public DbSet<Menu> Menus { get; set; }
+
         public DbSet<Order> Orders { get; set; }
+
         public DbSet<OrderDetail> OrderDetails { get; set; }
+
         public DbSet<Permission> Permissons { get; set; }
+
         public DbSet<Product> Products { get; set; }
+
         public DbSet<Cart> Carts { get; set; }
+
         public DbSet<CartDetail> CartDetails { get; set; }
+
         public DbSet<Review> Reviews { get; set; }
-        public DbSet<ProductImage> ProductImages { get; set; }
+
+        public DbSet<Image> Images { get; set; }
+
+        public DbSet<SizeProduct> Sizes { get; set; }
+
+        public DbSet<Color> Colors { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

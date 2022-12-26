@@ -34,7 +34,7 @@ namespace Persistence.Repositories
 
         public async Task<int> AddImage(int productId, ProductImageCreateRequest request)
         {
-            var productImage = new ProductImage()
+            var productImage = new Image()
             {
                 ProductId = productId,
                 CreatedOn = DateTime.Now,
@@ -47,7 +47,7 @@ namespace Persistence.Repositories
                 productImage.ImagePath = await this.SaveFile(request.ImageFile);
                 productImage.FileSize = request.ImageFile.Length;
             }
-            _context.ProductImages.Add(productImage);
+            _context.Images.Add(productImage);
             await _context.SaveChangesAsync();
             return productImage.Id;
         }
@@ -73,7 +73,7 @@ namespace Persistence.Repositories
         {
             var product = await (from p in _context.Products
                                  join c in _context.Categories on p.CategoryId equals c.Id
-                                 join i in _context.ProductImages on p.Id equals i.ProductId
+                                 join i in _context.Images on p.Id equals i.ProductId
                                  where Id == p.Id && p.IsDeleted == false
                                  select new ProductVM()
                                  {
@@ -104,9 +104,9 @@ namespace Persistence.Repositories
             //Save image
             if (command.ThumbnailImage != null)
             {
-                product.ProductImages = new List<ProductImage>()
+                product.Images = new List<Image>()
                 {
-                    new ProductImage()
+                    new Image()
                     {
                         FileSize = command.ThumbnailImage.Length,
                         ImagePath = await this.SaveFile(command.ThumbnailImage),

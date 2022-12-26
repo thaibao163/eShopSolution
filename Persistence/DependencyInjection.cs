@@ -32,6 +32,8 @@ namespace Persistence
             services.AddTransient<IMapper, Mapper>();
             services.AddTransient<ICurrentUserRepository, CurrentUserRepository>();
             services.AddTransient<IStorageRepository, FileStorageRepository>();
+            services.AddTransient<IColorRepository, ColorRepository>();
+            services.AddTransient<ISizeRepository, SizeRepository>();
         }
     }
 }

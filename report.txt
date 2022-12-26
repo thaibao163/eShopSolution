@@ -1,9 +1,0 @@
-Daily report for October 4, 2022
-Today:
-- Search
-- Authentication (50%)
-Tomorrow:
-- Send mail
-- Authentication
-Problem:
-nobody

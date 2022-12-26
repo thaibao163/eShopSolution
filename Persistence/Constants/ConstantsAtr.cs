@@ -13,5 +13,7 @@
         public const string UserPermission = "/user";
         public const string RolePermission = "/role";
         public const string SellerPermission = "/seller";
+        public const string SizePermission = "/size";
+        public const string ColorPermission = "/color";
     }
 }

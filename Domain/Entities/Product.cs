@@ -11,10 +11,16 @@ namespace Domain.Entities
 
         public string Description { get; set; }
 
+        public bool Gender { get; set; }
+
         public decimal Price { get; set; }
 
         public int Quantity { get; set; }
 
-        public List<ProductImage> ProductImages { get; set; }
+        public int SizeID { get; set; }
+
+        public int ColorID { get; set; }
+
+        public List<Image> Images { get; set; }
     }
 }

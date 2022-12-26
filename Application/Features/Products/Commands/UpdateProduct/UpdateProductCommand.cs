@@ -11,6 +11,8 @@ namespace Application.Features.Products.Commands.UpdateProduct
         public string Description { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
+        public int SizeID { get; set; }
+        public int ColorID { get; set; }
 
         public class UpdateCarCommandHandler : IRequestHandler<UpdateProductCommand, string>
         {
@@ -32,6 +34,8 @@ namespace Application.Features.Products.Commands.UpdateProduct
                     product.Description = command.Description;
                     product.Price = command.Price;
                     product.Quantity = command.Quantity;
+                    product.SizeID = command.SizeID;
+                    product.ColorID = command.ColorID;
                     await _productRepository.UpdateAsync(product);
                     return "Update success";
                 }

@@ -11,6 +11,8 @@ namespace Application.Features.Products.Commands.CreateProduct
         public string Description { get; set; }
         public decimal Price { get; set; }
         public int Quantity { get; set; }
+        public int SizeID { get; set; }
+        public int ColorID { get; set; }
     }
 
     public class CreateCarCommandHandler : IRequestHandler<CreateProductCommand, string>
@@ -33,6 +35,8 @@ namespace Application.Features.Products.Commands.CreateProduct
                 Description = command.Description,
                 Price = command.Price,
                 Quantity = command.Quantity,
+                SizeID=command.SizeID,
+                ColorID=command.ColorID,
                 CreatedOn = DateTime.Now,
                 CreatedBy = _currentUserRepository.Id,
                 IsDeleted = false

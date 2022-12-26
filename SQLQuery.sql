@@ -12,7 +12,9 @@
   select *from [OnionArchitecture].[dbo].[AspNetRoles]
   select *from [OnionArchitecture].[Identity].[UserRoles]	
     select *from [OnionArchitecture].[Identity].[Users]
-	select *from ProductImages
+	select *from Images
+	select *from Sizes
+	select *from Colors
 
   update OrderDetails
   set OrderId=8
@@ -25,4 +27,4 @@
   TRUNCATE TABLE [OnionArchitecture].[Identity].[Roles]
   TRUNCATE TABLE [OnionArchitecture].[Identity].[UserRoles]
   TRUNCATE TABLE [OnionArchitecture].[Identity].[Users]
-  TRUNCATE TABLE Permissons
+  TRUNCATE TABLE Products
