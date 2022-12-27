@@ -33,7 +33,7 @@ namespace WebApi.Controllers.v1
         /// GetByIdOrder
         /// </summary>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{idOrder}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.OrderPermission, ConstantsAtr.Access)]
         public async Task<IActionResult> GetById(string id)

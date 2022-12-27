@@ -31,13 +31,12 @@ namespace WebApi.Controllers.v1
             _context = context;
         }
 
-        [HttpPost("/image")]
-        //[Authorize]
-        public async Task<IActionResult> Create1([FromForm] ProductCreateRequest request)
-        {
-            var result = await ProductRepository.Create(request);
-            return Ok(result);
-        }
+        //[HttpPost("/image")]
+        //public async Task<IActionResult> Create1([FromForm] ProductCreateRequest request)
+        //{
+        //    var result = await ProductRepository.Create(request);
+        //    return Ok(result);
+        //}
 
         //Images
         [HttpPost("{productId}/images")]
