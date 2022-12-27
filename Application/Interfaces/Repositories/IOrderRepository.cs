@@ -10,5 +10,8 @@ namespace Application.Interfaces.Repositories
         Task<IEnumerable<OrderVM>> GetAllOrders();
 
         Task<IEnumerable<OrderVM>> GetOrderById(string Id);
+
+        Task<IEnumerable<OrderVM>> GetStatusOrderById(string Id);
+
     }
 }

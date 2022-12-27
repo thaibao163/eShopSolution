@@ -60,17 +60,33 @@ namespace Persistence.Repositories
             return orders;
         }
 
+        //chưa thanh toán
         public async Task<IEnumerable<OrderVM>> GetOrderById(string Id)
         {
             var orders = await (from o in _context.Orders
                                 join u in _context.Users on o.UserId equals u.Id
-                                where Id == u.Id && o.IsDeleted == false
+                                where Id == u.Id && o.IsDeleted == false && o.Status == false
                                 select new OrderVM()
                                 {
                                     Id = o.Id,
                                     UserName = u.UserName,
                                     TotalPrice = o.TotalPrice,
                                 }).ToListAsync();
+            return orders;
+        }
+
+        //đã thanh toán
+        public async Task<IEnumerable<OrderVM>> GetStatusOrderById(string Id)
+        {
+            var orders = await(from o in _context.Orders
+                               join u in _context.Users on o.UserId equals u.Id
+                               where Id == u.Id && o.IsDeleted == false && o.Status == true
+                               select new OrderVM()
+                               {
+                                   Id = o.Id,
+                                   UserName = u.UserName,
+                                   TotalPrice = o.TotalPrice,
+                               }).ToListAsync();
             return orders;
         }
     }
