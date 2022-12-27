@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces.Repositories;
 using Domain.Entities;
+using Domain.Exceptions;
 using Domain.ViewModel.Images;
 using Domain.ViewModel.Products;
 using Microsoft.AspNetCore.Http;
@@ -119,6 +120,22 @@ namespace Persistence.Repositories
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
             return product.Id;
+        }
+
+        public async Task<ProductImageViewModel> GetImageById(int imageId)
+        {
+            var image = await _context.Images.FindAsync(imageId);
+            if (image == null)
+                throw new ApiException($"Cannot find an image with id {imageId}");
+
+            var viewModel = new ProductImageViewModel()
+            {
+                FileSize = image.FileSize,
+                Id = image.Id,
+                ImagePath = image.ImagePath,
+                ProductId = image.ProductId,
+            };
+            return viewModel;
         }
     }
 }

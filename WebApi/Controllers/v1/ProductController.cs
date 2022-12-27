@@ -39,6 +39,33 @@ namespace WebApi.Controllers.v1
             return Ok(result);
         }
 
+        //Images
+        [HttpPost("{productId}/images")]
+        public async Task<IActionResult> CreateImage(int productId, [FromForm] ProductImageCreateRequest request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var imageId = await ProductRepository.AddImage(productId, request);
+            if (imageId == 0)
+                return BadRequest();
+
+            var image = await ProductRepository.GetImageById(imageId);
+
+            //return CreatedAtAction(nameof(GetImageById), new { id = imageId }, image);
+            return Ok(image);
+        }
+
+
+        [HttpGet("{productId}/images/{imageId}")]
+        public async Task<IActionResult> GetImageById(int productId, int imageId)
+        {
+            var image = await ProductRepository.GetImageById(imageId);
+            if (image == null)
+                return BadRequest("Cannot find product");
+            return Ok(image);
+        }
 
         /// <summary>
         /// GetAll

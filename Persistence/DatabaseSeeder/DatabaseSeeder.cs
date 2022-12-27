@@ -137,8 +137,15 @@ namespace Persistence.DatabaseSeeder
         {
             if (!_context.Colors.Any())
             {
+                _context.Colors.Add(new Color() { Name = "White", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Blue", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Green", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Yellow", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Pink", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Gray", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
                 _context.Colors.Add(new Color() { Name = "Red", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
-                _context.Colors.Add(new Color() { Name = "Blu", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Black", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Brown", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
             }
         }
 

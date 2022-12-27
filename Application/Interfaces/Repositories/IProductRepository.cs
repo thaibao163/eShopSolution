@@ -13,5 +13,7 @@ namespace Application.Interfaces.Repositories
         Task<int> Create(ProductCreateRequest request);
 
         Task<int> AddImage(int productId, ProductImageCreateRequest request);
+
+        Task<ProductImageViewModel> GetImageById(int imageId);
     }
 }
