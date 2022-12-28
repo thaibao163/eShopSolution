@@ -13,6 +13,7 @@ namespace Persistence.Repositories
 
         public SizeRepository(ApplicationDbContext context) : base(context)
         {
+            _context = context;
         }
 
         public async Task<IEnumerable<SizeVM>> GetAllSizeProducts()

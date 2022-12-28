@@ -18,9 +18,9 @@ namespace WebApi.Controllers.v1
         /// GetAll
         /// </summary>
         /// <returns></returns>
+        //[Authorize(AuthenticationSchemes = "Bearer")]
+        //[CustomAuthorizeAtrtibute(ConstantsAtr.SizePermission, ConstantsAtr.Access)]
         [HttpGet]
-        [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.SizePermission, ConstantsAtr.Access)]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await Mediator.Send(new GetAllSizesQuery()));
@@ -30,9 +30,9 @@ namespace WebApi.Controllers.v1
         /// Get By Id
         /// </summary>
         /// <returns></returns>
+        //[Authorize(AuthenticationSchemes = "Bearer")]
+        //[CustomAuthorizeAtrtibute(ConstantsAtr.SizePermission, ConstantsAtr.Access)]
         [HttpGet("{id}")]
-        [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.SizePermission, ConstantsAtr.Access)]
         public async Task<IActionResult> GetById(int id)
         {
             return Ok(await Mediator.Send(new GetSizeByIdQuery { Id = id }));
