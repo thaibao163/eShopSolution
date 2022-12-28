@@ -12,11 +12,12 @@ namespace Persistence.Repositories
 
         public ColorRepository(ApplicationDbContext context) : base(context)
         {
+            _context = context;
         }
 
         public async Task<IEnumerable<ColorVM>> GetAllColors()
         {
-            var color = await (from c in _context.Categories
+            var color = await (from c in _context.Colors
                                where c.IsDeleted == false
                                select new ColorVM()
                                {
@@ -28,7 +29,7 @@ namespace Persistence.Repositories
 
         public async Task<IEnumerable<ColorVM>> GetColorById(int Id)
         {
-            var color = await (from c in _context.Categories
+            var color = await (from c in _context.Colors
                                where Id == c.Id && c.IsDeleted == false
                                select new ColorVM()
                                {

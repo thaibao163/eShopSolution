@@ -18,9 +18,9 @@ namespace WebApi.Controllers.v1
         /// GetAll
         /// </summary>
         /// <returns></returns>
+        //[Authorize(AuthenticationSchemes = "Bearer")]
+        //[CustomAuthorizeAtrtibute(ConstantsAtr.ColorPermission, ConstantsAtr.Access)]
         [HttpGet]
-        [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.ColorPermission, ConstantsAtr.Access)]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await Mediator.Send(new GetAllColorsQuery()));
@@ -30,9 +30,9 @@ namespace WebApi.Controllers.v1
         /// Get By Id
         /// </summary>
         /// <returns></returns>
+        //[Authorize(AuthenticationSchemes = "Bearer")]
+        //[CustomAuthorizeAtrtibute(ConstantsAtr.ColorPermission, ConstantsAtr.Access)]
         [HttpGet("{id}")]
-        [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.ColorPermission, ConstantsAtr.Access)]
         public async Task<IActionResult> GetById(int id)
         {
             return Ok(await Mediator.Send(new GetColorByIdQuery { Id = id }));
@@ -42,9 +42,9 @@ namespace WebApi.Controllers.v1
         /// Create
         /// </summary>
         /// <returns></returns>
+        //[Authorize(AuthenticationSchemes = "Bearer")]
+        //[CustomAuthorizeAtrtibute(ConstantsAtr.ColorPermission, ConstantsAtr.Add)]
         [HttpPost]
-        [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.ColorPermission, ConstantsAtr.Add)]
         public async Task<IActionResult> Create(CreateColorCommand command)
         {
             return Ok(await Mediator.Send(command));
@@ -55,9 +55,9 @@ namespace WebApi.Controllers.v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        //[Authorize(AuthenticationSchemes = "Bearer")]
+        //[CustomAuthorizeAtrtibute(ConstantsAtr.ColorPermission, ConstantsAtr.Delete)]
         [HttpDelete("{id}")]
-        [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.ColorPermission, ConstantsAtr.Delete)]
         public async Task<IActionResult> Delete(int id)
         {
             return Ok(await Mediator.Send(new DeleteColorByIdCommand { Id = id }));
@@ -66,9 +66,9 @@ namespace WebApi.Controllers.v1
         /// <summary>
         /// Update by id
         /// </summary>
+        //[Authorize(AuthenticationSchemes = "Bearer")]
+        //[CustomAuthorizeAtrtibute(ConstantsAtr.ColorPermission, ConstantsAtr.Update)]
         [HttpPut("{id}")]
-        [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.ColorPermission, ConstantsAtr.Update)]
         public async Task<IActionResult> Update(int id, UpdateColorCommand command)
         {
             if (id != command.Id)
