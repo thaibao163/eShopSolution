@@ -42,7 +42,7 @@ namespace Application.Features.Products.Commands.CreateProduct
                 IsDeleted = false
             };
             await _productRepository.AddAsync(product);
-            return $"Add success {product.Name}";
+            return $"Add success product id {product.Id}";
         }
     }
 }
