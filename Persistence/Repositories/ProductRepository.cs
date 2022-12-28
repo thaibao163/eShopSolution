@@ -57,6 +57,9 @@ namespace Persistence.Repositories
         {
             var product = await (from p in _context.Products
                                  join c in _context.Categories on p.CategoryId equals c.Id
+                                 join i in _context.Images on p.Id equals i.ProductId
+                                 join cl in _context.Colors on p.ColorID equals cl.Id
+                                 join s in _context.Sizes on p.SizeID equals s.Id
                                  where p.IsDeleted == false
                                  select new ProductVM()
                                  {
@@ -66,6 +69,9 @@ namespace Persistence.Repositories
                                      Description = p.Description,
                                      Price = p.Price,
                                      Quantity = p.Quantity,
+                                     ColorName = cl.Name,
+                                     SizeName = s.Name,
+                                     ImagePath = i.ImagePath,
                                  }).ToListAsync();
             return product;
         }
@@ -75,6 +81,8 @@ namespace Persistence.Repositories
             var product = await (from p in _context.Products
                                  join c in _context.Categories on p.CategoryId equals c.Id
                                  join i in _context.Images on p.Id equals i.ProductId
+                                 join cl in _context.Colors on p.ColorID equals cl.Id
+                                 join s in _context.Sizes on p.SizeID equals s.Id
                                  where Id == p.Id && p.IsDeleted == false
                                  select new ProductVM()
                                  {
@@ -84,6 +92,8 @@ namespace Persistence.Repositories
                                      Description = p.Description,
                                      Price = p.Price,
                                      Quantity = p.Quantity,
+                                     ColorName=cl.Name,
+                                     SizeName=s.Name,
                                      ImagePath=i.ImagePath,
                                  }).ToListAsync();
             return product;

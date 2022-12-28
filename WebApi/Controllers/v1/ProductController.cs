@@ -49,10 +49,7 @@ namespace WebApi.Controllers.v1
             var imageId = await ProductRepository.AddImage(productId, request);
             if (imageId == 0)
                 return BadRequest();
-
             var image = await ProductRepository.GetImageById(imageId);
-
-            //return CreatedAtAction(nameof(GetImageById), new { id = imageId }, image);
             return Ok(image);
         }
 
@@ -67,11 +64,11 @@ namespace WebApi.Controllers.v1
         }
 
         /// <summary>
-        /// GetAll
+        /// GetAllProduct
         /// </summary>
         /// <returns></returns>
         [HttpGet("product")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllProduct()
         {
             return Ok(await Mediator.Send(new GetAllProductsQuery()));
         }
@@ -89,12 +86,12 @@ namespace WebApi.Controllers.v1
         }
 
         /// <summary>
-        /// GetById
+        /// GetProductById
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        public async Task<IActionResult> GetProductById(int id)
         {
             return Ok(await Mediator.Send(new GetProductByIdQuery { Id = id }));
         }
@@ -143,82 +140,82 @@ namespace WebApi.Controllers.v1
             return Ok(await Mediator.Send(command));
         }
 
-        [HttpGet("exportProductById")]
-        public async Task<ProductResponse<string>> ExportById(int id)
-        {
-            string wwwPath = this._hostingEnvironment.WebRootPath;
-            string folder = wwwPath + "\\ExportProduct\\ExportProductById\\";
-            string excelName = $"ProductDetailById-{DateTime.Now.ToString("yyyyMMddHHmm")}.xlsx";
-            FileInfo file = new FileInfo(Path.Combine(folder, excelName));
-            if (file.Exists)
-            {
-                file.Delete();
-                file = new FileInfo(Path.Combine(folder, excelName));
-            }
+        //[HttpGet("exportProductById")]
+        //public async Task<ProductResponse<string>> ExportById(int id)
+        //{
+        //    string wwwPath = this._hostingEnvironment.WebRootPath;
+        //    string folder = wwwPath + "\\ExportProduct\\ExportProductById\\";
+        //    string excelName = $"ProductDetailById-{DateTime.Now.ToString("yyyyMMddHHmm")}.xlsx";
+        //    FileInfo file = new FileInfo(Path.Combine(folder, excelName));
+        //    if (file.Exists)
+        //    {
+        //        file.Delete();
+        //        file = new FileInfo(Path.Combine(folder, excelName));
+        //    }
 
-            // query data from database
-            await Task.Yield();
+        //    // query data from database
+        //    await Task.Yield();
 
-            var product = await (from p in _context.Products
-                                 join c in _context.Categories on p.CategoryId equals c.Id
-                                 where id == p.Id && p.IsDeleted == false
-                                 select new ProductVM()
-                                 {
-                                     Id = p.Id,
-                                     ProductName = p.Name,
-                                     CategoryName = c.Name,
-                                     Description = p.Description,
-                                     Price = p.Price,
-                                     Quantity = p.Quantity,
-                                 }).ToListAsync();
+        //    var product = await (from p in _context.Products
+        //                         join c in _context.Categories on p.CategoryId equals c.Id
+        //                         where id == p.Id && p.IsDeleted == false
+        //                         select new ProductVM()
+        //                         {
+        //                             Id = p.Id,
+        //                             ProductName = p.Name,
+        //                             CategoryName = c.Name,
+        //                             Description = p.Description,
+        //                             Price = p.Price,
+        //                             Quantity = p.Quantity,
+        //                         }).ToListAsync();
 
-            using (var package = new ExcelPackage(file))
-            {
-                var workSheet = package.Workbook.Worksheets.Add("Product");
-                workSheet.Cells.LoadFromCollection(product, true);
-                package.Save();
-            }
+        //    using (var package = new ExcelPackage(file))
+        //    {
+        //        var workSheet = package.Workbook.Worksheets.Add("Product");
+        //        workSheet.Cells.LoadFromCollection(product, true);
+        //        package.Save();
+        //    }
 
-            return ProductResponse<string>.GetResult(0, "OK", excelName);
-        }
+        //    return ProductResponse<string>.GetResult(0, "OK", excelName);
+        //}
 
-        [HttpGet("exportProductAll")]
-        public async Task<ProductResponse<string>> ExportAll()
-        {
-            string wwwPath = this._hostingEnvironment.WebRootPath;
-            string folder = wwwPath + "\\ExportProduct\\ExportAllProduct\\";
-            string excelName = $"ProductDetailAll-{DateTime.Now.ToString("yyyyMMddHHmm")}.xlsx";
-            FileInfo file = new FileInfo(Path.Combine(folder, excelName));
-            if (file.Exists)
-            {
-                file.Delete();
-                file = new FileInfo(Path.Combine(folder, excelName));
-            }
+        //[HttpGet("exportProductAll")]
+        //public async Task<ProductResponse<string>> ExportAll()
+        //{
+        //    string wwwPath = this._hostingEnvironment.WebRootPath;
+        //    string folder = wwwPath + "\\ExportProduct\\ExportAllProduct\\";
+        //    string excelName = $"ProductDetailAll-{DateTime.Now.ToString("yyyyMMddHHmm")}.xlsx";
+        //    FileInfo file = new FileInfo(Path.Combine(folder, excelName));
+        //    if (file.Exists)
+        //    {
+        //        file.Delete();
+        //        file = new FileInfo(Path.Combine(folder, excelName));
+        //    }
 
-            // query data from database
-            await Task.Yield();
+        //    // query data from database
+        //    await Task.Yield();
 
-            var product = await (from p in _context.Products
-                                 join c in _context.Categories on p.CategoryId equals c.Id
-                                 where p.IsDeleted == false
-                                 select new ProductVM()
-                                 {
-                                     Id = p.Id,
-                                     ProductName = p.Name,
-                                     CategoryName = c.Name,
-                                     Description = p.Description,
-                                     Price = p.Price,
-                                     Quantity = p.Quantity,
-                                 }).ToListAsync();
+        //    var product = await (from p in _context.Products
+        //                         join c in _context.Categories on p.CategoryId equals c.Id
+        //                         where p.IsDeleted == false
+        //                         select new ProductVM()
+        //                         {
+        //                             Id = p.Id,
+        //                             ProductName = p.Name,
+        //                             CategoryName = c.Name,
+        //                             Description = p.Description,
+        //                             Price = p.Price,
+        //                             Quantity = p.Quantity,
+        //                         }).ToListAsync();
 
-            using (var package = new ExcelPackage(file))
-            {
-                var workSheet = package.Workbook.Worksheets.Add("GetAllProduct");
-                workSheet.Cells.LoadFromCollection(product, true);
-                package.Save();
-            }
+        //    using (var package = new ExcelPackage(file))
+        //    {
+        //        var workSheet = package.Workbook.Worksheets.Add("GetAllProduct");
+        //        workSheet.Cells.LoadFromCollection(product, true);
+        //        package.Save();
+        //    }
 
-            return ProductResponse<string>.GetResult(0, "OK", excelName);
-        }
+        //    return ProductResponse<string>.GetResult(0, "OK", excelName);
+        //}
     }
 }

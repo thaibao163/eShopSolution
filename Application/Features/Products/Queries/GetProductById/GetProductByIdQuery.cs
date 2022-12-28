@@ -8,11 +8,11 @@ namespace Application.Features.Products.Queries.GetProductById
     {
         public int Id { get; set; }
 
-        public class GetCarByIdQueryHandler : IRequestHandler<GetProductByIdQuery, IEnumerable<ProductVM>>
+        public class GetProductByIdQueryHandler : IRequestHandler<GetProductByIdQuery, IEnumerable<ProductVM>>
         {
             private readonly IProductRepository _productRepository;
 
-            public GetCarByIdQueryHandler(IProductRepository productRepository)
+            public GetProductByIdQueryHandler(IProductRepository productRepository)
             {
                 _productRepository = productRepository;
             }
