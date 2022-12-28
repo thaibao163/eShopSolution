@@ -53,7 +53,12 @@ namespace WebApi.Controllers.v1
             return Ok(image);
         }
 
-
+        /// <summary>
+        /// Get Image Product
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="imageId"></param>
+        /// <returns></returns>
         [HttpGet("{productId}/images/{imageId}")]
         public async Task<IActionResult> GetImageById(int productId, int imageId)
         {
@@ -74,7 +79,7 @@ namespace WebApi.Controllers.v1
         }
 
         /// <summary>
-        /// GetAll
+        /// GetSumQuantity
         /// </summary>
         /// <returns></returns>
         [HttpGet("quantityProduct")]
