@@ -15,5 +15,7 @@
         public const string SellerPermission = "/seller";
         public const string SizePermission = "/size";
         public const string ColorPermission = "/color";
+        public const string CartPermission = "/cart";
+
     }
 }

@@ -47,7 +47,8 @@ namespace Persistence.Repositories
             var cart = await (from c in _applicationDbContext.Carts
                               join cd in _applicationDbContext.CartDetails on c.Id equals cd.CartId
                               join p in _applicationDbContext.Products on cd.ProductId equals p.Id
-                              where c.IsDeleted == false
+                              join u in _applicationDbContext.Users on c.UserId equals u.Id
+                              where c.UserId == u.Id && c.IsDeleted == false
                               select new CartVM()
                               {
                                   CartDetailId = cd.Id,
