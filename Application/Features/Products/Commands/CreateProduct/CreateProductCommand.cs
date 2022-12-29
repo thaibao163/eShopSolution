@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Features.Products.Commands.CreateProduct
 {
-    public class CreateProductCommand : IRequest<string>
+    public class CreateProductCommand : IRequest<int>
     {
         public int CategoryId { get; set; }
         public string Name { get; set; }
@@ -15,7 +15,7 @@ namespace Application.Features.Products.Commands.CreateProduct
         public int ColorID { get; set; }
     }
 
-    public class CreateCarCommandHandler : IRequestHandler<CreateProductCommand, string>
+    public class CreateCarCommandHandler : IRequestHandler<CreateProductCommand, int>
     {
         private readonly IProductRepository _productRepository;
         private readonly ICurrentUserRepository _currentUserRepository;
@@ -26,7 +26,7 @@ namespace Application.Features.Products.Commands.CreateProduct
             _currentUserRepository = currentUserRepository;
         }
 
-        public async Task<string> Handle(CreateProductCommand command, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
             var product = new Product()
             {
@@ -42,7 +42,8 @@ namespace Application.Features.Products.Commands.CreateProduct
                 IsDeleted = false
             };
             await _productRepository.AddAsync(product);
-            return $"Add success product id {product.Id}";
+            return product.Id;
+            //return $"Add success product id {product.Id}";
         }
     }
 }
