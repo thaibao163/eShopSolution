@@ -1,8 +1,10 @@
-﻿using System.Text.Json.Serialization;
+﻿using Domain.Common;
+using Microsoft.AspNetCore.Identity;
+using System.Text.Json.Serialization;
 
 namespace Domain.ViewModel.Users
 {
-    public class AuthenticationVM
+    public class AuthenticationVM : IdentityUser
     {
         public string Message { get; set; }
         public bool IsAuthenticated { get; set; }

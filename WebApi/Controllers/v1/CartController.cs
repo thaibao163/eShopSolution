@@ -44,7 +44,7 @@ namespace WebApi.Controllers.v1
         /// <returns></returns>
         [HttpGet("{id}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.CartPermission, ConstantsAtr.Access)]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.UserPermission, ConstantsAtr.Access)]
         public async Task<IActionResult> GetById(string id)
         {
             return Ok(await Mediator.Send(new GetCartByUserIdQuery { Id = id }));
@@ -56,7 +56,7 @@ namespace WebApi.Controllers.v1
         /// <returns></returns>
         [HttpGet]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.CartPermission, ConstantsAtr.Access)]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.UserPermission, ConstantsAtr.Access)]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await Mediator.Send(new GetAllCartsQuery()));
