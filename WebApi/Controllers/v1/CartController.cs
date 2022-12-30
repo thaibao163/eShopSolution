@@ -1,7 +1,9 @@
 ﻿using Application.Features.Carts.Commands.CreateCart;
 using Application.Features.Carts.Commands.DeleteCart;
+using Application.Features.Carts.Commands.UpdateCart;
 using Application.Features.Carts.Queries.GetAllCart;
 using Application.Features.Carts.Queries.GetCartByIdUser;
+using Application.Features.Categories.Commands.UpdateCategory;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Persistence.Constants;
@@ -60,6 +62,21 @@ namespace WebApi.Controllers.v1
         public async Task<IActionResult> GetAll()
         {
             return Ok(await Mediator.Send(new GetAllCartsQuery()));
+        }
+
+        /// <summary>
+        /// Update by id
+        /// </summary>
+        [HttpPut("{id}")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.CartPermission, ConstantsAtr.Update)]
+        public async Task<IActionResult> Update(int id, UpdateCartCommand command)
+        {
+            if (id != command.Id)
+            {
+                return BadRequest();
+            }
+            return Ok(await Mediator.Send(command));
         }
     }
 }

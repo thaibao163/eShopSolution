@@ -52,9 +52,10 @@ namespace Persistence.Repositories
                               select new CartVM()
                               {
                                   CartDetailId = cd.Id,
+                                  CarId = c.Id,
                                   ProductName = p.Name,
                                   Price = p.Price,
-                                  Quantity = p.Quantity,
+                                  Quantity = cd.Quantity,
                                   ToTal = p.Price * cd.Quantity,
                               }).ToListAsync();
             return cart;
@@ -70,9 +71,10 @@ namespace Persistence.Repositories
                               select new CartVM()
                               {
                                   CartDetailId = cd.Id,
+                                  CarId=c.Id,
                                   ProductName = p.Name,
                                   Price = p.Price,
-                                  Quantity = p.Quantity,
+                                  Quantity = cd.Quantity,
                                   ToTal = p.Price * cd.Quantity,
                               }).ToListAsync();
             return cart;
