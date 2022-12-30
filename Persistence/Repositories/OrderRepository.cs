@@ -54,7 +54,9 @@ namespace Persistence.Repositories
                                 select new OrderVM()
                                 {
                                     Id = o.Id,
-                                    UserName = u.UserName,
+                                    FullName = u.FullName,
+                                    PhoneNumber = u.PhoneNumber,
+                                    Address = u.Address,
                                     TotalPrice = o.TotalPrice,
                                 }).ToListAsync();
             return orders;
@@ -69,7 +71,9 @@ namespace Persistence.Repositories
                                 select new OrderVM()
                                 {
                                     Id = o.Id,
-                                    UserName = u.UserName,
+                                    FullName = u.FullName,
+                                    PhoneNumber = u.PhoneNumber,
+                                    Address = u.Address,
                                     TotalPrice = o.TotalPrice,
                                 }).ToListAsync();
             return orders;
@@ -84,7 +88,9 @@ namespace Persistence.Repositories
                                select new OrderVM()
                                {
                                    Id = o.Id,
-                                   UserName = u.UserName,
+                                   FullName = u.FullName,
+                                   PhoneNumber = u.PhoneNumber,
+                                   Address = u.Address,
                                    TotalPrice = o.TotalPrice,
                                }).ToListAsync();
             return orders;

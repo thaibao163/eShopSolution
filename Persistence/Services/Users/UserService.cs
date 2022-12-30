@@ -1,9 +1,13 @@
 ﻿using Application.Interfaces.Repositories;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Domain.Entities;
 using Domain.Exceptions;
+using Domain.ViewModel.Cart;
+using Domain.ViewModel.Categorys;
 using Domain.ViewModel.Roles;
 using Domain.ViewModel.Users;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -206,7 +210,7 @@ namespace Persistence.Services.Users
             var user = await _userManager.FindByIdAsync(id.ToString());
             user.FullName = request.FullName;
             user.PhoneNumber = request.PhoneNumber;
-            user.Email = request.Email;
+            user.Address=request.Address;
             await _userManager.UpdateAsync(user);
             return "Update success";
         }
@@ -327,11 +331,6 @@ namespace Persistence.Services.Users
             return query.Any();
         }
 
-        public Task<ApiResult<UserInfomation>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<ApiResult<UserInfomation>> GetById(string id)
         {
             var user = await _userManager.FindByIdAsync(id.ToString());
@@ -345,9 +344,26 @@ namespace Persistence.Services.Users
                 FullName = user.FullName,
                 UserName = user.UserName,
                 Email = user.Email,
-                PhoneNumber = user.PhoneNumber
+                PhoneNumber = user.PhoneNumber,
+                Address=user.Address
+                
             };
             return new ApiSuccessResult<UserInfomation>(userInfo);
+        }
+
+        public async Task<IEnumerable<UserInfomation>> GetAll()
+        {
+            var user = await(from u in _context.Users
+                                 select new UserInfomation()
+                                 {
+                                     Id = u.Id,
+                                     FullName = u.FullName,
+                                     UserName = u.UserName,
+                                     Email = u.Email,
+                                     PhoneNumber = u.PhoneNumber,
+                                     Address = u.Address
+                                 }).ToListAsync();
+            return user;
         }
     }
 }

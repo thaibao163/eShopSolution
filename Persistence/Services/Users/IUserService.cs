@@ -26,7 +26,7 @@ namespace Persistence.Services.Users
 
         Task<ApiResult<UserInfomation>> GetById(string id);
 
-        Task<ApiResult<UserInfomation>> GetAll();
+        Task<IEnumerable<UserInfomation>> GetAll();
 
         Task<string> Delete(string id);
 

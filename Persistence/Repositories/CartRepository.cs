@@ -51,6 +51,7 @@ namespace Persistence.Repositories
                               where c.UserId == u.Id && c.IsDeleted == false
                               select new CartVM()
                               {
+                                  ProductId = p.Id,
                                   CartDetailId = cd.Id,
                                   CarId = c.Id,
                                   ProductName = p.Name,
@@ -70,6 +71,7 @@ namespace Persistence.Repositories
                               where c.IsDeleted == false && id == u.Id
                               select new CartVM()
                               {
+                                  ProductId=p.Id,
                                   CartDetailId = cd.Id,
                                   CarId=c.Id,
                                   ProductName = p.Name,

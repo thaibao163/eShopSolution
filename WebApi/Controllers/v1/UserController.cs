@@ -29,10 +29,11 @@ namespace WebApi.Controllers.v1
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
+
         [HttpPost("RegisterAdmin")]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.RolePermission, ConstantsAtr.Add)]
-        public async Task<IActionResult> RegisterAdmin([FromForm] RegisterRequest command)
+        public async Task<IActionResult> RegisterAdmin(/*[FromForm]*/ RegisterRequest command)
         {
             var result = await UserRepository.RegisterAdmin(command);
             return Ok(result);
@@ -140,6 +141,20 @@ namespace WebApi.Controllers.v1
         public async Task<IActionResult> GetById(string id)
         {
             var user = await UserRepository.GetById(id);
+            return Ok(user);
+        }
+
+        /// <summary>
+        /// GetByAll
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet()]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.UserPermission, ConstantsAtr.Access)]
+        public async Task<IActionResult> GetAll()
+        {
+            var user = await UserRepository.GetAll();
             return Ok(user);
         }
     }

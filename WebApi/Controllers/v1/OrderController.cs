@@ -33,25 +33,25 @@ namespace WebApi.Controllers.v1
         /// GetByIdOrder
         /// </summary>
         /// <returns></returns>
-        [HttpGet("{idOrder}")]
+        [HttpGet("{idUser}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.OrderPermission, ConstantsAtr.Access)]
-        public async Task<IActionResult> GetById(string id)
+        public async Task<IActionResult> GetById(string idUser)
         {
-            return Ok(await Mediator.Send(new GetOrderByIdQuery { Id = id }));
+            return Ok(await Mediator.Send(new GetOrderByIdQuery { Id = idUser }));
         }
 
-        /// <summary>
-        /// GetStatusOrderById
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet("{id}")]
-        [Authorize(AuthenticationSchemes = "Bearer")]
-        [CustomAuthorizeAtrtibute(ConstantsAtr.OrderPermission, ConstantsAtr.Access)]
-        public async Task<IActionResult> GetStatusOrderById(string id)
-        {
-            return Ok(await Mediator.Send(new GetStatusOrderByIdQuery { Id = id }));
-        }
+        ///// <summary>
+        ///// GetStatusOrderById
+        ///// </summary>
+        ///// <returns></returns>
+        //[HttpGet("{idUserPaid}")]
+        //[Authorize(AuthenticationSchemes = "Bearer")]
+        //[CustomAuthorizeAtrtibute(ConstantsAtr.OrderPermission, ConstantsAtr.Access)]
+        //public async Task<IActionResult> GetPaidOrderById(string idUserPaid)
+        //{
+        //    return Ok(await Mediator.Send(new GetStatusOrderByIdQuery { Id = idUserPaid }));
+        //}
 
         /// <summary>
         /// Create Order

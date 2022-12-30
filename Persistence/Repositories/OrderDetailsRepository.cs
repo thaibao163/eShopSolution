@@ -25,7 +25,9 @@ namespace Persistence.Repositories
                                       select new OrderDetailVM()
                                       {
                                           Id = od.Id,
-                                          UserName = u.UserName,
+                                          FullName = u.FullName,
+                                          PhoneNumber = u.PhoneNumber,
+                                          Address = u.Address,
                                           Product = p.Name,
                                           Quantity = od.Quantity,
                                           Price = p.Price,
@@ -44,7 +46,9 @@ namespace Persistence.Repositories
                                       select new OrderDetailVM()
                                       {
                                           Id = od.Id,
-                                          UserName = u.UserName,
+                                          FullName = u.FullName,
+                                          PhoneNumber = u.PhoneNumber,
+                                          Address = u.Address,
                                           Product = p.Name,
                                           Quantity = od.Quantity,
                                           Price = p.Price,

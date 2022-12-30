@@ -138,15 +138,17 @@ namespace Persistence.DatabaseSeeder
         {
             if (!_context.Colors.Any())
             {
-                _context.Colors.Add(new Color() { Name = "White", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
-                _context.Colors.Add(new Color() { Name = "Blue", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
-                _context.Colors.Add(new Color() { Name = "Green", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
-                _context.Colors.Add(new Color() { Name = "Yellow", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
-                _context.Colors.Add(new Color() { Name = "Pink", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
-                _context.Colors.Add(new Color() { Name = "Gray", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
-                _context.Colors.Add(new Color() { Name = "Red", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
-                _context.Colors.Add(new Color() { Name = "Black", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
-                _context.Colors.Add(new Color() { Name = "Brown", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Trắng", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Xanh da trời", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Xanh lá cây", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Vàng", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Hồng", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Xám", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Đỏ", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Đen", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Nâu", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Ghi", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Colors.Add(new Color() { Name = "Tím", CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
             }
         }
 
@@ -187,7 +189,7 @@ namespace Persistence.DatabaseSeeder
                 //customer
                 _context.Permissons.Add(new Permission() { RoleId = "01fa6a70-60d3-4445-8131-247224a4b3dd", MenuId = 1, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
                 _context.Permissons.Add(new Permission() { RoleId = "01fa6a70-60d3-4445-8131-247224a4b3dd", MenuId = 2, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = "01fa6a70-60d3-4445-8131-247224a4b3dd", MenuId = 3, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "01fa6a70-60d3-4445-8131-247224a4b3dd", MenuId = 3, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = true });
                 _context.Permissons.Add(new Permission() { RoleId = "01fa6a70-60d3-4445-8131-247224a4b3dd", MenuId = 4, CanAccess = false, CanAdd = true, CanDelete = true, CanUpdate = true });
                 _context.Permissons.Add(new Permission() { RoleId = "01fa6a70-60d3-4445-8131-247224a4b3dd", MenuId = 5, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
                 _context.Permissons.Add(new Permission() { RoleId = "01fa6a70-60d3-4445-8131-247224a4b3dd", MenuId = 6, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true }); 
@@ -196,7 +198,7 @@ namespace Persistence.DatabaseSeeder
                 //seller
                 _context.Permissons.Add(new Permission() { RoleId = "21c3773c-0959-44e7-bf46-92aef9d4db6f", MenuId = 1, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
                 _context.Permissons.Add(new Permission() { RoleId = "21c3773c-0959-44e7-bf46-92aef9d4db6f", MenuId = 2, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = "21c3773c-0959-44e7-bf46-92aef9d4db6f", MenuId = 3, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "21c3773c-0959-44e7-bf46-92aef9d4db6f", MenuId = 3, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = true });
                 _context.Permissons.Add(new Permission() { RoleId = "21c3773c-0959-44e7-bf46-92aef9d4db6f", MenuId = 4, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
                 _context.Permissons.Add(new Permission() { RoleId = "21c3773c-0959-44e7-bf46-92aef9d4db6f", MenuId = 5, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
                 _context.Permissons.Add(new Permission() { RoleId = "21c3773c-0959-44e7-bf46-92aef9d4db6f", MenuId = 6, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
