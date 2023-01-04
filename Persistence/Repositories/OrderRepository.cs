@@ -58,6 +58,7 @@ namespace Persistence.Repositories
                                     PhoneNumber = u.PhoneNumber,
                                     Address = u.Address,
                                     TotalPrice = o.TotalPrice,
+                                    CreatedOn=o.CreatedOn
                                 }).ToListAsync();
             return orders;
         }
@@ -75,6 +76,7 @@ namespace Persistence.Repositories
                                     PhoneNumber = u.PhoneNumber,
                                     Address = u.Address,
                                     TotalPrice = o.TotalPrice,
+                                    CreatedOn = o.CreatedOn
                                 }).ToListAsync();
             return orders;
         }

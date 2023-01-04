@@ -31,7 +31,8 @@ namespace Persistence.Repositories
                                           Product = p.Name,
                                           Quantity = od.Quantity,
                                           Price = p.Price,
-                                          TotalPrice = o.TotalPrice
+                                          TotalPrice = o.TotalPrice,
+                                          Status=o.Status,
                                       }).ToListAsync();
             return ordersDetail;
         }
@@ -52,7 +53,8 @@ namespace Persistence.Repositories
                                           Product = p.Name,
                                           Quantity = od.Quantity,
                                           Price = p.Price,
-                                          TotalPrice = o.TotalPrice
+                                          TotalPrice = o.TotalPrice,
+                                          Status = o.Status,
                                       }).ToListAsync();
             return ordersDetail;
         }

@@ -168,8 +168,8 @@ namespace Persistence.DatabaseSeeder
         {
             if (!_context.Products.Any())
             {
-                _context.Products.Add(new Product() { CategoryId = 1, Name = "Sweater", Description = "", Price = 150000, Quantity = 15, SizeID = 1, ColorID = 1, CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
-                _context.Products.Add(new Product() { CategoryId = 2, Name = "Cap", Description = "", Price = 75000, Quantity = 10, SizeID = 2, ColorID = 2, CreatedOn = DateTime.Now, CreatedBy = "65d34211-66fc-489f-bf2e-d34c54a2285e" });
+                _context.Products.Add(new Product() { CategoryId = 1, Name = "Sweater", Description = "", Price = 150000, Quantity = 15, SizeID = 1, ColorID = 1, CreatedOn = DateTime.Now, CreatedBy = "79aed0fc-9ee7-440f-a04e-f86b28717afc" });
+                _context.Products.Add(new Product() { CategoryId = 2, Name = "Cap", Description = "", Price = 75000, Quantity = 10, SizeID = 2, ColorID = 2, CreatedOn = DateTime.Now, CreatedBy = "79aed0fc-9ee7-440f-a04e-f86b28717afc" });
             }
         }
 

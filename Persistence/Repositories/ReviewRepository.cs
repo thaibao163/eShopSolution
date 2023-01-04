@@ -24,9 +24,10 @@ namespace Persistence.Repositories
                                 select new ReviewVM()
                                 {
                                     Id = r.Id,
-                                    UserName = u.UserName,
+                                    FullName = u.FullName,
                                     ProductName = p.Name,
                                     Content = r.Content,
+                                    CreatedOn = r.CreatedOn,
                                 }).ToListAsync();
             return review;
         }

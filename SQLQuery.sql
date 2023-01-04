@@ -1,4 +1,4 @@
- 
+﻿ 
   select *from Categories
   select *from Menus
   select *from Permissons
@@ -28,3 +28,10 @@
   TRUNCATE TABLE [OnionArchitecture].[Identity].[UserRoles]
   TRUNCATE TABLE [OnionArchitecture].[Identity].[Users]
   TRUNCATE TABLE Permissons
+
+  --sửa kiểu dữ liệu
+  ALTER TABLE Products
+	ALTER COLUMN Gender int
+
+	ALTER TABLE Users
+ADD GenderId int

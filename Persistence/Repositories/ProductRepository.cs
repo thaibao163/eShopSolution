@@ -60,6 +60,7 @@ namespace Persistence.Repositories
                                  join i in _context.Images on p.Id equals i.ProductId
                                  join cl in _context.Colors on p.ColorID equals cl.Id
                                  join s in _context.Sizes on p.SizeID equals s.Id
+                                 join u in _context.Users on p.CreatedBy equals u.Id
                                  where p.IsDeleted == false
                                  select new ProductVM()
                                  {
@@ -71,7 +72,9 @@ namespace Persistence.Repositories
                                      Quantity = p.Quantity,
                                      ColorName = cl.Name,
                                      SizeName = s.Name,
+                                     Seller= u.FullName,
                                      ImagePath = i.ImagePath,
+                                     CreatedOn=p.CreatedOn
                                  }).ToListAsync();
             return product;
         }
