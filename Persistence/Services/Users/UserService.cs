@@ -165,12 +165,11 @@ namespace Persistence.Services.Users
         public async Task<AuthenticationVM> LoginUser(LoginRequest request)
         {
             var loginRequest = new AuthenticationVM();
-            var user = await _userManager.FindByNameAsync(request.UserName);
+            var user = await _userManager.FindByNameAsync(request.UserName);    
             if (user == null)
             {
-                loginRequest.Message = "Account does not exists.";
                 loginRequest.IsAuthenticated = false;
-                loginRequest.UserName = $"{user.UserName}";
+                loginRequest.Message = "Account does not exists.";
                 return loginRequest;
             }
 
@@ -187,7 +186,6 @@ namespace Persistence.Services.Users
                 loginRequest.Roles = rolesList.ToList();
                 return loginRequest;
             }
-            loginRequest.UserName = $"{user.UserName}";
             loginRequest.IsAuthenticated = false;
             loginRequest.Message = "Incorrect Credentials";
             return loginRequest;
