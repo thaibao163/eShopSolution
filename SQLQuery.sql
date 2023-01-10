@@ -27,7 +27,7 @@
   TRUNCATE TABLE [OnionArchitecture].[Identity].[Roles]
   TRUNCATE TABLE [OnionArchitecture].[Identity].[UserRoles]
   TRUNCATE TABLE [OnionArchitecture].[Identity].[Users]
-  TRUNCATE TABLE Permissons
+  TRUNCATE TABLE Products
 
   --sửa kiểu dữ liệu
   ALTER TABLE Products

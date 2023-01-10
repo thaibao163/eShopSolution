@@ -88,7 +88,8 @@ namespace Persistence.Services.Users
                 PhoneNumber = request.PhoneNumber
             };
             var userWithSameEmail = await _userManager.FindByEmailAsync(request.Email);
-            if (userWithSameEmail == null)
+            var userWithSameUserName = await _userManager.FindByNameAsync(request.UserName);
+            if (userWithSameEmail == null && userWithSameUserName == null)
             {
                 var result = await _userManager.CreateAsync(user, request.Password);
                 if (result.Succeeded)
@@ -99,7 +100,7 @@ namespace Persistence.Services.Users
             }
             else
             {
-                return $"Email {user.Email} is already registered.";
+                return $"Email {user.Email} or UserName {user.UserName} is already registered.";
             }
         }
 
@@ -117,7 +118,8 @@ namespace Persistence.Services.Users
                 PhoneNumber = request.PhoneNumber
             };
             var userWithSameEmail = await _userManager.FindByEmailAsync(request.Email);
-            if (userWithSameEmail == null)
+            var userWithSameUserName = await _userManager.FindByNameAsync(request.UserName);
+            if (userWithSameEmail == null && userWithSameUserName == null)
             {
                 var result = await _userManager.CreateAsync(user, request.Password);
                 if (result.Succeeded)
@@ -128,7 +130,7 @@ namespace Persistence.Services.Users
             }
             else
             {
-                return $"Email {user.Email} is already registered.";
+                return $"Email {user.Email} or UserName {user.UserName} is already registered.";
             }
         }
 
@@ -147,7 +149,8 @@ namespace Persistence.Services.Users
                 PhoneNumber = request.PhoneNumber
             };
             var userWithSameEmail = await _userManager.FindByEmailAsync(request.Email);
-            if (userWithSameEmail == null)
+            var userWithSameUserName = await _userManager.FindByNameAsync(request.UserName);
+            if (userWithSameEmail == null && userWithSameUserName == null)
             {
                 var result = await _userManager.CreateAsync(user, request.Password);
                 if (result.Succeeded)
@@ -158,14 +161,14 @@ namespace Persistence.Services.Users
             }
             else
             {
-                return $"Email {user.Email} is already registered.";
+                return $"Email {user.Email} or UserName {user.UserName} is already registered.";
             }
         }
 
         public async Task<AuthenticationVM> LoginUser(LoginRequest request)
         {
             var loginRequest = new AuthenticationVM();
-            var user = await _userManager.FindByNameAsync(request.UserName);    
+            var user = await _userManager.FindByNameAsync(request.UserName);
             if (user == null)
             {
                 loginRequest.IsAuthenticated = false;
@@ -181,7 +184,7 @@ namespace Persistence.Services.Users
                 loginRequest.Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
                 loginRequest.Email = user.Email;
                 loginRequest.UserName = user.UserName;
-                loginRequest.Id= user.Id;
+                loginRequest.Id = user.Id;
                 var rolesList = await _userManager.GetRolesAsync(user).ConfigureAwait(false);
                 loginRequest.Roles = rolesList.ToList();
                 return loginRequest;
@@ -208,7 +211,7 @@ namespace Persistence.Services.Users
             var user = await _userManager.FindByIdAsync(id.ToString());
             user.FullName = request.FullName;
             user.PhoneNumber = request.PhoneNumber;
-            user.Address=request.Address;
+            user.Address = request.Address;
             await _userManager.UpdateAsync(user);
             return "Update success";
         }
@@ -343,24 +346,24 @@ namespace Persistence.Services.Users
                 UserName = user.UserName,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
-                Address=user.Address
-                
+                Address = user.Address
+
             };
             return new ApiSuccessResult<UserInfomation>(userInfo);
         }
 
         public async Task<IEnumerable<UserInfomation>> GetAll()
         {
-            var user = await(from u in _context.Users
-                                 select new UserInfomation()
-                                 {
-                                     Id = u.Id,
-                                     FullName = u.FullName,
-                                     UserName = u.UserName,
-                                     Email = u.Email,
-                                     PhoneNumber = u.PhoneNumber,
-                                     Address = u.Address
-                                 }).ToListAsync();
+            var user = await (from u in _context.Users
+                              select new UserInfomation()
+                              {
+                                  Id = u.Id,
+                                  FullName = u.FullName,
+                                  UserName = u.UserName,
+                                  Email = u.Email,
+                                  PhoneNumber = u.PhoneNumber,
+                                  Address = u.Address
+                              }).ToListAsync();
             return user;
         }
     }
