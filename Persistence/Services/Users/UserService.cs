@@ -1,9 +1,6 @@
 ﻿using Application.Interfaces.Repositories;
-using DocumentFormat.OpenXml.Spreadsheet;
 using Domain.Entities;
 using Domain.Exceptions;
-using Domain.ViewModel.Cart;
-using Domain.ViewModel.Categorys;
 using Domain.ViewModel.Roles;
 using Domain.ViewModel.Users;
 using Microsoft.AspNetCore.Identity;
@@ -11,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using Org.BouncyCastle.Asn1.Ocsp;
 using Persistence.Constants;
 using Persistence.Contexts;
 using Persistence.Services.Emails;
@@ -133,7 +129,6 @@ namespace Persistence.Services.Users
                 return $"Email {user.Email} or UserName {user.UserName} is already registered.";
             }
         }
-
 
         public async Task<string> RegisterAdmin(RegisterRequest request)
         {
@@ -347,7 +342,6 @@ namespace Persistence.Services.Users
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 Address = user.Address
-
             };
             return new ApiSuccessResult<UserInfomation>(userInfo);
         }
