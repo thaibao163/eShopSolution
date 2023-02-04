@@ -1,6 +1,7 @@
 ﻿using Application;
 using Domain.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -81,6 +82,13 @@ builder.Services.AddAuthentication(auth =>
 builder.Services.AddApplication();
 builder.Services.AddPersistence(builder.Configuration);
 
+builder.Services.Configure<FormOptions>(o =>
+{
+    o.ValueCountLimit = int.MaxValue;
+    o.MultipartBoundaryLengthLimit = int.MaxValue;
+    o.MemoryBufferThreshold = int.MaxValue;
+});
+
 builder.Services.AddIdentity<User, Role>(options =>
 {
     options.Password.RequiredLength = 3;
@@ -120,7 +128,6 @@ builder.Services.AddCors(options =>
     options.AddDefaultPolicy(
         builder =>
         {
-
             //you can configure your custom policy
             builder.AllowAnyOrigin()
                                 .AllowAnyHeader()
@@ -142,6 +149,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
+
+app.UseStaticFiles();
 
 app.UseCors();
 
