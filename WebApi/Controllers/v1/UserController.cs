@@ -18,7 +18,7 @@ namespace WebApi.Controllers.v1
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost("RegisterCustomer")]
-        public async Task<IActionResult> RegisterCustomer(/*[FromForm]*/ RegisterRequest command)
+        public async Task<IActionResult> RegisterCustomer([FromForm] RegisterRequest command)
         {
             var result = await UserRepository.RegisterCustomer(command);
             return Ok(result);
@@ -33,7 +33,7 @@ namespace WebApi.Controllers.v1
         [HttpPost("RegisterAdmin")]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.RolePermission, ConstantsAtr.Add)]
-        public async Task<IActionResult> RegisterAdmin(/*[FromForm]*/ RegisterRequest command)
+        public async Task<IActionResult> RegisterAdmin([FromForm] RegisterRequest command)
         {
             var result = await UserRepository.RegisterAdmin(command);
             return Ok(result);
@@ -46,7 +46,7 @@ namespace WebApi.Controllers.v1
         /// <returns></returns>
         [HttpPost("RegisterSeller")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        public async Task<IActionResult> RegisterSeller(/*[FromForm]*/ RegisterRequest command)
+        public async Task<IActionResult> RegisterSeller([FromForm] RegisterRequest command)
         {
             var result = await UserRepository.RegisterSeller(command);
             return Ok(result);
@@ -58,7 +58,7 @@ namespace WebApi.Controllers.v1
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost("Login")]
-        public async Task<IActionResult> Login(/*[FromForm]*/ LoginRequest command)
+        public async Task<IActionResult> Login([FromForm] LoginRequest command)
         {
             var result = await UserRepository.LoginUser(command);
             return Ok(result);
