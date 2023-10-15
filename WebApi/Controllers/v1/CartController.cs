@@ -44,12 +44,12 @@ namespace WebApi.Controllers.v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{idUser}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.CartPermission, ConstantsAtr.Access)]
-        public async Task<IActionResult> GetById(string id)
+        public async Task<IActionResult> GetById(string idUser)
         {
-            return Ok(await Mediator.Send(new GetCartByUserIdQuery { Id = id }));
+            return Ok(await Mediator.Send(new GetCartByUserIdQuery { Id = idUser }));
         }
 
         /// <summary>

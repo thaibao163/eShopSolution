@@ -1,7 +1,7 @@
 ﻿using Application.Interfaces.Repositories;
 using MediatR;
 
-namespace Demo1.Application.Features.Categories.Commands.DeleteCategory
+namespace Application.Features.Categories.Commands.DeleteCategory
 {
     public class DeleteCategoryByIdCommand : IRequest<string>
     {

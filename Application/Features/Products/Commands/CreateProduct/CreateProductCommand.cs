@@ -15,12 +15,12 @@ namespace Application.Features.Products.Commands.CreateProduct
         public int ColorID { get; set; }
     }
 
-    public class CreateCarCommandHandler : IRequestHandler<CreateProductCommand, int>
+    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, int>
     {
         private readonly IProductRepository _productRepository;
         private readonly ICurrentUserRepository _currentUserRepository;
 
-        public CreateCarCommandHandler(IProductRepository productRepository, ICurrentUserRepository currentUserRepository)
+        public CreateProductCommandHandler(IProductRepository productRepository, ICurrentUserRepository currentUserRepository)
         {
             _productRepository = productRepository;
             _currentUserRepository = currentUserRepository;

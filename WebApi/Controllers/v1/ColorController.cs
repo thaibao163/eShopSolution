@@ -39,7 +39,7 @@ namespace WebApi.Controllers.v1
         }
 
         /// <summary>
-        /// Create
+        /// Create Color
         /// </summary>
         /// <returns></returns>
         [HttpPost]

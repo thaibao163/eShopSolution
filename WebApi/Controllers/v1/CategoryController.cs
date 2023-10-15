@@ -2,7 +2,7 @@
 using Application.Features.Categories.Commands.UpdateCategory;
 using Application.Features.Categories.Queries.GetAllCategories;
 using Application.Features.Categories.Queries.GetCategoryById;
-using Demo1.Application.Features.Categories.Commands.DeleteCategory;
+using Application.Features.Categories.Commands.DeleteCategory;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Persistence.Constants;
@@ -39,7 +39,7 @@ namespace WebApi.Controllers.v1
         }
 
         /// <summary>
-        /// Create
+        /// Create Category
         /// </summary>
         /// <returns></returns>
         [HttpPost]
