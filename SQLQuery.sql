@@ -23,12 +23,15 @@
   delete from [Orders]
   delete from [OrderDetails]
 
-  TRUNCATE TABLE [OnionArchitecture].[dbo].[AspNetRoles]
-  TRUNCATE TABLE [OnionArchitecture].[Identity].[Roles]
-  TRUNCATE TABLE [OnionArchitecture].[Identity].[UserRoles]
-  TRUNCATE TABLE [OnionArchitecture].[Identity].[Users]
+  TRUNCATE TABLE [eShopSolution].[dbo].[AspNetRoles]
+  TRUNCATE TABLE [eShopSolution].[Identity].[Roles]
+  TRUNCATE TABLE [eShopSolution].[Identity].[UserRoles]
+  TRUNCATE TABLE [eShopSolution].[Identity].[Users]
   TRUNCATE TABLE Permissons
   TRUNCATE TABLE Products
+  TRUNCATE TABLE Categories
+  TRUNCATE TABLE Colors
+  TRUNCATE TABLE Capacities
 
   --sửa kiểu dữ liệu
   ALTER TABLE Products

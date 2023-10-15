@@ -130,7 +130,6 @@ namespace Persistence.DatabaseSeeder
             {
                 _context.Categories.Add(new Category() { Name = "Samsung", CreatedOn = DateTime.Now, CreatedBy = "38ac54ad-d3c7-488c-a2aa-77bb501c919a" });
                 _context.Categories.Add(new Category() { Name = "IPhone", CreatedOn = DateTime.Now, CreatedBy = "38ac54ad-d3c7-488c-a2aa-77bb501c919a" });
-                _context.Categories.Add(new Category() { Name = "Realme", CreatedOn = DateTime.Now, CreatedBy = "38ac54ad-d3c7-488c-a2aa-77bb501c919a" });
                 _context.Categories.Add(new Category() { Name = "Xiaomi", CreatedOn = DateTime.Now, CreatedBy = "38ac54ad-d3c7-488c-a2aa-77bb501c919a" });
                 _context.Categories.Add(new Category() { Name = "Oppo", CreatedOn = DateTime.Now, CreatedBy = "38ac54ad-d3c7-488c-a2aa-77bb501c919a" });
                 _context.Categories.Add(new Category() { Name = "Vivo", CreatedOn = DateTime.Now, CreatedBy = "38ac54ad-d3c7-488c-a2aa-77bb501c919a" });
