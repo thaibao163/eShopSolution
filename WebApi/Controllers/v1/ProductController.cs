@@ -40,6 +40,8 @@ namespace WebApi.Controllers.v1
 
         //Images
         [HttpPost("{productId}/images")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.ProductPermission, ConstantsAtr.Add)]
         public async Task<IActionResult> CreateImage(int productId, [FromForm] ProductImageCreateRequest request)
         {
             if (!ModelState.IsValid)
@@ -109,7 +111,7 @@ namespace WebApi.Controllers.v1
         [HttpPost]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.ProductPermission, ConstantsAtr.Add)]
-        public async Task<IActionResult> Create(/*[FromForm] */CreateProductCommand command)
+        public async Task<IActionResult> Create(CreateProductCommand command)
         {
             return Ok(await Mediator.Send(command));
         }

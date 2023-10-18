@@ -16,6 +16,5 @@
         public const string CapacityPermission = "/capacity";
         public const string ColorPermission = "/color";
         public const string CartPermission = "/cart";
-
     }
 }

@@ -1,12 +1,12 @@
-﻿using Application.Features.Capacities.Commands.DeleteCapacity;
+﻿using Application.Features.Capacities.Commands.CreateCapacity;
+using Application.Features.Capacities.Commands.DeleteCapacity;
+using Application.Features.Capacities.Commands.UpdateCapacity;
 using Application.Features.Capacities.Queries.GetAllCapacity;
-using Application.Features.Capacity.Queries.GetCapacityById;
+using Application.Features.Capacities.Queries.GetCapacityById;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Persistence.Constants;
 using WebApi.Attributes;
-using Application.Features.Capacities.Commands.CreateCapacity;
-using Application.Features.Capacities.Commands.UpdateCapacity;
 
 namespace WebApi.Controllers.v1
 {
@@ -41,6 +41,7 @@ namespace WebApi.Controllers.v1
         /// <summary>
         /// Create Capacity
         /// </summary>
+        /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
         [Authorize(AuthenticationSchemes = "Bearer")]

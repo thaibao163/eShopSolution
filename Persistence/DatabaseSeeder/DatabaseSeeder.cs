@@ -121,6 +121,8 @@ namespace Persistence.DatabaseSeeder
                 _context.Menus.Add(new Menu() { Name = "Role", Url = "/role" });
                 _context.Menus.Add(new Menu() { Name = "Visiting Guests", Url = "/visiting_guests" });
                 _context.Menus.Add(new Menu() { Name = "Cart", Url = "/cart" });
+                _context.Menus.Add(new Menu() { Name = "Color", Url = "/color" });
+                _context.Menus.Add(new Menu() { Name = "Capacity", Url = "/capacity" });
             }
         }
 
@@ -191,6 +193,8 @@ namespace Persistence.DatabaseSeeder
                 _context.Permissons.Add(new Permission() { RoleId = "4f277d56-ee2b-491a-a440-afcbbc15f207", MenuId = 5, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
                 _context.Permissons.Add(new Permission() { RoleId = "4f277d56-ee2b-491a-a440-afcbbc15f207", MenuId = 6, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
                 _context.Permissons.Add(new Permission() { RoleId = "4f277d56-ee2b-491a-a440-afcbbc15f207", MenuId = 7, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "4f277d56-ee2b-491a-a440-afcbbc15f207", MenuId = 8, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "4f277d56-ee2b-491a-a440-afcbbc15f207", MenuId = 9, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
 
                 //customer
                 _context.Permissons.Add(new Permission() { RoleId = "aecd34eb-3707-45fb-a4f0-5a224300d6db", MenuId = 1, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
@@ -200,6 +204,8 @@ namespace Persistence.DatabaseSeeder
                 _context.Permissons.Add(new Permission() { RoleId = "aecd34eb-3707-45fb-a4f0-5a224300d6db", MenuId = 5, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
                 _context.Permissons.Add(new Permission() { RoleId = "aecd34eb-3707-45fb-a4f0-5a224300d6db", MenuId = 6, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true }); 
                 _context.Permissons.Add(new Permission() { RoleId = "aecd34eb-3707-45fb-a4f0-5a224300d6db", MenuId = 7, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "aecd34eb-3707-45fb-a4f0-5a224300d6db", MenuId = 8, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "aecd34eb-3707-45fb-a4f0-5a224300d6db", MenuId = 9, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
 
                 //visiting guests
                 _context.Permissons.Add(new Permission() { RoleId = "4250c89b-f08c-4b6b-879d-d142518ef0c6", MenuId = 1, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
@@ -209,6 +215,8 @@ namespace Persistence.DatabaseSeeder
                 _context.Permissons.Add(new Permission() { RoleId = "4250c89b-f08c-4b6b-879d-d142518ef0c6", MenuId = 5, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
                 _context.Permissons.Add(new Permission() { RoleId = "4250c89b-f08c-4b6b-879d-d142518ef0c6", MenuId = 6, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false }); 
                 _context.Permissons.Add(new Permission() { RoleId = "4250c89b-f08c-4b6b-879d-d142518ef0c6", MenuId = 7, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "4250c89b-f08c-4b6b-879d-d142518ef0c6", MenuId = 8, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "4250c89b-f08c-4b6b-879d-d142518ef0c6", MenuId = 9, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
             }
         } 
     }

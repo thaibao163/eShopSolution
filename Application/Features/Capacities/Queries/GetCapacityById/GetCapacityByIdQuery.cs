@@ -4,7 +4,7 @@ using Domain.ViewModel.Categorys;
 using Domain.ViewModel.Colors;
 using MediatR;
 
-namespace Application.Features.Capacity.Queries.GetCapacityById
+namespace Application.Features.Capacities.Queries.GetCapacityById
 {
     public class GetCapacityByIdQuery : IRequest<IEnumerable<CapacityVM>>
     {
