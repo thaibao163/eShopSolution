@@ -39,7 +39,7 @@ namespace WebApi.Controllers.v1
         }
 
         /// <summary>
-        /// Create
+        /// Create Capacity
         /// </summary>
         /// <returns></returns>
         [HttpPost]

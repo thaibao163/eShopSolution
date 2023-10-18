@@ -30,14 +30,6 @@ namespace Application.Features.Capacities.Commands.CreateCapacity
                 IsDeleted = false,
             };
 
-
-            //var capacity = new Capacity()
-            //{
-            //    Name = command.Name,
-            //    CreatedOn = DateTime.Now,
-            //    CreatedBy = _currentUserRepository.Id,
-            //    IsDeleted = false,
-            //};
             await _capacityRepository.AddAsync(capacity);
             return $"Add successful capacity {capacity.Name}";
         }
