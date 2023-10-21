@@ -4,9 +4,11 @@
 - Cài đặt Microsoft Visual Studio
   
 #Hướng dẫn chạy code
+
 #B1: Vào Presentantion --> WebApi --> appsettings.json
   ![image](https://github.com/thaibao163/eShopSolution/assets/79973618/4816d3f7-ebf9-4d93-bbc1-aa18d34397e0)
   Tại dòng số 10 thay đổi Server="..." thành Server="Server name trên máy chủ của bạn"
+  
 #B2: Chọn Tools --> Nuget Package Manager --> Package Manager Console
 ![image](https://github.com/thaibao163/eShopSolution/assets/79973618/1154011d-1cde-45da-8cdb-f2bf7c9749a7)
 #B3: Chạy lần lượt 2 dòng lệnh
