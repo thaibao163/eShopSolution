@@ -24,10 +24,10 @@ Tại dòng số 10 thay đổi Server="..." thành Server="Server name trên m�
 ![image](https://github.com/thaibao163/eShopSolution/assets/79973618/5b17a259-bc90-402b-a9eb-ec30a8049191)
 
 ### B6: Sau khi chạy bạn vào SQLServer chạy dòng lệnh:
-TRUNCATE TABLE Permissons
+    TRUNCATE TABLE Permissons
 
 ### B7: Vào Infrastructure --> Persistence --> DatabaseSeeder --> DatabaseSeeder.cs
-    Mở SQLServer Select bảng Identity.Roles
+Mở SQLServer Select bảng Identity.Roles
     
 ### B8: Thay đổi RoleId thành Id tương ứng với bảng Identity.Roles
 ![image](https://github.com/thaibao163/eShopSolution/assets/79973618/dce46e24-db3f-4ae2-be78-eb0c621bac00)
