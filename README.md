@@ -14,6 +14,7 @@ Tại dòng số 10 thay đổi Server="..." thành Server="Server name trên m�
 
 ### B3: Chạy lần lượt 2 dòng lệnh
     add-migration Tên_File_Bạn_Muốn_Tạo
+    
     update-database
 ![image](https://github.com/thaibao163/eShopSolution/assets/79973618/e90cc5a9-f322-4459-ad3c-4ccc837cb310)
 
