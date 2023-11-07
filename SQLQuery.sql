@@ -28,6 +28,7 @@
   TRUNCATE TABLE [eShopSolution].[Identity].[UserRoles]
   TRUNCATE TABLE [eShopSolution].[Identity].[Users]
   TRUNCATE TABLE Permissons
+  TRUNCATE TABLE Menus
   TRUNCATE TABLE Products
   TRUNCATE TABLE Categories
   TRUNCATE TABLE Colors
