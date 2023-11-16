@@ -1,13 +1,14 @@
 ﻿using Application.Features.Orders.Commands.CreateOrder;
 using AutoMapper;
+using Domain.Entities;
 
-namespace Application.Mappings.Category
+namespace Application.Mappings.Categorys
 {
     public class CategoryMappings : Profile
     {
         public CategoryMappings()
         {
-            CreateMap<CreateOrderCommand, Domain.Entities.Category>();
+            CreateMap<CreateOrderCommand, Category>();
         }
     }
 }

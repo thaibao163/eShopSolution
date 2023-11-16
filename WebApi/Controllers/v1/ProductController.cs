@@ -4,6 +4,10 @@ using Application.Features.Products.Commands.UpdateProduct;
 using Application.Features.Products.Queries.GetAllProducts;
 using Application.Features.Products.Queries.GetProductById;
 using Application.Features.Products.Queries.QuantityProductSold;
+using Application.Mappings;
+using Application.Specifications;
+using Domain.Entities;
+using Domain.Specifications;
 using Domain.ViewModel.Images;
 using Domain.ViewModel.Products;
 using Microsoft.AspNetCore.Authorization;
@@ -30,13 +34,6 @@ namespace WebApi.Controllers.v1
             _hostingEnvironment = hostingEnvironment;
             _context = context;
         }
-
-        //[HttpPost("/image")]
-        //public async Task<IActionResult> Create1([FromForm] ProductCreateRequest request)
-        //{
-        //    var result = await ProductRepository.Create(request);
-        //    return Ok(result);
-        //}
 
         //Images
         [HttpPost("{productId}/images")]
@@ -79,6 +76,23 @@ namespace WebApi.Controllers.v1
         {
             return Ok(await Mediator.Send(new GetAllProductsQuery()));
         }
+
+        /// <summary>
+        /// Sort Product
+        /// </summary>
+        /// <param name="sort"{priceAsc,priceDesc,default}></param>
+        /// <returns></returns>
+        [HttpGet("sort")]
+        public async Task<ActionResult<Pagination<ProductVM>>> GetProducts([FromQuery] ProductSpecParams productParams)
+        {
+            var spec = new ProductsWithTypesAndBrandsSpecification(productParams);
+            var countSpec = new ProductWithFiltersForCountSpecification(productParams);
+            var totalItems = await ProductRepository.CountAsync(countSpec);
+            var products = await ProductRepository.ListAsync(spec);
+            var data = Mapper.Map<List<Product>, List<ProductVM>>(products);
+            return Ok(new Pagination<ProductVM>(productParams.PageIndex, productParams.PageSize, totalItems,data));
+        }
+
 
         /// <summary>
         /// GetSumQuantity

@@ -1,11 +1,14 @@
 ﻿using Application.Interfaces;
+using Domain.Common;
+using Domain.Specifications;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
+using Persistence.Specifications;
 using System.Linq.Expressions;
 
 namespace Persistence.Repositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         private readonly ApplicationDbContext _context;
 
@@ -53,6 +56,31 @@ namespace Persistence.Repositories
         public async Task<T?> FindAsync(Expression<Func<T, bool>> includeProperties)
         {
             return await _context.Set<T>().Where(includeProperties).SingleOrDefaultAsync();
+        }
+
+        public async Task<List<T>> ListAsync(ISpecification<T> spec)
+        {
+            return await ApplySpecification(spec).ToListAsync();
+        }
+
+        private IQueryable<T> ApplySpecification(ISpecification<T> spec)
+        {
+            return SpecificationEvaluator<T>.GetQuery(_context.Set<T>().AsQueryable(), spec);
+        }
+
+        public async Task<IReadOnlyList<T>> GetPagedReponseAsync(int pageNumber, int pageSize)
+        {
+            return await _context
+                .Set<T>()
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
+        public async Task<int> CountAsync(ISpecification<T> spec)
+        {
+            return await ApplySpecification(spec).CountAsync();
         }
     }
 }

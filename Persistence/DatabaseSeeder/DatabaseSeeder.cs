@@ -185,38 +185,38 @@ namespace Persistence.DatabaseSeeder
         {
             if (!_context.Permissons.Any())
             {
-                //role
-                _context.Permissons.Add(new Permission() { RoleId = "4f277d56-ee2b-491a-a440-afcbbc15f207", MenuId = 1, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
-                _context.Permissons.Add(new Permission() { RoleId = "4f277d56-ee2b-491a-a440-afcbbc15f207", MenuId = 2, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
-                _context.Permissons.Add(new Permission() { RoleId = "4f277d56-ee2b-491a-a440-afcbbc15f207", MenuId = 3, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
-                _context.Permissons.Add(new Permission() { RoleId = "4f277d56-ee2b-491a-a440-afcbbc15f207", MenuId = 4, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
-                _context.Permissons.Add(new Permission() { RoleId = "4f277d56-ee2b-491a-a440-afcbbc15f207", MenuId = 5, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
-                _context.Permissons.Add(new Permission() { RoleId = "4f277d56-ee2b-491a-a440-afcbbc15f207", MenuId = 6, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
-                _context.Permissons.Add(new Permission() { RoleId = "4f277d56-ee2b-491a-a440-afcbbc15f207", MenuId = 7, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
-                _context.Permissons.Add(new Permission() { RoleId = "4f277d56-ee2b-491a-a440-afcbbc15f207", MenuId = 8, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
-                _context.Permissons.Add(new Permission() { RoleId = "4f277d56-ee2b-491a-a440-afcbbc15f207", MenuId = 9, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                //admin
+                _context.Permissons.Add(new Permission() { RoleId = "ac8094f0-5357-4353-9460-98bece340c9d", MenuId = 1, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "ac8094f0-5357-4353-9460-98bece340c9d", MenuId = 2, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "ac8094f0-5357-4353-9460-98bece340c9d", MenuId = 3, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "ac8094f0-5357-4353-9460-98bece340c9d", MenuId = 4, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "ac8094f0-5357-4353-9460-98bece340c9d", MenuId = 5, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "ac8094f0-5357-4353-9460-98bece340c9d", MenuId = 6, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "ac8094f0-5357-4353-9460-98bece340c9d", MenuId = 7, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "ac8094f0-5357-4353-9460-98bece340c9d", MenuId = 8, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "ac8094f0-5357-4353-9460-98bece340c9d", MenuId = 9, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
 
                 //customer
-                _context.Permissons.Add(new Permission() { RoleId = "aecd34eb-3707-45fb-a4f0-5a224300d6db", MenuId = 1, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = "aecd34eb-3707-45fb-a4f0-5a224300d6db", MenuId = 2, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = "aecd34eb-3707-45fb-a4f0-5a224300d6db", MenuId = 3, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = true });
-                _context.Permissons.Add(new Permission() { RoleId = "aecd34eb-3707-45fb-a4f0-5a224300d6db", MenuId = 4, CanAccess = false, CanAdd = true, CanDelete = true, CanUpdate = true });
-                _context.Permissons.Add(new Permission() { RoleId = "aecd34eb-3707-45fb-a4f0-5a224300d6db", MenuId = 5, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = "aecd34eb-3707-45fb-a4f0-5a224300d6db", MenuId = 6, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true }); 
-                _context.Permissons.Add(new Permission() { RoleId = "aecd34eb-3707-45fb-a4f0-5a224300d6db", MenuId = 7, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
-                _context.Permissons.Add(new Permission() { RoleId = "aecd34eb-3707-45fb-a4f0-5a224300d6db", MenuId = 8, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = "aecd34eb-3707-45fb-a4f0-5a224300d6db", MenuId = 9, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "8a0507cf-2f4b-470d-95b8-6105240a2a06", MenuId = 1, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "8a0507cf-2f4b-470d-95b8-6105240a2a06", MenuId = 2, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "8a0507cf-2f4b-470d-95b8-6105240a2a06", MenuId = 3, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "8a0507cf-2f4b-470d-95b8-6105240a2a06", MenuId = 4, CanAccess = false, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "8a0507cf-2f4b-470d-95b8-6105240a2a06", MenuId = 5, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "8a0507cf-2f4b-470d-95b8-6105240a2a06", MenuId = 6, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true }); 
+                _context.Permissons.Add(new Permission() { RoleId = "8a0507cf-2f4b-470d-95b8-6105240a2a06", MenuId = 7, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = "8a0507cf-2f4b-470d-95b8-6105240a2a06", MenuId = 8, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "8a0507cf-2f4b-470d-95b8-6105240a2a06", MenuId = 9, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
 
                 //visiting guests
-                _context.Permissons.Add(new Permission() { RoleId = "4250c89b-f08c-4b6b-879d-d142518ef0c6", MenuId = 1, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = "4250c89b-f08c-4b6b-879d-d142518ef0c6", MenuId = 2, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = "4250c89b-f08c-4b6b-879d-d142518ef0c6", MenuId = 3, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = "4250c89b-f08c-4b6b-879d-d142518ef0c6", MenuId = 4, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = "4250c89b-f08c-4b6b-879d-d142518ef0c6", MenuId = 5, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = "4250c89b-f08c-4b6b-879d-d142518ef0c6", MenuId = 6, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false }); 
-                _context.Permissons.Add(new Permission() { RoleId = "4250c89b-f08c-4b6b-879d-d142518ef0c6", MenuId = 7, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = "4250c89b-f08c-4b6b-879d-d142518ef0c6", MenuId = 8, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = "4250c89b-f08c-4b6b-879d-d142518ef0c6", MenuId = 9, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "3731e133-07b3-4c2e-8f8a-8067dc947770", MenuId = 1, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "3731e133-07b3-4c2e-8f8a-8067dc947770", MenuId = 2, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "3731e133-07b3-4c2e-8f8a-8067dc947770", MenuId = 3, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "3731e133-07b3-4c2e-8f8a-8067dc947770", MenuId = 4, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "3731e133-07b3-4c2e-8f8a-8067dc947770", MenuId = 5, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "3731e133-07b3-4c2e-8f8a-8067dc947770", MenuId = 6, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false }); 
+                _context.Permissons.Add(new Permission() { RoleId = "3731e133-07b3-4c2e-8f8a-8067dc947770", MenuId = 7, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "3731e133-07b3-4c2e-8f8a-8067dc947770", MenuId = 8, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = "3731e133-07b3-4c2e-8f8a-8067dc947770", MenuId = 9, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
             }
         } 
     }

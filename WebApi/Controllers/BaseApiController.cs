@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces.Repositories;
+using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Persistence.Services.Users;
@@ -23,5 +24,8 @@ namespace WebApi.Controllers
 
         private IOrderRepository _orderRepository;
         protected IOrderRepository OrderRepository => _orderRepository ??= HttpContext.RequestServices.GetService<IOrderRepository>();
+
+        private IMapper _mapper;
+        protected IMapper Mapper => _mapper ??= HttpContext.RequestServices.GetService<IMapper>();
     }
 }

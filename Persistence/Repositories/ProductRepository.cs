@@ -70,7 +70,7 @@ namespace Persistence.Repositories
                                      Price = p.Price,
                                      Quantity = p.Quantity,
                                      ColorName = cl.Name,
-                                     SizeName = s.Name,
+                                     CapacityName = s.Name,
                                      ImagePath = i.ImagePath,
                                      CreatedOn=p.CreatedOn
                                  }).ToListAsync();
@@ -94,7 +94,7 @@ namespace Persistence.Repositories
                                      Price = p.Price,
                                      Quantity = p.Quantity,
                                      ColorName=cl.Name,   
-                                     SizeName=s.Name,
+                                     CapacityName=s.Name,
                                      ImagePath = i.ImagePath,
                                  }).ToListAsync();
             return product;
@@ -116,8 +116,8 @@ namespace Persistence.Repositories
             //Save image
             if (command.ThumbnailImage != null)
             {
-                product.Images = new List<Image>()
-                {
+                //product.Images = new List<Image>()
+                //{
                     new Image()
                     {
                         FileSize = command.ThumbnailImage.Length,
@@ -125,7 +125,7 @@ namespace Persistence.Repositories
                         CreatedOn = DateTime.Now,
                         CreatedBy = _currentUserRepository.Id,
                         IsDeleted = false
-                    }
+                    //}
                 };
             }
             _context.Products.Add(product);

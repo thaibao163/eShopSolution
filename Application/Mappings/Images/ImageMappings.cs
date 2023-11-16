@@ -8,8 +8,6 @@ namespace Application.Mappings.Images
     {
         public ImageMappings()
         {
-            CreateMap<Image, ProductVM>()
-                .ForMember(i => i.ImagePath, o => o.MapFrom<ProductUrlResolver>());
         }
     }
 }
