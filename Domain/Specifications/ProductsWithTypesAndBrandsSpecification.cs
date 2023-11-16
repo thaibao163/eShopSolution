@@ -29,6 +29,12 @@ namespace Domain.Specifications
                     case "priceDesc":
                         AddOrderByDescending(p => p.Price);
                         break;
+                    case "category":
+                        AddOrderBy(ca=>ca.Category.Name); 
+                        break;
+                    case "color":
+                        AddOrderBy(co => co.Color.Name);
+                        break;
                     default:
                         AddOrderBy(n => n.Name);
                         break;
