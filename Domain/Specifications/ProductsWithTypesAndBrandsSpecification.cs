@@ -10,7 +10,8 @@ namespace Domain.Specifications
 {
     public class ProductsWithTypesAndBrandsSpecification : BaseSpecification<Product>
     {
-        public ProductsWithTypesAndBrandsSpecification(ProductSpecParams productParams) : base()
+        public ProductsWithTypesAndBrandsSpecification(ProductSpecParams productParams) : base(x=>
+            (string.IsNullOrEmpty(productParams.Search)||x.Name.ToLower().Contains(productParams.Search)))
         {
             AddInclude(x => x.Capacity);
             AddInclude(x => x.Category);
