@@ -4,7 +4,7 @@ using Application.Features.Products.Commands.UpdateProduct;
 using Application.Features.Products.Queries.GetAllProducts;
 using Application.Features.Products.Queries.GetProductById;
 using Application.Features.Products.Queries.QuantityProductSold;
-using Application.Mappings;
+using Application.Parameters;
 using Application.Specifications;
 using Domain.Entities;
 using Domain.Specifications;
@@ -67,22 +67,22 @@ namespace WebApi.Controllers.v1
             return Ok(image);
         }
 
-        /// <summary>
-        /// GetAllProduct
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet("product")]
-        public async Task<IActionResult> GetAllProduct()
-        {
-            return Ok(await Mediator.Send(new GetAllProductsQuery()));
-        }
+        ///// <summary>
+        ///// GetAllProduct
+        ///// </summary>
+        ///// <returns></returns>
+        //[HttpGet("product")]
+        //public async Task<IActionResult> GetAllProduct()
+        //{
+        //    return Ok(await Mediator.Send(new GetAllProductsQuery()));
+        //}
 
         /// <summary>
-        /// Sort Product
+        /// Get All Products
         /// </summary>
-        /// <param name="sort"{priceAsc,priceDesc,default}></param>
+        /// <param name="productParams"></param>
         /// <returns></returns>
-        [HttpGet("sort")]
+        [HttpGet()]
         public async Task<ActionResult<Pagination<ProductVM>>> GetProducts([FromQuery] ProductSpecParams productParams)
         {
             var spec = new ProductsWithTypesAndBrandsSpecification(productParams);

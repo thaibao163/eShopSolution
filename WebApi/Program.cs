@@ -148,11 +148,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors();
+
 app.UseRouting();
 
 app.UseStaticFiles();
 
-app.UseCors();
 
 app.UseAuthentication();
 

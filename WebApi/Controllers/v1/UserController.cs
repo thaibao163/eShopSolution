@@ -73,23 +73,23 @@ namespace WebApi.Controllers.v1
         /// <returns></returns>
         [HttpPut("ChangePassword")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        public async Task<IActionResult> Change(string id, /*[FromForm]*/ ChangePasswordRequest command)
+        public async Task<IActionResult> Change(string id, [FromForm] ChangePasswordRequest command)
         {
             var result = await UserRepository.ChangePassword(id, command);
             return Ok(result);
         }
 
-        /// <summary>
-        /// ForgetPassword
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        [HttpPost("ForgetPassword")]
-        public async Task<IActionResult> ForgetPassword(/*[FromForm]*/ ForgerPasswordRequest command)
-        {
-            var result = await UserRepository.ForgetPassword(command);
-            return Ok(result);
-        }
+        ///// <summary>
+        ///// ForgetPassword
+        ///// </summary>
+        ///// <param name="model"></param>
+        ///// <returns></returns>
+        //[HttpPost("ForgetPassword")]
+        //public async Task<IActionResult> ForgetPassword(/*[FromForm]*/ ForgerPasswordRequest command)
+        //{
+        //    var result = await UserRepository.ForgetPassword(command);
+        //    return Ok(result);
+        //}
 
         /// <summary>
         /// ResetPassword
@@ -97,7 +97,7 @@ namespace WebApi.Controllers.v1
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost("ResetPassword")]
-        public async Task<IActionResult> ResetPassword(/*[FromForm]*/ ResetPasswordRequest request)
+        public async Task<IActionResult> ResetPassword([FromForm] ResetPasswordRequest request)
         {
             var result = await UserRepository.ResetPassword(request);
             return Ok(result);

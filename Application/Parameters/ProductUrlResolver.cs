@@ -22,7 +22,7 @@ namespace Application.Mappings
         {
             if (!string.IsNullOrEmpty(source.ImagePath))
             {
-                return _config["ApiUrl"] + source.ImagePath;
+                return "http://localhost:5187" + source.ImagePath;
             }
             return null;
         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Mappings
+namespace Application.Parameters
 {
     public class Pagination<T> where T : class
     {
