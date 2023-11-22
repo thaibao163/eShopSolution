@@ -8,7 +8,7 @@ namespace Application.Interfaces.Repositories
     {
         Task<IEnumerable<ProductVM>> GetAllProducts();
 
-        Task<IEnumerable<ProductVM>> GetProductById(int Id);
+        Task<ProductVM> GetProductById(int Id);
 
         Task<int> Create(ProductCreateRequest request);
 

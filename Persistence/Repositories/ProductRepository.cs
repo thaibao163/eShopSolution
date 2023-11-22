@@ -72,12 +72,12 @@ namespace Persistence.Repositories
                                      ColorName = cl.Name,
                                      CapacityName = s.Name,
                                      ImagePath = i.ImagePath,
-                                     CreatedOn=p.CreatedOn
+                                     CreatedOn = p.CreatedOn
                                  }).ToListAsync();
             return product;
         }
 
-        public async Task<IEnumerable<ProductVM>> GetProductById(int Id)
+        public async Task<ProductVM> GetProductById(int Id)
         {
             var product = await (from p in _context.Products
                                  join c in _context.Categories on p.CategoryId equals c.Id
@@ -93,10 +93,10 @@ namespace Persistence.Repositories
                                      Description = p.Description,
                                      Price = p.Price,
                                      Quantity = p.Quantity,
-                                     ColorName=cl.Name,   
-                                     CapacityName=s.Name,
+                                     ColorName = cl.Name,
+                                     CapacityName = s.Name,
                                      ImagePath = i.ImagePath,
-                                 }).ToListAsync();
+                                 }).FirstOrDefaultAsync();
             return product;
         }
 
@@ -118,13 +118,13 @@ namespace Persistence.Repositories
             {
                 //product.Images = new List<Image>()
                 //{
-                    new Image()
-                    {
-                        FileSize = command.ThumbnailImage.Length,
-                        ImagePath = await this.SaveFile(command.ThumbnailImage),
-                        CreatedOn = DateTime.Now,
-                        CreatedBy = _currentUserRepository.Id,
-                        IsDeleted = false
+                new Image()
+                {
+                    FileSize = command.ThumbnailImage.Length,
+                    ImagePath = await this.SaveFile(command.ThumbnailImage),
+                    CreatedOn = DateTime.Now,
+                    CreatedBy = _currentUserRepository.Id,
+                    IsDeleted = false
                     //}
                 };
             }
