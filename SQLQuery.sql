@@ -8,12 +8,12 @@
   select *from Carts
   select *from CartDetails
    select *from Reviews
-  select *from [OnionArchitecture].[Identity].[Roles]
-  select *from [OnionArchitecture].[dbo].[AspNetRoles]
-  select *from [OnionArchitecture].[Identity].[UserRoles]	
-    select *from [OnionArchitecture].[Identity].[Users]
+  select *from [eShopSolutionTest].[Identity].[Roles]
+  select *from [eShopSolutionTest].[dbo].[AspNetRoles]
+  select *from [eShopSolutionTest].[Identity].[UserRoles]	
+    select *from [eShopSolutionTest].[Identity].[Users]
 	select *from Images
-	select *from Sizes
+	select *from Capacities
 	select *from Colors
 
   update OrderDetails
@@ -27,6 +27,11 @@
   TRUNCATE TABLE [OnionArchitecture].[Identity].[Roles]
   TRUNCATE TABLE [OnionArchitecture].[Identity].[UserRoles]
   TRUNCATE TABLE [OnionArchitecture].[Identity].[Users]
+  TRUNCATE TABLE Permissons
+  TRUNCATE TABLE Capacities
+  TRUNCATE TABLE Colors
+  TRUNCATE TABLE Categories
+  TRUNCATE TABLE Products
   TRUNCATE TABLE Permissons
 
   --sửa kiểu dữ liệu

@@ -3,7 +3,7 @@ using Domain.ViewModel.Sizes;
 
 namespace Application.Interfaces.Repositories
 {
-    public interface ISizeRepository : IGenericRepository<SizeProduct>
+    public interface ISizeRepository : IGenericRepository<Size>
     {
         Task<IEnumerable<SizeVM>> GetAllSizeProducts();
 

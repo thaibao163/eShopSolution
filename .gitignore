@@ -57,6 +57,16 @@ dlldata.c
 # Benchmark Results
 BenchmarkDotNet.Artifacts/
 
+# Clean Architecture common ignores
+**/Migrations/
+**/wwwroot/
+**/Secrets/
+**/StaticFiles/
+
+# Environment settings
+*.env
+appsettings.*.Development.json
+
 # .NET Core
 project.lock.json
 project.fragment.lock.json

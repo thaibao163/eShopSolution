@@ -3,11 +3,10 @@ using Domain.Entities;
 using Domain.ViewModel.Sizes;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Contexts;
-using System.Drawing;
 
 namespace Persistence.Repositories
 {
-    public class SizeRepository : GenericRepository<SizeProduct>, ISizeRepository
+    public class SizeRepository : GenericRepository<Size>, ISizeRepository
     {
         private readonly ApplicationDbContext _context;
 

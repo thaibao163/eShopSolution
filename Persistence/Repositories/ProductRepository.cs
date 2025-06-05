@@ -58,8 +58,8 @@ namespace Persistence.Repositories
             var product = await (from p in _context.Products
                                  join c in _context.Categories on p.CategoryId equals c.Id
                                  join i in _context.Images on p.Id equals i.ProductId
-                                 join cl in _context.Colors on p.ColorID equals cl.Id
-                                 join s in _context.Sizes on p.SizeID equals s.Id
+                                 join cl in _context.Colors on p.ColorId equals cl.Id
+                                 join s in _context.Sizes on p.SizeId equals s.Id
                                  join u in _context.Users on p.CreatedBy equals u.Id
                                  where p.IsDeleted == false
                                  select new ProductVM()
@@ -83,8 +83,8 @@ namespace Persistence.Repositories
         {
             var product = await (from p in _context.Products
                                  join c in _context.Categories on p.CategoryId equals c.Id
-                                 join cl in _context.Colors on p.ColorID equals cl.Id
-                                 join s in _context.Sizes on p.SizeID equals s.Id
+                                 join cl in _context.Colors on p.ColorId equals cl.Id
+                                 join s in _context.Sizes on p.SizeId equals s.Id
                                  join i in _context.Images on p.Id equals i.ProductId
                                  where Id == p.Id && p.IsDeleted == false
                                  select new ProductVM()

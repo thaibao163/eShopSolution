@@ -5,8 +5,6 @@ namespace Domain.Entities
 {
     public class Product : BaseEntity
     {
-        public int CategoryId { get; set; }
-
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -17,9 +15,14 @@ namespace Domain.Entities
 
         public int Quantity { get; set; }
 
-        public int SizeID { get; set; }
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
 
-        public int ColorID { get; set; }
+        public int SizeId { get; set; }
+        public Size Size { get; set; }
+
+        public int ColorId { get; set; }
+        public Color Color { get; set; }
 
         public List<Image> Images { get; set; }
     }

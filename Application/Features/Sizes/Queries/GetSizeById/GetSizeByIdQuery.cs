@@ -1,6 +1,4 @@
 ﻿using Application.Interfaces.Repositories;
-using Domain.ViewModel.Categorys;
-using Domain.ViewModel.Colors;
 using Domain.ViewModel.Sizes;
 using MediatR;
 

@@ -18,8 +18,8 @@ namespace WebApi.Controllers.v1
         /// GetAll
         /// </summary>
         /// <returns></returns>
-        //[Authorize(AuthenticationSchemes = "Bearer")]
-        //[CustomAuthorizeAtrtibute(ConstantsAtr.SizePermission, ConstantsAtr.Access)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.SizePermission, ConstantsAtr.Access)]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -30,8 +30,8 @@ namespace WebApi.Controllers.v1
         /// Get By Id
         /// </summary>
         /// <returns></returns>
-        //[Authorize(AuthenticationSchemes = "Bearer")]
-        //[CustomAuthorizeAtrtibute(ConstantsAtr.SizePermission, ConstantsAtr.Access)]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.SizePermission, ConstantsAtr.Access)]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {

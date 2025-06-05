@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Persistence.DatabaseSeeder;
-using System.Reflection.Emit;
 
 namespace Persistence.Contexts
 {
@@ -36,7 +34,7 @@ namespace Persistence.Contexts
 
         public DbSet<Image> Images { get; set; }
 
-        public DbSet<SizeProduct> Sizes { get; set; }
+        public DbSet<Size> Sizes { get; set; }
 
         public DbSet<Color> Colors { get; set; }
 

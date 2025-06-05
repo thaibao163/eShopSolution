@@ -22,7 +22,7 @@ namespace Application.Features.Sizes.Commands.CreateSize
 
         public async Task<string> Handle(CreateSizeCommand command, CancellationToken cancellationToken)
         {
-            var size = new SizeProduct()
+            var size = new Size()
             {
                 Name = command.Name,
                 CreatedOn = DateTime.Now,

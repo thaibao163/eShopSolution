@@ -24,11 +24,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    //c.IncludeXmlComments(string.Format(@"{0}\NinePlus.ERP.WebApi.xml", System.AppDomain.CurrentDomain.BaseDirectory));
     c.SwaggerDoc("v1", new OpenApiInfo
     {
         Version = "v1",
-        Title = "Clean Architecture - .Net Fo Rẻ Vờ Ỉn Mỳ Héart",
+        Title = "Clean Architecture - .For Revision My Heart ",
         Description = "This Api will be responsible for overall data distribution and authorization."
     });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
