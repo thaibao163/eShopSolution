@@ -26,17 +26,17 @@ namespace WebApi.Controllers.v1
             _context = context;
         }
 
-        ///// <summary>
-        ///// GetAll
-        ///// </summary>
-        ///// <returns></returns>
-        //[HttpGet("/orderDetail")]
-        //[Authorize(AuthenticationSchemes = "Bearer")]
-        //[CustomAuthorizeAtrtibute(ConstantsAtr.OrderPermission, ConstantsAtr.Access)]
-        //public async Task<IActionResult> GetAll()
-        //{
-        //    return Ok(await Mediator.Send(new GetAllOrdersDetailQuery()));
-        //}
+        /// <summary>
+        /// GetAll
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("/orderDetail")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [CustomAuthorizeAtrtibute(ConstantsAtr.OrderPermission, ConstantsAtr.Access)]
+        public async Task<IActionResult> GetAll()
+        {
+            return Ok(await Mediator.Send(new GetAllOrdersDetailQuery()));
+        }
 
         /// <summary>
         /// Get Quantity
@@ -55,12 +55,12 @@ namespace WebApi.Controllers.v1
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
+        [HttpGet("{idUser}")]
         [Authorize(AuthenticationSchemes = "Bearer")]
         [CustomAuthorizeAtrtibute(ConstantsAtr.OrderPermission, ConstantsAtr.Access)]
-        public async Task<IActionResult> GetById(string id)
+        public async Task<IActionResult> GetById(string idUser)
         {
-            return Ok(await Mediator.Send(new GetOrderDetailByIdQuery { Id = id }));
+            return Ok(await Mediator.Send(new GetOrderDetailByIdQuery { Id = idUser }));
         }
 
         ///// <summary>

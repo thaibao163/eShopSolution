@@ -72,7 +72,7 @@ namespace WebApi.Controllers.v1
         /// GetAllProduct
         /// </summary>
         /// <returns></returns>
-        [HttpGet("product")]
+        [HttpGet]
         public async Task<IActionResult> GetAllProduct()
         {
             return Ok(await Mediator.Send(new GetAllProductsQuery()));

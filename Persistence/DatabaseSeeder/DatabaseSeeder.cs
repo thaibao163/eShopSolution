@@ -113,13 +113,19 @@ namespace Persistence.DatabaseSeeder
         {
             if (!_context.Menus.Any())
             {
-                _context.Menus.Add(new Menu() { Name = "Product", Url = "/product" });
+                _context.Menus.Add(new Menu() { Name = "Administrator", Url = "/administrator" });
+                _context.Menus.Add(new Menu() { Name = "Cart", Url = "/cart" });
                 _context.Menus.Add(new Menu() { Name = "Category", Url = "/category" });
-                _context.Menus.Add(new Menu() { Name = "User", Url = "/user" });
+                _context.Menus.Add(new Menu() { Name = "Color", Url = "/color" });
+                _context.Menus.Add(new Menu() { Name = "Mail", Url = "/mail" });
                 _context.Menus.Add(new Menu() { Name = "Order", Url = "/order" });
+                _context.Menus.Add(new Menu() { Name = "OrderDetail", Url = "/orderDetail" });
+                _context.Menus.Add(new Menu() { Name = "Product", Url = "/product" });
+                _context.Menus.Add(new Menu() { Name = "Review", Url = "/review" });
+                _context.Menus.Add(new Menu() { Name = "Size", Url = "/size" });
+                _context.Menus.Add(new Menu() { Name = "User", Url = "/user" });
                 _context.Menus.Add(new Menu() { Name = "Role", Url = "/role" });
                 _context.Menus.Add(new Menu() { Name = "Seller", Url = "/seller" });
-                _context.Menus.Add(new Menu() { Name = "Cart", Url = "/cart" });
             }
         }
 
@@ -188,26 +194,44 @@ namespace Persistence.DatabaseSeeder
                 _context.Permissons.Add(new Permission() { RoleId = admin, MenuId = 5, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
                 _context.Permissons.Add(new Permission() { RoleId = admin, MenuId = 6, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
                 _context.Permissons.Add(new Permission() { RoleId = admin, MenuId = 7, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = admin, MenuId = 8, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = admin, MenuId = 9, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = admin, MenuId = 10, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = admin, MenuId = 11, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = admin, MenuId = 12, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = admin, MenuId = 13, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
 
                 //seller
                 var seller = "65f4242f-7f4b-4bb6-b1d5-fd87aacc8d7c";
-                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 1, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
-                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 2, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 3, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = true });
-                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 4, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 1, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 2, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 3, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 4, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
                 _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 5, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 6, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
-                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 7, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 6, CanAccess = true, CanAdd = true, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 7, CanAccess = true, CanAdd = true, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 8, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 9, CanAccess = true, CanAdd = true, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 10, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 11, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 12, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = seller, MenuId = 13, CanAccess = true, CanAdd = true, CanDelete = false, CanUpdate = true });
 
                 //customer
                 var customer = "e033fe92-fdf3-4a55-8efc-913e10aaaa99";
-                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 1, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 2, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 3, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = true });
-                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 4, CanAccess = false, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 1, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 2, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 3, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 4, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
                 _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 5, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
-                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 6, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
-                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 7, CanAccess = true, CanAdd = true, CanDelete = true, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 6, CanAccess = true, CanAdd = true, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 7, CanAccess = true, CanAdd = true, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 8, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 9, CanAccess = true, CanAdd = true, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 10, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 11, CanAccess = true, CanAdd = false, CanDelete = false, CanUpdate = true });
+                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 12, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
+                _context.Permissons.Add(new Permission() { RoleId = customer, MenuId = 13, CanAccess = false, CanAdd = false, CanDelete = false, CanUpdate = false });
             }
         }
     }
