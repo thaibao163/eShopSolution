@@ -1,6 +1,7 @@
 ﻿using Domain.Exceptions;
 using Domain.ViewModel.Roles;
 using Domain.ViewModel.Users;
+using System.Security.Claims;
 
 namespace Persistence.Services.Users
 {
@@ -18,7 +19,7 @@ namespace Persistence.Services.Users
 
         Task<string> Update(string id, UserUpdateRequest request);
 
-        Task<AuthenticationVM> ChangePassword(string id, ChangePasswordRequest request);
+        Task<AuthenticationVM> ChangePassword(ClaimsPrincipal userClaims, ChangePasswordRequest request);
 
         Task<AuthenticationVM> ForgetPassword(ForgerPasswordRequest request);
 

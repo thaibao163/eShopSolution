@@ -86,9 +86,9 @@ namespace WebApi.Controllers.v1
         /// <returns></returns>
         [HttpPut("ChangePassword")]
         [Authorize(AuthenticationSchemes = "Bearer")]
-        public async Task<IActionResult> Change(string id, /*[FromForm]*/ ChangePasswordRequest command)
+        public async Task<IActionResult> Change( [FromForm] ChangePasswordRequest command)
         {
-            var result = await UserRepository.ChangePassword(id, command);
+            var result = await UserRepository.ChangePassword(User, command);
             return Ok(result);
         }
 

@@ -285,9 +285,10 @@ namespace Persistence.Services.Users
             }
         }
 
-        public async Task<AuthenticationVM> ChangePassword(string id, ChangePasswordRequest request)
+        public async Task<AuthenticationVM> ChangePassword(ClaimsPrincipal userClaims, ChangePasswordRequest request)
         {
-            var idUser = await _userManager.FindByIdAsync(id.ToString());
+            var currentUserId = userClaims.FindFirstValue(ClaimTypes.Sid);
+            var idUser = await _userManager.FindByIdAsync(currentUserId);
             var authenRequest = new AuthenticationVM();
             if (idUser == null)
             {
