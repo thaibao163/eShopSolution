@@ -66,6 +66,7 @@ BenchmarkDotNet.Artifacts/
 # Environment settings
 *.env
 appsettings.*.Development.json
+appsettings*.json
 
 # .NET Core
 project.lock.json
