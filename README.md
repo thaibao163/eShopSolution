@@ -30,40 +30,13 @@ This is a backend web application for an e-commerce system, built using ASP.NET 
 
 ## ▶️ Getting Started
 
-### Prerequisites
+# Clone this repository:
 
-- Visual Studio 2022+
-- .NET 6 SDK
-- SQL Server
+    git clone https://github.com/thaibao163/eShopSolution.git
 
-### Run the app locally
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/thaibao163/eShopSolution.git
-
-2. Open the solution eShopSolution.sln in Visual Studio.
-
-3. Update the connection string in appsettings.json:
-    "ConnectionStrings": {
-      "DefaultConnection": "Server=.;Database=eShopDB;Trusted_Connection=True;"
-    }
-
-4. Open Package Manager Console and run:
-    Update-Database
-
-5. Press F5 to run the Web API.
-
-📌 Future Improvements
-Add unit and integration tests
-
-Add email/payment service
-
-
-# Website quản lí Thương mại điện tử
-***
-- Cài đặt SQLServer
-- Cài đặt Microsoft Visual Studio
+    - Visual Studio 2022+
+    - .NET 6 SDK
+    - SQL Server
   
 ## Hướng dẫn chạy code
 
@@ -101,6 +74,12 @@ Mở SQLServer Select bảng Identity.Roles
 - Tài khoản: superadmin
 - Mật khẩu: admin
 
+
+📌 Future Improvements
+
+    Add unit and integration tests
+
+    Add email/payment service
 
 
 
