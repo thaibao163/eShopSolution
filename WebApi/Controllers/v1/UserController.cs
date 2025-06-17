@@ -58,7 +58,7 @@ namespace WebApi.Controllers.v1
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost("Login")]
-        public async Task<IActionResult> Login([FromForm] LoginRequest command)
+        public async Task<IActionResult> Login(LoginRequest command)
         {
             var result = await UserRepository.LoginUser(command);
             return Ok(result);

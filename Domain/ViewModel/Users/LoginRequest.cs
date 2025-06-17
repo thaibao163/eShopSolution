@@ -4,7 +4,7 @@ namespace Domain.ViewModel.Users
 {
     public class LoginRequest
     {
-        public string UserName { get; set; }
+        public string Login { get; set; }
 
         [Display(Name = "Password")]
         [DataType(DataType.Password)]

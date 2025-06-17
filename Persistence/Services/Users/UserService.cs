@@ -163,7 +163,16 @@ namespace Persistence.Services.Users
         public async Task<AuthenticationVM> LoginUser(LoginRequest request)
         {
             var loginRequest = new AuthenticationVM();
-            var user = await _userManager.FindByNameAsync(request.UserName);
+            User user = null;
+            if(request.Login.Contains("@"))
+            {
+                user = await _userManager.FindByEmailAsync(request.Login);
+            }
+            else
+            {
+                user = await _userManager.FindByNameAsync(request.Login);
+            }
+
             if (user == null)
             {
                 loginRequest.IsAuthenticated = false;
