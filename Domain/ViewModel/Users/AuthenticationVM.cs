@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Domain.ViewModel.Users
 {
-    public class AuthenticationVM : IdentityUser
+    public class AuthenticationVM
     {
         public string Message { get; set; }
         public bool IsAuthenticated { get; set; }

@@ -92,7 +92,7 @@ namespace Persistence.Services.Users
                 {
                     await _userManager.AddToRoleAsync(user, RoleConstants.SellerRole.ToString());
                 }
-                return $"User Registered successfully with username {user.UserName}";
+                return $"You have successfully registered with username {user.UserName}";
             }
             else
             {
@@ -122,7 +122,7 @@ namespace Persistence.Services.Users
                 {
                     await _userManager.AddToRoleAsync(user, RoleConstants.CustomerRole.ToString());
                 }
-                return $"User Registered successfully with username {user.UserName}";
+                return $"You have successfully registered with username {user.UserName}";
             }
             else
             {
@@ -152,7 +152,7 @@ namespace Persistence.Services.Users
                 {
                     await _userManager.AddToRoleAsync(user, RoleConstants.AdministratorRole.ToString());
                 }
-                return $"User Registered successfully with username {user.UserName}";
+                return $"You have successfully registered with username {user.UserName}";
             }
             else
             {
@@ -188,13 +188,12 @@ namespace Persistence.Services.Users
                 loginRequest.Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
                 loginRequest.Email = user.Email;
                 loginRequest.UserName = user.UserName;
-                loginRequest.Id = user.Id;
                 var rolesList = await _userManager.GetRolesAsync(user).ConfigureAwait(false);
                 loginRequest.Roles = rolesList.ToList();
                 return loginRequest;
             }
             loginRequest.IsAuthenticated = false;
-            loginRequest.Message = "Incorrect Credentials";
+            loginRequest.Message = "Invalid username or password";
             return loginRequest;
         }
 
