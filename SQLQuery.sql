@@ -8,13 +8,18 @@
   select *from Carts
   select *from CartDetails
    select *from Reviews
-  select *from [eShopSolutionTest].[Identity].[Roles]
-  select *from [eShopSolutionTest].[dbo].[AspNetRoles]
-  select *from [eShopSolutionTest].[Identity].[UserRoles]	
-    select *from [eShopSolutionTest].[Identity].[Users]
 	select *from Images
 	select *from Capacities
 	select *from Colors
+	select *from Sizes
+
+	SELECT * FROM INFORMATION_SCHEMA.TABLES;
+
+	
+  select *from [eShopSolution].[Identity].[Roles]
+  select *from [eShopSolution].[dbo].[AspNetRoles]
+  select *from [eShopSolution].[Identity].[UserRoles]	
+    select *from [eShopSolution].[Identity].[Users]
 
   update OrderDetails
   set OrderId=8
@@ -33,6 +38,7 @@
   TRUNCATE TABLE Categories
   TRUNCATE TABLE Products
   TRUNCATE TABLE Permissons
+  TRUNCATE TABLE Menus
 
   --sửa kiểu dữ liệu
   ALTER TABLE Products
@@ -40,3 +46,9 @@
 
 	ALTER TABLE Users
 ADD GenderId int
+
+
+select  [eShopSolution].[Identity].[Users].FullName, Orders.TotalPrice
+from Orders
+inner join  [eShopSolution].[Identity].[Users] on Orders.UserId =  [eShopSolution].[Identity].[Users].Id
+where  [eShopSolution].[Identity].[Users].FullName='string'

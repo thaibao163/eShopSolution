@@ -129,8 +129,8 @@ builder.Services.AddCors(options =>
         {
             //you can configure your custom policy
             builder.AllowAnyOrigin()
-                                .AllowAnyHeader()
-                                .AllowAnyMethod();
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
         });
 });
 
