@@ -18,7 +18,7 @@ namespace WebApi.Controllers.v1
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost("RegisterCustomer")]
-        public async Task<IActionResult> RegisterCustomer([FromForm] RegisterRequest command)
+        public async Task<IActionResult> RegisterCustomer(RegisterRequest command)
         {
             var result = await UserRepository.RegisterCustomer(command);
             return Ok(result);
@@ -61,6 +61,12 @@ namespace WebApi.Controllers.v1
         public async Task<IActionResult> Login(LoginRequest command)
         {
             var result = await UserRepository.LoginUser(command);
+
+            if(!result.IsAuthenticated)
+            {
+                return Unauthorized(new {result.IsAuthenticated, result.Message});
+            }
+
             return Ok(result);
         }
 
